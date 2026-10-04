@@ -275,7 +275,7 @@ fn row(
     }
 
     if has_children && expanded.contains(&n.id.0) {
-        for (i, c) in n.children().unwrap().iter().enumerate().rev() {
+        for (i, c) in n.children().map_or(&[][..], Vec::as_slice).iter().enumerate().rev() {
             row(ui, doc, c, depth + 1, i == 0 && n.clips(), sel, current, expanded, actions, t);
         }
     }

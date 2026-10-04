@@ -1574,7 +1574,14 @@ pub fn pretty_shortcut(s: &str) -> String {
     if cfg!(target_os = "macos") {
         let mut mods = String::new();
         let parts: Vec<&str> = s.split('+').collect();
-        let (key, ms) = if s.ends_with("++") { ("+", &parts[..parts.len() - 2]) } else { (*parts.last().unwrap(), &parts[..parts.len() - 1]) };
+        let (key, ms) = if s.ends_with("++") {
+            ("+", parts.get(..parts.len().saturating_sub(2)).unwrap_or_default())
+        } else {
+            match parts.split_last() {
+                Some((key, ms)) => (*key, ms),
+                None => (s, &[][..]),
+            }
+        };
         for m in ["Ctrl", "Alt", "Shift", "Cmd"] {
             if ms.contains(&m) {
                 mods.push_str(match m {

@@ -43,7 +43,9 @@ pub fn synthetic(n: usize) -> Document {
         if i % 3 == 1 {
             node.opacity = 0.8;
         }
-        d.insert(Some(l), usize::MAX, node).expect("insert");
+        if d.insert(Some(l), usize::MAX, node).is_err() {
+            break;
+        }
     }
     d
 }
@@ -122,8 +124,17 @@ pub fn run(args: &[String]) -> Result<(), String> {
     rows.push(("hit test (per click)", hits, 2.0));
 
     let mut bytes = vec![];
+    let mut failed: Option<String> = None;
     rows.push(("save .vectorcraft", median_ms(3, || bytes = vectorcraft_format::save_file(&doc)), 300.0));
-    rows.push(("open .vectorcraft", median_ms(3, || drop(vectorcraft_format::load(&bytes).expect("load"))), 300.0));
+    rows.push((
+        "open .vectorcraft",
+        median_ms(3, || {
+            if let Err(e) = vectorcraft_format::load(&bytes) {
+                failed = Some(format!("open .vectorcraft: {e}"));
+            }
+        }),
+        300.0,
+    ));
     let svg_opts = vectorcraft_svg::ExportOptions::default();
     rows.push(("export SVG", median_ms(3, || drop(vectorcraft_svg::export(&doc, &svg_opts))), 500.0));
 
@@ -131,10 +142,14 @@ pub fn run(args: &[String]) -> Result<(), String> {
     let unite = median_ms(3, || {
         let mut s = vectorcraft_engine::Session::new();
         s.add_document(synthetic(1000), None);
-        s.execute("select.all", &json!({})).expect("select");
-        s.execute("object.pathfinder.unite", &json!({})).expect("unite");
+        if let Err(e) = s.execute("select.all", &json!({})).and_then(|_| s.execute("object.pathfinder.unite", &json!({}))) {
+            failed = Some(format!("Pathfinder Unite: {e}"));
+        }
     });
     rows.push(("Pathfinder Unite, 1,000 paths", unite, 150.0));
+    if let Some(e) = failed {
+        return Err(e);
+    }
 
     let mut over = 0;
     println!("  {:<40} {:>10} {:>10}", "", "measured", "budget");
