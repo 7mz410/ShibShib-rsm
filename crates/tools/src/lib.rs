@@ -6,6 +6,7 @@
 //! and journal entry. One-shot `Exec` actions run immediately. This makes every gesture replayable
 //! by the control channel and MCP, and keeps tools testable without a UI.
 #![forbid(unsafe_code)]
+#![deny(clippy::unwrap_used, clippy::expect_used, clippy::panic, clippy::unimplemented, clippy::todo, clippy::unreachable)]
 
 pub mod bbox;
 pub mod builder;

@@ -401,8 +401,9 @@ impl Tool for GradientTool {
             }
             (PointerKind::Drag, Some(g)) => return freeform::drag(cx, g, ev.pos),
             (PointerKind::Up, Some(_)) => {
-                let g = self.free.take().expect("checked");
-                return freeform::release(cx, FreeformAnnotator::of(cx).as_ref(), g);
+                if let Some(g) = self.free.take() {
+                    return freeform::release(cx, FreeformAnnotator::of(cx).as_ref(), g);
+                }
             }
             (PointerKind::DoubleClick, free) if free.is_some() || FreeformAnnotator::of(cx).is_some() => return vec![],
             _ => {}
