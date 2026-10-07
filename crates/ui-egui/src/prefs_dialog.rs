@@ -67,9 +67,21 @@ pub fn restore(app: &mut VectorcraftApp) {
         && code != "en"
         && crate::i18n::Lang::from_code(&code).is_some()
     {
-        p.interface_language = code;
+        p.interface_language = crate::i18n::Lang::from_code(&code).map_or(code.clone(), |lang| lang.code().to_string());
     }
     app.session.apply_prefs(p);
+}
+
+#[cfg(test)]
+#[test]
+fn old_chinese_locale_migrates_without_overwriting_an_explicit_new_preference() {
+    for (prefs, expected) in [(Value::Null, "zh-hans"), (json!({"interfaceLanguage": "ja"}), "ja")] {
+        let mut app = VectorcraftApp::new(vectorcraft_engine::Session::new(), Default::default());
+        app.ui = serde_json::from_value(json!({"locale": "zh-Hans", "engine_prefs": prefs})).unwrap();
+        restore(&mut app);
+        assert_eq!(app.session.prefs.interface_language, expected);
+        assert!(app.ui.legacy_language.is_none());
+    }
 }
 
 #[derive(Clone, Copy, PartialEq)]

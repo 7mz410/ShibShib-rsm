@@ -5,7 +5,7 @@ use std::ops::Range;
 use kurbo::{Affine, BezPath, ParamCurve, ParamCurveArclen, PathEl, PathSeg, Point, Rect, Shape, Vec2};
 use vectorcraft_doc::{CharStyle, Justify, ParaStyle, PathEffect, TextKind, TextObject};
 
-use crate::composer::{Breakpoint, compose};
+use crate::composer::{Breakpoint, compose, stretchable_gap};
 use crate::fontdb::FontDb;
 use crate::hyphen::hyphen_points;
 use crate::shape::{SGlyph, Tcy, cap_x_heights, hyphen_glyph, no_line_end, no_line_start, shape_range, style_metrics};
@@ -638,6 +638,20 @@ fn break_line(text: &str, g: &[SGlyph], i: usize, width: f64, hyphenate: bool) -
     while end > i + 1 && end < g.len() && g[end].byte == g[end - 1].byte {
         end -= 1;
     }
+    if !hy {
+        // Keep punctuation and shaped clusters together even on an emergency overset line.
+        let allowed = |end: usize| end == g.len() || (g[end].byte != g[end - 1].byte && kinsoku_allows(g, end - 1));
+        let fitted = end;
+        while end > i && !allowed(end) {
+            end -= 1;
+        }
+        if end == i {
+            end = fitted.max(i + 1);
+            while end < g.len() && !allowed(end) {
+                end += 1;
+            }
+        }
+    }
     (end, hy)
 }
 
@@ -828,18 +842,27 @@ fn flow(cx: &mut Ctx<'_>, paras: &[Range<usize>], para: &ParaStyle, regions: Opt
                 Justify::JustifyAll => (0, true),
             };
             let justify = justify && regions.is_some();
-            let (mut per_space, mut per_gap) = (0.0, 0.0);
+            let (mut per_space, mut per_gap_base) = (0.0, 0.0);
             let spaces = sg[i..trimmed].iter().filter(|g| g.is_space()).count();
+            let vertical = cx.vertical;
+            let can_stretch = |j: usize| {
+                sg.get(j + 1).is_some_and(|next| !next.continues_tcy())
+                    && (vertical || para.justify == Justify::JustifyAll || stretchable_gap(&sg, j))
+            };
+            let gaps = (i..trimmed.saturating_sub(1)).filter(|&j| can_stretch(j)).count();
+            let gap_em = sg.get(i).map_or(0.0, |g| g.adv);
             if justify && (width - w).abs() > EPS {
                 if spaces > 0 {
                     // Composed lines may shrink word spaces (never below zero).
                     per_space =
                         ((width - w) / spaces as f64).max(-sg[i..trimmed].iter().filter(|g| g.is_space()).map(|g| g.adv).fold(f64::MAX, f64::min));
-                } else if para.justify == Justify::JustifyAll && width > w {
-                    let gaps = sg.get(i + 1..trimmed).map_or(0, |s| s.iter().filter(|g| !g.continues_tcy()).count());
-                    if gaps > 0 {
-                        per_gap = (width - w) / gaps as f64;
-                    }
+                } else if gaps > 0 && width > w && (!cx.vertical || para.justify == Justify::JustifyAll) {
+                    // 两端对齐 for scripts without spaces: widen the CJK character gaps. Half an em
+                    // per gap is the most Chinese composition allows before the line looks tracked
+                    // out, so a line that cannot reach the edge is left ragged. Justify All is the
+                    // exception: there every line must reach the edge, so the gaps take the slack.
+                    let per = (width - w) / gaps as f64;
+                    per_gap_base = if para.justify == Justify::JustifyAll { per } else { per.min(gap_em * 0.5) };
                 }
             }
             let start_x = if justify {
@@ -870,9 +893,8 @@ fn flow(cx: &mut Ctx<'_>, paras: &[Range<usize>], para: &ParaStyle, regions: Opt
                 } else if j < trimmed {
                     if g.is_space() {
                         adv += per_space;
-                    } else if j + 1 < trimmed && sg.get(j + 1).is_some_and(|next| !next.continues_tcy()) {
-                        // Between glyphs, never inside a tate-chu-yoko block (one cell).
-                        adv += per_gap;
+                    } else if j + 1 < trimmed && can_stretch(j) {
+                        adv += per_gap_base;
                     }
                 }
                 cx.emit(g, Affine::translate((x, baseline)), Point::new(x, baseline), 0.0, adv, li);

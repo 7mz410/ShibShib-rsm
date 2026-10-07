@@ -267,12 +267,20 @@ pub(crate) fn craft_font_name(f: &vectorcraft_text::CraftFont) -> String {
 /// every family, after the app's own fonts and before the installed fonts `ui_fonts` adds: BIZ
 /// UDPGothic first (bold first in the semibold family), then the Mincho faces.
 fn add_craft_fonts(fonts: &mut FontDefinitions) {
-    for f in vectorcraft_text::CRAFT_FONTS.iter().filter(|f| f.is_japanese()) {
-        fonts.font_data.insert(craft_font_name(f), Arc::new(FontData::from_static(f.bytes)));
+    for f in vectorcraft_text::CRAFT_FONTS.iter().filter(|f| f.is_japanese() || f.scripts.contains(&"Hans")) {
+        let data = if f.scripts.contains(&"Hans") { crate::ui_fonts::craft_font_data(f) } else { FontData::from_static(f.bytes) };
+        fonts.font_data.insert(craft_font_name(f), Arc::new(data));
     }
     for (family, stack) in fonts.families.iter_mut() {
         let bold = *family == FontFamily::Name(FONT_UI_SEMIBOLD.into());
+        let chinese: Vec<String> = vectorcraft_text::CRAFT_FONTS.iter().filter(|f| f.scripts.contains(&"Hans")).map(craft_font_name).collect();
+        if crate::i18n::current().code() == "zh-hans" {
+            stack.extend(chinese.iter().cloned());
+        }
         stack.extend(vectorcraft_text::craft_fonts::japanese_ui_fonts(bold).into_iter().map(craft_font_name));
+        if crate::i18n::current().code() != "zh-hans" {
+            stack.extend(chinese);
+        }
     }
 }
 

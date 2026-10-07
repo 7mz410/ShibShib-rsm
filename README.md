@@ -142,6 +142,12 @@ exposes to agents, and exported by VectorCraft's own renderer. The source files 
 
 ## Quick start
 
+Simplified Chinese (`zh-hans`) is available in the language menu and Preferences.
+Legacy `locale: "zh-Hans"` preferences migrate without overriding an explicit language choice.
+Horizontal Chinese text supports punctuation compression and inter-character justification.
+Build desktop releases with `CRAFT_FONTS_DIR` set to include Noto Sans CJK SC from craft-fonts;
+without that optional input, Chinese falls back to installed system fonts.
+
 ```sh
 cargo run --release -p vectorcraft                          # desktop app
 cargo run --release -p vectorcraft -- examples/dusk-poster.vectorcraft

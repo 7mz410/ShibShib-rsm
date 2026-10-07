@@ -12,20 +12,23 @@ use std::collections::HashSet;
 use std::sync::Arc;
 
 use egui::epaint::Shape;
+use egui::epaint::text::FontTweak;
 use egui::epaint::text::{FontInsert, FontPriority, InsertFontFamily};
 use egui::{FontData, FontFamily, FontId, LayerId};
 use vectorcraft_text::{FontDb, FontFace};
+
+type FallbackFace = (FontFamily, Arc<FontFace>);
 
 #[derive(Default)]
 pub(crate) struct UiFonts {
     /// Characters looked at already: the UI fonts have them, a fallback was added (or is being
     /// looked for), or no font has them.
-    seen: HashSet<char>,
+    seen: HashSet<(FontFamily, char)>,
     /// The fonts added to egui, by name.
-    added: HashSet<String>,
+    added: HashSet<(FontFamily, String)>,
     /// The faces covering the characters being looked for (native: looked for on a thread).
     #[cfg(not(target_arch = "wasm32"))]
-    pending: Option<std::sync::mpsc::Receiver<Vec<Arc<FontFace>>>>,
+    pending: Option<std::sync::mpsc::Receiver<Vec<FallbackFace>>>,
 }
 
 impl UiFonts {
@@ -42,12 +45,14 @@ impl UiFonts {
             return;
         }
         let find = move || {
-            let mut faces: Vec<Arc<FontFace>> = vec![];
-            for c in missing {
-                if let Some(f) = FontDb::global().face_covering(c)
-                    && !faces.iter().any(|x| x.id() == f.id())
+            let mut faces: Vec<FallbackFace> = vec![];
+            for (family, c) in missing {
+                // The face is looked up at the weight the character was painted in, so a semibold
+                // heading gets a semibold CJK face rather than the family's regular one.
+                if let Some(f) = FontDb::global().face_covering_weighted(c, family_weight(&family))
+                    && !faces.iter().any(|(fam, x)| *fam == family && x.id() == f.id())
                 {
-                    faces.push(f);
+                    faces.push((family, f));
                 }
             }
             faces
@@ -74,7 +79,7 @@ impl UiFonts {
 
     /// Characters painted this frame that the UI fonts lack and haven't been looked for, now
     /// marked seen. None while a search is running.
-    fn missing(&mut self, ctx: &egui::Context) -> Vec<char> {
+    fn missing(&mut self, ctx: &egui::Context) -> Vec<(FontFamily, char)> {
         #[cfg(not(target_arch = "wasm32"))]
         if self.pending.is_some() {
             return vec![];
@@ -83,12 +88,17 @@ impl UiFonts {
         if !layers.contains(&LayerId::background()) {
             layers.push(LayerId::background());
         }
-        let mut chars: Vec<char> = vec![];
+        let mut chars = HashSet::new();
         let seen = &self.seen;
-        let mut note = |text: &str| {
+        let mut note = |text: &str, family: &FontFamily, _size: f32| {
             // Most UI text is ASCII, which the UI fonts cover.
             if !text.is_ascii() {
-                chars.extend(text.chars().filter(|c| !c.is_ascii() && !c.is_whitespace() && !c.is_control() && !seen.contains(c)));
+                chars.extend(
+                    text.chars()
+                        .filter(|c| !c.is_ascii() && !c.is_whitespace() && !c.is_control())
+                        .map(|c| (family.clone(), c))
+                        .filter(|key| !seen.contains(key)),
+                );
             }
         };
         ctx.graphics(|g| {
@@ -98,30 +108,25 @@ impl UiFonts {
                 }
             }
         });
-        if chars.is_empty() {
-            return chars;
-        }
-        chars.sort_unstable();
-        chars.dedup();
-        let font = FontId::new(13.0, FontFamily::Proportional);
-        let missing: Vec<char> = ctx.fonts_mut(|f| chars.iter().copied().filter(|c| !f.has_glyph(&font, *c)).collect());
+        let missing = ctx.fonts_mut(|f| chars.iter().filter(|(family, c)| !f.has_glyph(&FontId::new(13.0, family.clone()), *c)).cloned().collect());
         self.seen.extend(chars);
         missing
     }
 
-    /// Add `faces` to every egui family, after the fonts it has.
-    fn install(&mut self, ctx: &egui::Context, faces: &[Arc<FontFace>]) {
-        let families: Vec<FontFamily> = ctx.fonts(|f| f.definitions().families.keys().cloned().collect());
-        for face in faces {
+    /// Add each face only to the family that requested its weight.
+    fn install(&mut self, ctx: &egui::Context, faces: &[FallbackFace]) {
+        for (family, face) in faces {
             let name = format!("{} {} #{}", face.family, face.style, face.face_index());
-            if !self.added.insert(name.clone()) {
+            if !self.added.insert((family.clone(), name.clone())) {
                 continue;
             }
             // The face's file data, shared with the process-wide font database (which keeps every
             // face it loads for the session) instead of copied: one handle is leaked per font added.
             let face: &'static FontFace = Box::leak(Box::new(face.clone()));
-            let data = FontData { index: face.face_index(), ..FontData::from_static(face.file_data()) };
-            let families = families.iter().map(|family| InsertFontFamily { family: family.clone(), priority: FontPriority::Lowest }).collect();
+            // Align fallback metrics with the Latin UI baseline without changing the point size.
+            let tweak = latin_face().map_or_else(FontTweak::default, |latin| baseline_tweak(face, &latin));
+            let data = FontData { index: face.face_index(), ..FontData::from_static(face.file_data()) }.tweak(tweak);
+            let families = vec![InsertFontFamily { family: family.clone(), priority: FontPriority::Lowest }];
             ctx.add_font(FontInsert { name, data, families });
         }
         if !faces.is_empty() {
@@ -139,17 +144,85 @@ impl UiFonts {
 }
 
 /// Call `f` with the text of `shape` and the shapes it holds.
-fn painted_text(shape: &Shape, f: &mut impl FnMut(&str)) {
+fn painted_text(shape: &Shape, f: &mut impl FnMut(&str, &FontFamily, f32)) {
     match shape {
-        Shape::Text(t) => f(t.galley.text()),
+        Shape::Text(t) => {
+            let text = t.galley.text();
+            for section in &t.galley.job.sections {
+                let Some(slice) = text.get(section.byte_range.start.0..section.byte_range.end.0) else { continue };
+                f(slice, &section.format.font_id.family, section.format.font_id.size);
+            }
+        }
         Shape::Vec(v) => v.iter().for_each(|s| painted_text(s, f)),
         _ => {}
     }
 }
 
+fn baseline_tweak(face: &FontFace, family: &FontFace) -> FontTweak {
+    FontTweak { scale: 1.0, y_offset_factor: baseline_tweak_factor(face, family), ..Default::default() }
+}
+
+fn baseline_tweak_factor(face: &FontFace, family: &FontFace) -> f32 {
+    let em = |f: &FontFace| {
+        let (ascent, descent) = f.vertical_metrics();
+        let upem = f.units_per_em().max(1.0);
+        (ascent / upem, (ascent + descent) / upem)
+    };
+    let (face_ascent, face_height) = em(face);
+    let (family_ascent, family_height) = em(family);
+    baseline_factor(face_ascent, face_height, family_ascent, family_height)
+}
+
+fn baseline_factor(face_ascent: f64, face_height: f64, family_ascent: f64, family_height: f64) -> f32 {
+    // Positive `y_offset_factor` moves a glyph down, and epaint counts the tweak in the pen
+    // position as well as the raster offset, so the correction is twice the fallback's own
+    // displacement, with the sign that brings it back to the family's ink.
+    (2.0 * (face_ascent - family_ascent + 0.5 * (family_height - face_height))) as f32
+}
+
+fn latin_face() -> Option<Arc<FontFace>> {
+    static METRICS: std::sync::OnceLock<Option<Arc<FontFace>>> = std::sync::OnceLock::new();
+    METRICS
+        .get_or_init(|| {
+            let db = vectorcraft_text::FontDb::with_font_dirs(Vec::new());
+            db.add_font(include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf").to_vec());
+            db.face("Source Sans 3", "Regular")
+        })
+        .clone()
+}
+
+fn family_weight(family: &FontFamily) -> f32 {
+    if *family == FontFamily::Name(crate::theme::FONT_UI_SEMIBOLD.into()) { 600.0 } else { 400.0 }
+}
+
+pub(crate) fn craft_font_data(font: &vectorcraft_text::CraftFont) -> FontData {
+    static DB: std::sync::OnceLock<FontDb> = std::sync::OnceLock::new();
+    let db = DB.get_or_init(|| FontDb::with_font_dirs(Vec::new()));
+    let tweak = db.face(font.family, font.style).zip(latin_face()).map_or_else(FontTweak::default, |(face, latin)| baseline_tweak(&face, &latin));
+    FontData::from_static(font.bytes).tweak(tweak)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn missing_characters_are_tracked_per_family_not_font_size() {
+        let ctx = egui::Context::default();
+        crate::theme::install_fonts(&ctx);
+        let mut fonts = UiFonts::default();
+        ctx.run_ui(Default::default(), |ui| {
+            ui.label(egui::RichText::new("\u{10FFFD}").font(FontId::proportional(26.0)));
+            ui.label(egui::RichText::new("\u{10FFFD}").font(crate::theme::semibold(12.0)));
+            let missing = fonts.missing(ui.ctx());
+            assert_eq!(missing.len(), 2);
+            let mut weights: Vec<_> = missing.iter().map(|(family, _)| family_weight(family) as u32).collect();
+            weights.sort_unstable();
+            assert_eq!(weights, [400, 600]);
+        })
+        .textures_delta
+        .clear();
+    }
 
     /// Run a frame painting `text`, then the fallback search after it.
     fn frame(ctx: &egui::Context, fonts: &mut UiFonts, text: &str) {
@@ -224,7 +297,9 @@ mod tests {
         crate::theme::install_fonts(&ctx);
         let mut fonts = UiFonts::default();
         frame(&ctx, &mut fonts, text);
-        assert!(!has_glyph(&ctx, '标'), "the UI fonts have no CJK");
+        if vectorcraft_text::CRAFT_FONTS.iter().any(|f| f.scripts.contains(&"Hans")) {
+            assert!(has_glyph(&ctx, '标'), "Chinese is available without waiting for system fonts");
+        }
         fonts.finish(&ctx);
         // The fonts arrive with the next frame.
         frame(&ctx, &mut fonts, text);

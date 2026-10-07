@@ -163,7 +163,7 @@ fn window(ctx: &egui::Context, id: &str, margin: i8, add: impl FnOnce(&mut egui:
         .collapsible(false)
         .resizable(false)
         .title_bar(false)
-        .anchor(egui::Align2::CENTER_CENTER, [0.0, -20.0])
+        .anchor(egui::Align2::CENTER_CENTER, [0.0, 0.0])
         .frame(egui::Frame::window(&ctx.global_style()).fill(t.panel).inner_margin(egui::Margin::same(margin)))
         .show(ctx, add);
 }
@@ -193,20 +193,27 @@ fn show(app: &mut VectorcraftApp, ctx: &egui::Context) {
     sync(app, &mut d);
     let t = Tokens::get(ctx);
     let mut b = Buttons::default();
+    let width = (ctx.content_rect().width() - 36.0).clamp(360.0, 1020.0);
+    let height = (ctx.content_rect().height() - 48.0).clamp(200.0, HEIGHT + 36.0);
     window(ctx, KIND, 0, |ui| {
+        ui.spacing_mut().item_spacing.x = 0.0;
         ui.horizontal_top(|ui| {
             egui::Frame::NONE.inner_margin(egui::Margin { left: 22, right: 14, top: 14, bottom: 18 }).show(ui, |ui| {
                 ui.vertical(|ui| {
-                    ui.set_width(640.0);
-                    ui.set_min_height(HEIGHT - 32.0);
+                    ui.set_width((width - DETAILS - 72.0).max(160.0));
+                    ui.set_height(height - 32.0);
                     presets(app, ui, &mut d);
                 });
             });
             egui::Frame::NONE.fill(t.panel_darker).inner_margin(egui::Margin::same(18)).show(ui, |ui| {
                 ui.vertical(|ui| {
                     ui.set_width(DETAILS);
-                    ui.set_min_height(HEIGHT);
-                    details(app, ui, &mut d, &mut b);
+                    ui.set_height(height - 36.0);
+                    egui::ScrollArea::vertical().id_salt("newdoc-details").max_height(height - 80.0).auto_shrink([false, false]).show(ui, |ui| {
+                        details(app, ui, &mut d);
+                    });
+                    ui.add_space(12.0);
+                    footer(ui, &mut b, "Create");
                 });
             });
         });
@@ -219,7 +226,8 @@ fn presets(app: &VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog) {
     let t = Tokens::get(ui.ctx());
     let names: Vec<&str> = newdoc::category_names().collect();
     let cat = names.iter().position(|n| n.eq_ignore_ascii_case(&d.str("category"))).unwrap_or(0);
-    if let Some(i) = widgets::tab_bar(ui, &names, cat) {
+    let tab = egui::ScrollArea::horizontal().id_salt("newdoc-tabs").show(ui, |ui| widgets::tab_bar(ui, &names, cat)).inner;
+    if let Some(i) = tab {
         d.fields.insert("category".into(), json!(names[i]));
     }
     let list = names.get(cat).and_then(|c| newdoc::category(&app.session, c)).unwrap_or_default();
@@ -238,7 +246,7 @@ fn presets(app: &VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog) {
         ui.label(egui::RichText::new(hint).color(t.text_dim));
         return;
     }
-    egui::ScrollArea::vertical().id_salt(("newdoc-presets", cat)).max_height(HEIGHT - 110.0).auto_shrink([false, false]).show(ui, |ui| {
+    egui::ScrollArea::vertical().id_salt(("newdoc-presets", cat)).max_height(ui.available_height()).auto_shrink([false, false]).show(ui, |ui| {
         ui.horizontal_wrapped(|ui| {
             ui.spacing_mut().item_spacing = egui::vec2(12.0, 12.0);
             let (w, h, preset) = (d.f64("width", 0.0), d.f64("height", 0.0), d.str("preset"));
@@ -296,10 +304,9 @@ pub fn preset_card(ui: &mut egui::Ui, s: &DocSettings, selected: bool) -> egui::
 }
 
 /// The Preset Details column.
-fn details(app: &mut VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog, b: &mut Buttons) {
+fn details(app: &mut VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog) {
     let t = Tokens::get(ui.ctx());
     ui.spacing_mut().item_spacing = egui::vec2(6.0, 4.0);
-    let top = ui.cursor().top();
     ui.label(egui::RichText::new(tl!("PRESET DETAILS")).font(theme::semibold(11.0)).color(t.text_dim));
     ui.add_space(8.0);
     ui.horizontal(|ui| {
@@ -351,10 +358,11 @@ fn details(app: &mut VectorcraftApp, ui: &mut egui::Ui, d: &mut Dialog, b: &mut 
     if widgets::flat_button(ui, tl!("More Settings"), DETAILS).clicked() {
         d.kind = MORE.into();
     }
-    // Close and Create at the bottom right.
-    ui.add_space((HEIGHT - (ui.cursor().top() - top) - 28.0).max(12.0));
+}
+
+fn footer(ui: &mut egui::Ui, b: &mut Buttons, create: &str) {
     ui.allocate_ui_with_layout(egui::vec2(ui.available_width(), 28.0), egui::Layout::right_to_left(egui::Align::Center), |ui| {
-        b.create = widgets::primary_button(ui, tl!("Create")).clicked();
+        b.create = widgets::primary_button(ui, tl!(create)).clicked();
         ui.add_space(8.0);
         b.close = widgets::secondary_button(ui, tl!("Close")).clicked();
     });
@@ -491,87 +499,89 @@ fn show_more(app: &mut VectorcraftApp, ctx: &egui::Context) {
         ui.set_width(560.0);
         ui.label(egui::RichText::new(tl!("More Settings")).font(theme::semibold(16.0)).color(t.text));
         ui.add_space(12.0);
-        widgets::label_row(ui, tl!("Name:"), L, |ui| {
-            form::text(ui, &mut d, "name", 300.0);
-        });
-        // Profile: the preset categories (the tabs); Size: the profile's presets.
-        let profiles: Vec<&str> = newdoc::CATEGORIES.iter().map(|c| c.0).collect();
-        let profile = profiles.iter().find(|p| p.eq_ignore_ascii_case(&d.str("category"))).copied().unwrap_or("[Custom]");
-        widgets::label_row(ui, tl!("Profile:"), L, |ui| {
-            if let Some(p) = widgets::dropdown(ui, "newdoc-profile", profile, &profiles, 220.0).and_then(|i| profiles.get(i)) {
-                d.fields.insert("category".into(), json!(p));
-                if let Some(first) = newdoc::category(&app.session, p).and_then(|v| v.into_iter().next()) {
-                    apply(&mut d, &first);
-                }
-            }
-        });
-        ui.add_space(6.0);
-        let (lay, cols, spacing, rtl) = layout(&d);
-        let n = d.f64("artboards", 1.0);
-        let several = n > 1.0;
-        widgets::label_row(ui, tl!("Number of Artboards:"), L, |ui| {
-            artboards(ui, &mut d, 76.0);
-            ui.add_space(10.0);
-            for (l, icon) in [
-                (ArtboardLayout::GridByRow, "dc-grid-view"),
-                (ArtboardLayout::GridByColumn, "grid-3x3"),
-                (ArtboardLayout::Row, "arrow-left-right"),
-                (ArtboardLayout::Column, "arrow-up-down"),
-            ] {
-                if widgets::icon_button_enabled(ui, icon, l.label(), lay == l, several, 26.0).clicked() {
-                    set_layout(&mut d, "layout", json!(l.id()));
-                }
-            }
-            ui.add_space(6.0);
-            if widgets::icon_button_enabled(ui, "chevrons-left", tl!("Change to Right-to-Left Layout"), rtl, several, 26.0).clicked() {
-                set_layout(&mut d, "rightToLeft", json!(!rtl));
-            }
-        });
-        ui.add_enabled_ui(several, |ui| {
-            widgets::label_row(ui, tl!("Spacing:"), L, |ui| {
-                if let Some(v) = widgets::num_field(ui, "newdoc-spacing", Some(spacing), unit(&d), 100.0) {
-                    set_layout(&mut d, "spacing", json!(v.max(0.0)));
-                }
-                ui.add_space(20.0);
-                ui.label(egui::RichText::new(tl!("Columns:")).color(t.text));
-                let grid = matches!(lay, ArtboardLayout::GridByRow | ArtboardLayout::GridByColumn);
-                ui.add_enabled_ui(grid, |ui| {
-                    if let Some(v) = widgets::spin_plain(ui, "newdoc-columns", cols as f64, "", 0, 76.0, 1.0, 1.0, &[]) {
-                        set_layout(&mut d, "columns", json!(v.round().clamp(1.0, n) as u64));
+        egui::ScrollArea::vertical().id_salt("newdoc-more-body").max_height((ctx.content_rect().height() - 160.0).max(100.0)).show(ui, |ui| {
+            widgets::label_row(ui, tl!("Name:"), L, |ui| {
+                form::text(ui, &mut d, "name", 300.0);
+            });
+            // Profile: the preset categories (the tabs); Size: the profile's presets.
+            let profiles: Vec<&str> = newdoc::CATEGORIES.iter().map(|c| c.0).collect();
+            let profile = profiles.iter().find(|p| p.eq_ignore_ascii_case(&d.str("category"))).copied().unwrap_or("[Custom]");
+            widgets::label_row(ui, tl!("Profile:"), L, |ui| {
+                if let Some(p) = widgets::dropdown(ui, "newdoc-profile", profile, &profiles, 220.0).and_then(|i| profiles.get(i)) {
+                    d.fields.insert("category".into(), json!(p));
+                    if let Some(first) = newdoc::category(&app.session, p).and_then(|v| v.into_iter().next()) {
+                        apply(&mut d, &first);
                     }
+                }
+            });
+            ui.add_space(6.0);
+            let (lay, cols, spacing, rtl) = layout(&d);
+            let n = d.f64("artboards", 1.0);
+            let several = n > 1.0;
+            widgets::label_row(ui, tl!("Number of Artboards:"), L, |ui| {
+                artboards(ui, &mut d, 76.0);
+                ui.add_space(10.0);
+                for (l, icon) in [
+                    (ArtboardLayout::GridByRow, "dc-grid-view"),
+                    (ArtboardLayout::GridByColumn, "grid-3x3"),
+                    (ArtboardLayout::Row, "arrow-left-right"),
+                    (ArtboardLayout::Column, "arrow-up-down"),
+                ] {
+                    if widgets::icon_button_enabled(ui, icon, l.label(), lay == l, several, 26.0).clicked() {
+                        set_layout(&mut d, "layout", json!(l.id()));
+                    }
+                }
+                ui.add_space(6.0);
+                if widgets::icon_button_enabled(ui, "chevrons-left", tl!("Change to Right-to-Left Layout"), rtl, several, 26.0).clicked() {
+                    set_layout(&mut d, "rightToLeft", json!(!rtl));
+                }
+            });
+            ui.add_enabled_ui(several, |ui| {
+                widgets::label_row(ui, tl!("Spacing:"), L, |ui| {
+                    if let Some(v) = widgets::num_field(ui, "newdoc-spacing", Some(spacing), unit(&d), 100.0) {
+                        set_layout(&mut d, "spacing", json!(v.max(0.0)));
+                    }
+                    ui.add_space(20.0);
+                    ui.label(egui::RichText::new(tl!("Columns:")).color(t.text));
+                    let grid = matches!(lay, ArtboardLayout::GridByRow | ArtboardLayout::GridByColumn);
+                    ui.add_enabled_ui(grid, |ui| {
+                        if let Some(v) = widgets::spin_plain(ui, "newdoc-columns", cols as f64, "", 0, 76.0, 1.0, 1.0, &[]) {
+                            set_layout(&mut d, "columns", json!(v.round().clamp(1.0, n) as u64));
+                        }
+                    });
                 });
             });
+            ui.add_space(6.0);
+            let sizes = newdoc::category(&app.session, profile).unwrap_or_default();
+            let size_names: Vec<&str> = sizes.iter().map(|s| s.name.as_str()).collect();
+            let preset = d.str("preset");
+            widgets::label_row(ui, tl!("Size:"), L, |ui| {
+                // The profile's sizes are built in; the preset may be one the user saved.
+                let shown = if preset.is_empty() { tl!("Custom") } else { preset_name(&preset) };
+                if let Some(s) = super::mixed_dropdown(ui, "newdoc-size", shown, &size_names, 220.0, |_| true).and_then(|i| sizes.get(i)) {
+                    apply(&mut d, s);
+                }
+            });
+            let unit = unit(&d);
+            widgets::label_row(ui, tl!("Width:"), L, |ui| {
+                form::length(ui, &mut d, "width", unit, 120.0);
+                ui.add_space(20.0);
+                ui.label(egui::RichText::new(tl!("Units:")).color(t.text));
+                units_dropdown(ui, &mut d, 120.0);
+            });
+            widgets::label_row(ui, tl!("Height:"), L, |ui| {
+                form::length(ui, &mut d, "height", unit, 120.0);
+                ui.add_space(20.0);
+                ui.label(egui::RichText::new(tl!("Orientation:")).color(t.text));
+                orientation(ui, &mut d);
+            });
+            ui.add_space(4.0);
+            widgets::label_row(ui, tl!("Bleed:"), L, |ui| form::bleed(ui, &mut d, unit, 64.0));
+            ui.add_space(4.0);
+            widgets::label_row(ui, tl!("Background Contents:"), L, |ui| background(ui, &mut d, 220.0));
+            ui.add_space(8.0);
+            advanced(ui, &mut d, L, 220.0);
         });
-        ui.add_space(6.0);
-        let sizes = newdoc::category(&app.session, profile).unwrap_or_default();
-        let size_names: Vec<&str> = sizes.iter().map(|s| s.name.as_str()).collect();
-        let preset = d.str("preset");
-        widgets::label_row(ui, tl!("Size:"), L, |ui| {
-            // The profile's sizes are built in; the preset may be one the user saved.
-            let shown = if preset.is_empty() { tl!("Custom") } else { preset_name(&preset) };
-            if let Some(s) = super::mixed_dropdown(ui, "newdoc-size", shown, &size_names, 220.0, |_| true).and_then(|i| sizes.get(i)) {
-                apply(&mut d, s);
-            }
-        });
-        let unit = unit(&d);
-        widgets::label_row(ui, tl!("Width:"), L, |ui| {
-            form::length(ui, &mut d, "width", unit, 120.0);
-            ui.add_space(20.0);
-            ui.label(egui::RichText::new(tl!("Units:")).color(t.text));
-            units_dropdown(ui, &mut d, 120.0);
-        });
-        widgets::label_row(ui, tl!("Height:"), L, |ui| {
-            form::length(ui, &mut d, "height", unit, 120.0);
-            ui.add_space(20.0);
-            ui.label(egui::RichText::new(tl!("Orientation:")).color(t.text));
-            orientation(ui, &mut d);
-        });
-        ui.add_space(4.0);
-        widgets::label_row(ui, tl!("Bleed:"), L, |ui| form::bleed(ui, &mut d, unit, 64.0));
-        ui.add_space(4.0);
-        widgets::label_row(ui, tl!("Background Contents:"), L, |ui| background(ui, &mut d, 220.0));
-        ui.add_space(8.0);
-        advanced(ui, &mut d, L, 220.0);
         ui.add_space(16.0);
         ui.horizontal(|ui| {
             templates = widgets::secondary_button(ui, tl!("Templates…")).on_hover_text(tl!("New from Template")).clicked();
@@ -601,6 +611,37 @@ mod tests {
     use vectorcraft_engine::Session;
 
     use crate::VectorcraftApp;
+
+    #[test]
+    fn create_controls_stay_visible_on_short_screens() {
+        for height in [500.0, 600.0] {
+            let ctx = egui::Context::default();
+            crate::theme::install_fonts(&ctx);
+            crate::theme::apply(&ctx, Default::default());
+            let mut app = VectorcraftApp::new(Session::new(), Default::default());
+            app.run("file.newDialog", json!({})).unwrap();
+            set(&mut app, "advanced", json!(true));
+            let screen = egui::Rect::from_min_size(egui::Pos2::ZERO, egui::vec2(800.0, height));
+            for (kind, label) in [(super::KIND, "Create"), (super::MORE, "Create Document")] {
+                app.ui.dialog.as_mut().unwrap().kind = kind.into();
+                let mut found = false;
+                for _ in 0..4 {
+                    let mut out =
+                        ctx.run_ui(egui::RawInput { screen_rect: Some(screen), ..Default::default() }, |ui| crate::dialogs::show(&mut app, ui.ctx()));
+                    for shape in &out.shapes {
+                        if let egui::Shape::Text(text) = &shape.shape
+                            && text.galley.text() == label
+                        {
+                            assert!(screen.contains_rect(text.galley.rect.translate(text.pos.to_vec2())), "{kind}: create button outside screen");
+                            found = true;
+                        }
+                    }
+                    out.textures_delta.clear();
+                }
+                assert!(found, "{kind}: visible create button");
+            }
+        }
+    }
 
     /// Cards translate the built-in presets' names only: Recent and Saved show the user's names.
     #[test]

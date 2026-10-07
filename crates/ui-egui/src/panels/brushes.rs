@@ -17,6 +17,9 @@ const KINDS: [(&str, &str); 5] =
 
 /// (name, type) of every brush in the active document's library.
 pub fn brushes(app: &mut VectorcraftApp) -> (Vec<(String, String)>, Option<String>) {
+    if app.session.active().is_none() {
+        return (vec![], None);
+    }
     let Ok(v) = app.run("brush.list", json!({})) else { return (vec![], None) };
     let list = v["brushes"]
         .as_array()

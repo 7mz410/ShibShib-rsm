@@ -84,6 +84,7 @@ When a task lands, update this section, the parity table and "Shipped so far" in
 grade by behaviour against `plan/illustrator/`, not by whether a menu item exists.
 
 ## Shipped so far
+- **Simplified Chinese and horizontal CJK composition:** `zh-hans` catalog and legacy language preference migration; punctuation compression, inter-character justification, per-family UI font fallback and responsive dock/dialog fixes. Desktop CJK fonts use the optional craft-fonts input rather than font binaries in this repository. Ruby, configurable mojikumi and vertical font metrics remain open.
 - **Architecture:** 19+ crates with enforced layering (`cargo xtask layers`). Every action is a command (~400 engine + ~50 UI). Undo is unlimited via structural sharing. `command.batch` runs several commands as one transaction.
 - **Automation:**
   - Actions panel (record/playback, persisted), generic parameter dialogs for every "…" command.

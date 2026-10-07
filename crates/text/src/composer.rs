@@ -5,7 +5,18 @@
 //! hyphenation points. The breaks minimise the sum of squared (badness + penalty) demerits over
 //! the whole paragraph, so loose lines are traded for evenly spaced ones.
 
-use crate::shape::SGlyph;
+use crate::shape::{SGlyph, can_break_between, is_cjk};
+
+/// Whether justification may widen the gap between `g[i]` and `g[i + 1]`: a word space, or a CJK
+/// character boundary (Chinese has no spaces, so 两端对齐 stretches the character gaps). Forbidden
+/// line starts and ends are left alone so punctuation keeps its 标点挤压 spacing.
+pub(crate) fn stretchable_gap(g: &[SGlyph], i: usize) -> bool {
+    if g[i].is_space() {
+        return true;
+    }
+    let Some(next) = g.get(i + 1) else { return false };
+    !next.is_space() && !next.continues_tcy() && (is_cjk(g[i].ch) || is_cjk(next.ch)) && can_break_between(g[i].ch, Some(next.ch))
+}
 
 const STRETCH: f64 = 0.5;
 const SHRINK: f64 = 0.2;
@@ -60,6 +71,12 @@ pub(crate) fn compose(
     };
     let mut all: Vec<Breakpoint> = cands.iter().copied().filter(|c| c.end > 0 && c.end < n).collect();
     all.push(Breakpoint { end: n, hyphen: 0.0 });
+    // Prefix sums of the gaps that justification may stretch. Between words that is the space;
+    // between CJK characters, which have no space to stretch, it is the gap itself (两端对齐).
+    let mut gap = vec![0.0; n + 1];
+    for i in 0..n {
+        gap[i + 1] = gap[i] + if !g[i].is_space() && stretchable_gap(g, i) { g[i].adv * 0.5 } else { 0.0 };
+    }
     let mut nodes = vec![Node { pos: 0, line: 0, demerits: 0.0, hyphenated: false, prev: None }];
     let mut active: Vec<usize> = vec![0];
     for bp in &all {
@@ -71,12 +88,14 @@ pub(crate) fn compose(
             let t = trim(bp.end, a.pos);
             let natural = w[t] - w[a.pos] + bp.hyphen;
             let spaces = sp[t] - sp[a.pos];
+            // A CJK line with no spaces stretches its character gaps instead.
+            let stretch = if spaces > 0.0 { spaces } else { gap[t] - gap[a.pos] };
             let lw = width(a.line);
             let ratio = if natural < lw {
                 if last && !justify_last {
                     0.0
-                } else if spaces > 0.0 {
-                    (lw - natural) / (spaces * STRETCH)
+                } else if stretch > 0.0 {
+                    (lw - natural) / (stretch * STRETCH)
                 } else {
                     f64::INFINITY
                 }

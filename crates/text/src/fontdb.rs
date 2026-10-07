@@ -932,6 +932,21 @@ impl FontDb {
         self.fallback_for(c, 0)
     }
 
+    /// UI fallback at the requested weight; keep the official family preference and loader.
+    pub fn face_covering_weighted(&self, c: char, weight: f32) -> Option<Arc<FontFace>> {
+        self.fallback_for_weighted(c, 0, weight)
+    }
+
+    pub(crate) fn fallback_for_weighted(&self, c: char, exclude: u32, weight: f32) -> Option<Arc<FontFace>> {
+        let fallback = self.fallback_for(c, exclude)?;
+        self.read_faces()
+            .iter()
+            .filter(|face| face.id() != exclude && face.family == fallback.family && face.covers(c))
+            .min_by_key(|face| (face.italic, (face.weight - weight).abs() as i32))
+            .cloned()
+            .or(Some(fallback))
+    }
+
     fn loaded_fallback(&self, c: char, exclude: u32) -> Option<Arc<FontFace>> {
         let faces = self.read_faces();
         let mut order: Vec<&Arc<FontFace>> = faces.iter().filter(|f| f.id != exclude).collect();

@@ -375,6 +375,8 @@ pub fn selection_quads(layout: &TextLayout, a: usize, b: usize) -> Vec<[Point; 4
 #[cfg(test)]
 mod tests;
 #[cfg(test)]
+mod tests_cjk;
+#[cfg(test)]
 mod tests_embed;
 #[cfg(test)]
 mod tests_scripts;

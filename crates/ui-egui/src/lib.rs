@@ -274,6 +274,7 @@ pub struct VectorcraftApp {
     /// Synthetic input events (from the control channel) injected one step per frame.
     pub synthetic: Vec<egui::Event>,
     styled: bool,
+    font_language: Option<&'static str>,
     fonts_ready: bool,
     /// Installed fonts added to the UI's for characters its own fonts lack (CJK names…).
     ui_fonts: ui_fonts::UiFonts,
@@ -360,6 +361,7 @@ impl VectorcraftApp {
             screenshot_token: 0,
             synthetic: vec![],
             styled: false,
+            font_language: None,
             fonts_ready: false,
             ui_fonts: Default::default(),
             frame: 0,
@@ -669,8 +671,11 @@ impl VectorcraftApp {
 
     fn logic_frame(&mut self, ctx: &egui::Context) {
         i18n::set_current(self.ui_language());
-        if !self.styled {
+        if !self.styled || self.font_language != Some(self.ui_language().code()) {
             theme::install_fonts(ctx);
+            self.font_language = Some(self.ui_language().code());
+            self.fonts_ready = false;
+            self.ui_fonts = Default::default();
             theme::apply(ctx, self.ui.brightness);
             egui_extras::install_image_loaders(ctx);
             self.styled = true;

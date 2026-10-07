@@ -86,38 +86,57 @@ pub fn show(app: &mut VectorcraftApp, ui: &mut Ui) {
 pub fn floating_panel(app: &mut VectorcraftApp, ctx: &egui::Context) {
     let Some(id) = app.ui.open_panel.clone() else { return };
     let Some((_, label, _)) = ICON_PANELS.iter().find(|p| p.0 == id) else { return };
+    let display = tl!(label);
     let t = Tokens::get(ctx);
     let screen = ctx.content_rect();
-    // Pinned by its right edge, 6 points left of the icon column: a panel wider than its 256
-    // points grows towards the canvas rather than over the panel icons.
-    let right = screen.right() - ICON_COL - 300.0 - 6.0;
+    let rail = egui::containers::panel::PanelState::load(ctx, egui::Id::new("icon_column"))
+        .map_or(screen.right() - ICON_COL - 300.0, |p| p.outer_rect.left());
+    let right = (rail - 2.0).max(screen.left() + 1.0);
+    let top = (screen.top() + 110.0).min(screen.bottom() - 100.0).max(screen.top());
+    let bounds = egui::Rect::from_min_max(screen.left_top(), egui::pos2(right, screen.bottom()));
+    let width = (bounds.width() - 2.0).clamp(1.0, 400.0);
     let mut open = true;
-    let area = egui::Area::new(egui::Id::new("icon-panel")).order(egui::Order::Foreground).pivot(egui::Align2::RIGHT_TOP);
-    area.fixed_pos(egui::pos2(right, 110.0)).show(ctx, |ui| {
-        egui::Frame::popup(ui.style()).fill(t.panel).corner_radius(CornerRadius::same(4)).inner_margin(egui::Margin::ZERO).show(ui, |ui| {
-            ui.set_width(256.0);
-            let (strip, _) = ui.allocate_exact_size(vec2(256.0, 26.0), Sense::hover());
-            ui.painter().rect_filled(strip, CornerRadius { nw: 4, ne: 4, sw: 0, se: 0 }, t.panel_darker);
-            let tab = egui::Rect::from_min_size(
-                strip.min,
-                vec2(ui.painter().layout_no_wrap(tl!(label).to_string(), theme::semibold(12.0), t.text).size().x + 24.0, 26.0),
-            );
-            ui.painter().rect_filled(tab, CornerRadius { nw: 4, ne: 0, sw: 0, se: 0 }, t.panel);
-            ui.painter().text(tab.left_center() + vec2(12.0, 0.0), egui::Align2::LEFT_CENTER, tl!(label), theme::semibold(12.0), t.text);
-            let close = egui::Rect::from_center_size(strip.right_center() - vec2(13.0, 0.0), vec2(14.0, 14.0));
-            let cr = ui.interact(close, ui.id().with("close-panel"), Sense::click());
-            icons::paint(ui, "chevrons-right", close, if cr.hovered() { t.text } else { t.text_dim });
-            if cr.clicked() {
-                open = false;
-            }
-            let menu_r = egui::Rect::from_center_size(strip.right_center() - vec2(34.0, 0.0), vec2(16.0, 16.0));
-            panels::panel_menu(app, ui, &id, menu_r);
-            egui::Frame::NONE.inner_margin(egui::Margin::same(10)).show(ui, |ui| {
-                ui.set_width(236.0);
-                panels::show_icon_panel(app, ui, &id);
+    egui::Area::new(egui::Id::new("icon-panel"))
+        .order(egui::Order::Foreground)
+        .anchor(egui::Align2::RIGHT_TOP, vec2(0.0, top - screen.top()))
+        .constrain_to(bounds)
+        .show(ctx, |ui| {
+            egui::Frame::popup(ui.style()).fill(t.panel).corner_radius(CornerRadius::same(4)).inner_margin(egui::Margin::ZERO).show(ui, |ui| {
+                ui.set_min_width(width.min(280.0));
+                ui.set_max_width(width);
+                ui.set_max_height((screen.bottom() - top - 2.0).max(28.0));
+                let (mut strip, _) = ui.allocate_exact_size(vec2(width.min(280.0), 26.0), Sense::hover());
+                egui::ScrollArea::both()
+                    .id_salt(("icon-panel-body", &id))
+                    .max_width(width)
+                    .max_height((screen.bottom() - top - 34.0).max(1.0))
+                    .auto_shrink([true, true])
+                    .show(ui, |ui| {
+                        egui::Frame::NONE.inner_margin(egui::Margin::same(10)).show(ui, |ui| {
+                            ui.set_width(width.min(280.0) - 20.0);
+                            panels::show_icon_panel(app, ui, &id);
+                        });
+                    });
+                // Content can require more room than the preferred width. Size the entire header
+                // after laying it out, keeping its controls at the actual panel edge.
+                strip.max.x = ui.min_rect().right();
+                ui.painter().rect_filled(strip, CornerRadius { nw: 4, ne: 4, sw: 0, se: 0 }, t.panel_darker);
+                let tab = egui::Rect::from_min_size(
+                    strip.min,
+                    vec2(ui.painter().layout_no_wrap(display.to_string(), theme::semibold(12.0), t.text).size().x + 24.0, 26.0),
+                );
+                ui.painter().rect_filled(tab, CornerRadius { nw: 4, ne: 0, sw: 0, se: 0 }, t.panel);
+                ui.painter().text(tab.left_center() + vec2(12.0, 0.0), egui::Align2::LEFT_CENTER, display, theme::semibold(12.0), t.text);
+                let close = egui::Rect::from_center_size(strip.right_center() - vec2(13.0, 0.0), vec2(14.0, 14.0));
+                let cr = ui.interact(close, ui.id().with("close-panel"), Sense::click());
+                icons::paint(ui, "chevrons-right", close, if cr.hovered() { t.text } else { t.text_dim });
+                if cr.clicked() {
+                    open = false;
+                }
+                let menu_r = egui::Rect::from_center_size(strip.right_center() - vec2(34.0, 0.0), vec2(16.0, 16.0));
+                panels::panel_menu(app, ui, &id, menu_r);
             });
         });
-    });
     if !open {
         app.ui.open_panel = None;
     }
@@ -130,6 +149,54 @@ mod tests {
 
     use super::*;
     use crate::toolbar::tests::{wheel, widget_rects};
+
+    #[test]
+    fn all_floating_panels_fit_beside_the_actual_dock_and_share_a_full_width_header() {
+        for (size, dock_width, document) in
+            [(vec2(1440.0, 900.0), 230.0, true), (vec2(800.0, 500.0), 520.0, true), (vec2(1440.0, 900.0), 300.0, false)]
+        {
+            let ctx = egui::Context::default();
+            theme::install_fonts(&ctx);
+            theme::apply(&ctx, Default::default());
+
+            let mut app = VectorcraftApp::new(Session::new(), Default::default());
+            if document {
+                app.run("file.new", json!({"width": 300, "height": 300})).unwrap();
+            }
+            let screen = egui::Rect::from_min_size(egui::Pos2::ZERO, size);
+            for &(id, _, _) in ICON_PANELS {
+                app.ui.open_panel = Some(id.into());
+                app.ui.status.clear();
+                let mut out = egui::FullOutput::default();
+                for k in 0..4 {
+                    out = ctx.run_ui(egui::RawInput { time: Some(f64::from(k) + 1.0), screen_rect: Some(screen), ..Default::default() }, |ui| {
+                        egui::Panel::right("dock").exact_size(dock_width).show(ui, |_| {});
+                        egui::Panel::right("icon_column").exact_size(ICON_COL).show(ui, |_| {});
+                        floating_panel(&mut app, ui.ctx());
+                    });
+                    out.textures_delta.clear();
+                }
+                let area = egui::AreaState::load(&ctx, egui::Id::new("icon-panel")).unwrap().rect();
+                let rail = egui::containers::panel::PanelState::load(&ctx, egui::Id::new("icon_column")).unwrap().outer_rect.left();
+                assert!(screen.contains_rect(area), "{id}: {area:?} outside {screen:?}");
+                assert!(app.ui.status.is_empty(), "{id}: painting a panel reported an error: {}", app.ui.status);
+                assert!(area.right() <= rail, "{id}: panel overlaps the icon column");
+                if id == "stroke" && size.y >= 900.0 {
+                    assert!(area.height() > 400.0, "a tall panel should use available height before scrolling: {area:?}");
+                }
+                let header = out
+                    .shapes
+                    .iter()
+                    .find_map(|s| match &s.shape {
+                        egui::Shape::Rect(r) if r.fill == Tokens::get(&ctx).panel_darker && (r.rect.height() - 26.0).abs() < 0.1 => Some(r.rect),
+                        _ => None,
+                    })
+                    .expect("header");
+                assert!((header.width() - area.width()).abs() <= 2.0, "{id}: header {header:?}, panel {area:?}");
+                assert!(widget_rects(&ctx, vec2(14.0, 14.0)).iter().any(|r| header.contains_rect(*r)), "{id}: close control inside header");
+            }
+        }
+    }
 
     #[test]
     fn every_flyout_stays_left_of_the_icon_column() {

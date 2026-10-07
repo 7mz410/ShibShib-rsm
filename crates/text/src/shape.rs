@@ -107,7 +107,8 @@ pub(crate) fn no_line_start(c: char) -> bool {
         | 'ー' | 'ゝ' | 'ゞ' | 'ヽ' | 'ヾ' | '々' | '〻'
         | 'ぁ' | 'ぃ' | 'ぅ' | 'ぇ' | 'ぉ' | 'っ' | 'ゃ' | 'ゅ' | 'ょ' | 'ゎ' | 'ゕ' | 'ゖ'
         | 'ァ' | 'ィ' | 'ゥ' | 'ェ' | 'ォ' | 'ッ' | 'ャ' | 'ュ' | 'ョ' | 'ヮ' | 'ヵ' | 'ヶ' | 'ㇰ'..='ㇿ'
-        | '！' | '）' | '，' | '．' | '：' | '；' | '？' | '］' | '｝' | '～' | '｡' | '｣' | '､' | '･' | 'ｰ' | 'ｧ'..='ｯ')
+        | '！' | '）' | '，' | '．' | '：' | '；' | '？' | '］' | '｝' | '～' | '｡' | '｣' | '､' | '･' | 'ｰ' | 'ｧ'..='ｯ'
+        | '…' | '‥' | '—' | '%' | '％')
 }
 
 /// Kinsoku: a character that can't end a line (opening brackets).
@@ -137,8 +138,58 @@ pub(crate) fn no_line_end(c: char) -> bool {
     )
 }
 
-fn is_cjk(c: char) -> bool {
+pub(crate) fn is_cjk(c: char) -> bool {
     matches!(c as u32, 0x2E80..=0x9FFF | 0xAC00..=0xD7AF | 0xF900..=0xFAFF | 0xFF00..=0xFFEF | 0x20000..=0x2FFFF)
+}
+
+pub(crate) fn can_break_between(left: char, right: Option<char>) -> bool {
+    if left == SOFT_HYPHEN {
+        return true;
+    }
+    let Some(right) = right else { return true };
+    !no_line_end(left) && !no_line_start(right)
+}
+
+/// Half-width, in em, trimmed from each side of full-width punctuation (标点挤压).
+///
+/// Chinese composition trims an opening bracket on the left and a closing bracket on the right
+/// by up to half an em; comma/full-stop forms lose the blank on the right. Proportional Latin
+/// curly quotes keep their font's spacing. Actual side bearings limit the trim below.
+/// The trim is applied to the glyph's offset and advance, so line breaking and justification see
+/// the composed width.
+pub(crate) fn cjk_punctuation_trim(c: char) -> (f64, f64) {
+    let (l, r) = cjk_punctuation_trim_impl(c);
+    (l, r)
+}
+
+fn cjk_punctuation_trim_impl(c: char) -> (f64, f64) {
+    // Tight punctuation: a comma or full stop hugs the character before it and takes half an em.
+    if matches!(c, '\u{3001}' | '\u{3002}' | '\u{FF0C}' | '\u{FF0E}' | '\u{FF1A}' | '\u{FF1B}' | '\u{FF01}' | '\u{FF1F}' | '\u{FF61}' | '\u{FF64}')
+        || matches!(c, '\u{FE10}'..='\u{FE13}')
+    {
+        return (0.0, 0.5);
+    }
+    // Closing forms carry the blank half on the right.
+    if matches!(c, '\u{3009}' | '\u{300B}' | '\u{300D}' | '\u{300F}' | '\u{3011}' | '\u{3015}' | '\u{3017}' | '\u{3019}' | '\u{301B}')
+        || matches!(c, '\u{FE18}')
+        || matches!(c, '\u{FF09}' | '\u{FF3D}' | '\u{FF5D}' | '\u{FF60}' | '\u{FF63}')
+        || matches!(c, '\u{301E}' | '\u{301F}')
+    {
+        return (0.0, 0.5);
+    }
+    // Opening forms carry the blank half on the left.
+    if matches!(c, '\u{3008}' | '\u{300A}' | '\u{300C}' | '\u{300E}' | '\u{3010}' | '\u{3014}' | '\u{3016}' | '\u{3018}' | '\u{301A}')
+        || matches!(
+            c,
+            '\u{FE17}' | '\u{FE35}' | '\u{FE37}' | '\u{FE39}' | '\u{FE3B}' | '\u{FE3D}' | '\u{FE3F}' | '\u{FE41}' | '\u{FE43}' | '\u{FE47}'
+        )
+        || matches!(c, '\u{FF08}' | '\u{FF3B}' | '\u{FF5B}' | '\u{FF5F}' | '\u{FF62}')
+        || matches!(c, '\u{301D}')
+    {
+        return (0.5, 0.0);
+    }
+    // The interpunct and the ellipsis keep their full width but centre in it.
+    (0.0, 0.0)
 }
 
 /// Vertical metrics (points) of a style's resolved face: (ascent, descent, leading).
@@ -187,7 +238,8 @@ pub(crate) fn shape_range(
             } else if let Some((_, f)) = cache.iter().find(|(k, _)| *k == c) {
                 f.clone()
             } else {
-                let f = db.fallback_for(c, primary.id()).unwrap_or_else(|| primary.clone());
+                // Ask for the run's own weight, so a bold Chinese run gets a bold CJK face.
+                let f = db.fallback_for_weighted(c, primary.id(), crate::fontdb::style_weight(&st.font_style)).unwrap_or_else(|| primary.clone());
                 cache.push((c, f.clone()));
                 f
             };
@@ -296,6 +348,26 @@ fn shape_segment(text: &str, seg: &Segment, feats: &OtFeatures, out: &mut Vec<SG
         } else if last_in_cluster {
             adv += tracking + manual_kern;
         }
+        // 标点挤压, once per cluster: trim the outer blank of brackets and the right blank of
+        // comma/full-stop forms. Never take more than half the original cell or touch the ink.
+        let (tl, tr) = if last_in_cluster && !feats.vertical { cjk_punctuation_trim(ch) } else { (0.0, 0.0) };
+        let (mut tl, mut tr) = (tl * size * hs, tr * size * hs);
+        // Trim only actual side bearings: a font may already use narrow or centred forms.
+        if (tl > 0.0 || tr > 0.0)
+            && let Some(bounds) =
+                face.skrifa().and_then(|f| f.glyph_metrics(Size::unscaled(), LocationRef::default()).bounds(skrifa::GlyphId::new(gid)))
+        {
+            tl = tl.min(((bounds.x_min as f64 + xo as f64) * k * hs).max(0.0));
+            tr = tr.min(((xa as f64 - bounds.x_max as f64 - xo as f64) * k * hs).max(0.0));
+        }
+        let room = adv.max(0.0) * 0.5;
+        let spend = tl + tr;
+        if spend > room && spend > 0.0 {
+            let scale = room / spend;
+            tl *= scale;
+            tr *= scale;
+        }
+        adv -= tl + tr;
         out.push(SGlyph {
             face: face.clone(),
             gid,
@@ -303,7 +375,7 @@ fn shape_segment(text: &str, seg: &Segment, feats: &OtFeatures, out: &mut Vec<SG
             len: end.saturating_sub(cl).max(1),
             run,
             adv,
-            dx: xo as f64 * k * hs,
+            dx: xo as f64 * k * hs - tl,
             dy: -(yo as f64) * k * vs,
             sx: k * hs,
             sy: k * vs,
