@@ -991,3 +991,27 @@ showpage"##;
     assert!(all(d).iter().any(|n| fill(n).and_then(Paint::color) == Some(Color::rgb(0.0, 1.0, 0.0))));
     assert_eq!(objects(d).len(), 3);
 }
+
+/// `restore` puts dictionaries back as they were at the `save`, as restoring virtual memory does:
+/// Illustrator's procsets count `save`s in a dictionary and raise `limitcheck` at 64, so every file
+/// with more than 64 images (the rasters of drop shadows and glows on type, #505) fell back to
+/// its preview while the count only grew.
+#[test]
+fn restore_puts_dictionaries_back() {
+    let r = read(
+        "/AGM 4 dict def AGM /n 0 put \
+         /mysave { save AGM /n get 1 add dup 64 ge { limitcheck } if AGM exch /n exch put } def \
+         1 1 100 { pop mysave 0 0 1 1 rectfill restore } for AGM /n get 0 eq { 10 10 5 5 rectfill } if",
+    );
+    clean(&r);
+    assert_eq!(objects(&r.document).len(), 101);
+    // def, store, put, undef and copy are undone, newest first; a save restored can't be again.
+    super::tests::check(
+        "/a 1 def /d 2 dict def d /k 1 put save /a 2 def /b 3 def d /k 2 put d /k undef 1 dict dup /z 9 put d copy pop \
+         /a 4 store restore a 1 eq /b where not and d /k get 1 eq and d /z known not and",
+    );
+    super::tests::check("save dup restore { restore } stopped");
+    super::tests::check("save save exch restore { restore } stopped");
+    // The font cache's sizes are numbers programs divide by (Illustrator 8's pattern fills).
+    super::tests::check("cachestatus 7 1 roll 6 { pop } repeat 0 gt");
+}

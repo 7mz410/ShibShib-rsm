@@ -280,6 +280,10 @@ fn type_becomes_point_type_in_the_font_named() {
     assert!(t2.xf.translation().x > 15.0);
     assert_eq!(crate::family_style("ABCDEF+TimesNewRomanPS-BoldItalicMT"), ("Times New Roman".into(), "Bold Italic".into()));
     assert_eq!(crate::family_style("Times-Roman"), ("Times".into(), "Regular".into()));
+    // Illustrator's reencoded copies (#505).
+    assert_eq!(crate::family_style("Impact*1"), ("Impact".into(), "Regular".into()));
+    assert_eq!(crate::family_style("MyriadPro-Bold*12"), ("Myriad Pro".into(), "Bold".into()));
+    assert_eq!(crate::family_style("Odd*Name"), ("Odd*Name".into(), "Regular".into()));
 }
 
 #[test]
