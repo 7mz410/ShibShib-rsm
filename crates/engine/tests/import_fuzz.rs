@@ -949,6 +949,10 @@ fn arb_ps_token() -> impl Strategy<Value = String> {
             "/T4 << /FontType 3 /FontMatrix [1 0 0 1 0 0] /BuildGlyph { pop pop (x) show } /Encoding [/a] >> definefont setfont",
             "glyphshow", "xshow", "xyshow", "awidthshow", "kshow", "/a", "[1 2 3]",
             // Executable strings and integer keys (Illustrator 8's procsets).
+            // Several data sources reading one file in turn, and strings of other lengths.
+            "/f currentfile /ASCIIHexDecode filter def", "{f 3 string readstring pop}", "{f 0 string readstring pop}", "true 3 colorimage",
+            "3 2 8 [3 0 0 2 0 0] {f 5 string readstring pop} {(ab)} {f 1 string readstring pop} true 3 colorimage",
+            "<< /ImageType 1 /Width 3 /Height 2 /BitsPerComponent 4 /Decode [0 1 0 1 0 1 0 1] /ImageMatrix [3 0 0 2 0 0] /MultipleDataSources true /DataSource [(a) (bc) {f 2 string readstring pop} (d)] >>",
             "(>>) cvx", "(1 2 add) cvx exec", "(x) cvx dup exec", "0 load", "1 { } def", "(mark) cvx cvlit"
         ])
         .prop_map(str::to_string),
