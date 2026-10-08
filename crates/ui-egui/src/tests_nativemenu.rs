@@ -420,3 +420,24 @@ fn the_app_bar_hides_its_menus_with_the_mac_menu_bar() {
         assert_eq!(n(&native) + 1, n(&in_window), "{title}");
     }
 }
+
+/// Window › Swatch Libraries › a library, chosen in the Mac menu bar, opens the library panel (#536).
+#[test]
+fn a_swatch_library_chosen_in_the_mac_menu_opens_the_library_panel() {
+    let mut m = Mac::new(true);
+    let brights = m
+        .fake
+        .last()
+        .items()
+        .into_iter()
+        .find(|it| it.command == Some("window.swatchLibrary") && it.params["library"] == "brights")
+        .cloned()
+        .unwrap();
+    m.fake.report(native_menu::Event::Click(brights));
+    m.frame(vec![]);
+    let out = m.frame(vec![]);
+    assert_eq!(m.app.ui.library_panel.as_ref().map(|o| o.id.as_str()), Some("brights"), "{}", m.app.ui.status);
+    let texts: Vec<String> =
+        out.shapes.iter().filter_map(|s| if let egui::Shape::Text(t) = &s.shape { Some(t.galley.text().to_string()) } else { None }).collect();
+    assert!(texts.iter().any(|t| t == "Brights"), "{texts:?}");
+}

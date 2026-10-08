@@ -79,6 +79,8 @@ mod tests_home;
 #[cfg(test)]
 mod tests_labels;
 #[cfg(test)]
+mod tests_libmenus;
+#[cfg(test)]
 mod tests_nativemenu;
 #[cfg(test)]
 mod tests_nativeoptions;
