@@ -4,7 +4,8 @@
 //! must load as an error or as a document that then renders and exports, without a panic; nor may
 //! bitmaps, PDF and text pasted from other apps, nor EMF and WMF pictures (damaged files, records
 //! of every kind with random contents) opened, placed or pasted, nor EPS and PostScript files
-//! (damaged ones, hostile programs) read by the PostScript interpreter, nor Affinity documents
+//! (damaged ones, hostile programs) read by the PostScript interpreter, nor the editing data of
+//! Illustrator EPS and `.ai` files (damaged, hostile operators and sections), nor Affinity documents
 //! (mutated object streams, archives and indexed PNG previews, hostile image dimensions).
 //!
 //! `PROPTEST_CASES=20000 cargo test -p vectorcraft-engine --test import_fuzz` runs a deeper search.
@@ -1292,6 +1293,182 @@ proptest! {
             }
         });
         r.map_err(|msg| TestCaseError::fail(format!("{password}: panicked: {msg}")))?;
+    }
+}
+
+// ---------- Illustrator editing data ----------
+
+/// The operators, operands and section comments of hostile editing data.
+fn arb_ai_token() -> impl Strategy<Value = String> {
+    prop_oneof![
+        arb_num(),
+        prop::sample::select(vec![
+            "m",
+            "l",
+            "L",
+            "c",
+            "C",
+            "v",
+            "V",
+            "y",
+            "Y",
+            "h",
+            "H",
+            "N",
+            "n",
+            "F",
+            "f",
+            "S",
+            "s",
+            "B",
+            "b",
+            "W",
+            "(b) *",
+            "u",
+            "U",
+            "*u",
+            "*U",
+            "q",
+            "Q",
+            "LB",
+            "Lb",
+            "Ln",
+            "(name) Ln",
+            "g",
+            "G",
+            "k",
+            "K",
+            "x",
+            "X",
+            "Xa",
+            "XA",
+            "Xx",
+            "XX",
+            "(Ink) 0.5 x",
+            "O",
+            "R",
+            "XR",
+            "w",
+            "J",
+            "j",
+            "M",
+            "d",
+            "[6 3] 0 d",
+            "[]0 d",
+            "Xy",
+            "2 0.5 1 1 1 Xy",
+            "99 -4 Xy",
+            "Xw",
+            "1 Xw",
+            "A",
+            "1 A",
+            "Ae",
+            "XW",
+            "1 (style) XW",
+            "9 () XW",
+            "Bd",
+            "(G) 1 3 Bd",
+            "Bs",
+            "0 0 0 0 1 0 0 2 1 6 50 0 Bs",
+            "BD",
+            "Bb",
+            "1 Bb",
+            "BB",
+            "2 BB",
+            "1 (G) 0 0 0 1 1 0 0 1 0 0 1 Bg",
+            "Bg",
+            "Bm",
+            "1e308 0 0 1e-308 0 0 Bm",
+            "Bh",
+            "XN",
+            "/DeviceCMYK XN",
+            "/DeviceGray XN",
+            "[ 1 0 0 1 0 0 ] 0 0 2 2 2 2 8 3 1 0 1 0",
+            "[ 1 0 0 1 0 0 ] 0 0 99999 99999 99999 99999 1 1 0 0 0 0",
+            "[",
+            "]",
+            "/Name",
+            "(text)",
+            "<ff00>",
+            ":",
+            ";",
+            ",",
+            "/ArtDictionary :",
+            "/XMLUID : (A_x41_) ; (AI10_ArtUID) ,",
+            "(n) /String (AIArtName) ,",
+            "/Document :",
+            "/Array :",
+            "/Dictionary :",
+            "0 0 /RealPoint (PositionPoint1) ,",
+            "/AI11Text :",
+            "/SymbolInstance :",
+            "/Binary : /ASCII85Decode ,",
+            "~>",
+            "p",
+            "To",
+            "frobnicate",
+            "\n%AI5_BeginLayer\n",
+            "\n%AI5_EndLayer--\n",
+            "\n%_",
+            "\n%AI5_BeginRaster\n",
+            "\n%AI5_EndRaster\n",
+            "\n%%BeginData: 12\rXI\n",
+            "\n%%EndData\n",
+            "\n%AI5_BeginGradient: (G)\n",
+            "\n%AI14_BeginSymbol\n",
+            "\n%AI10_EndSymbol\n",
+            "\n%AI17_Begin_Content_if_version_gt:24 4\n",
+            "\n%AI17_Alternate_Content\n",
+            "\n%AI17_End_Versioned_Content\n",
+            "\n%AI3_Cropmarks: 0 0 1e308 -1e308\n",
+            "\n%AI5_ArtSize: 0 0\n",
+            "\n%AI9_ColorModel: 2\n",
+            "\n%AI5_BeginPlace\n",
+            "\n%AI26_BeginPlacedObjectPreview\n",
+            "\n%%PageTrailer\n",
+        ])
+        .prop_map(str::to_string),
+    ]
+}
+
+/// The sample editing data, compressed as `.ai` files compress it.
+fn ai_sample_compressed() -> Vec<u8> {
+    use std::io::Write as _;
+    let mut e = flate2::write::ZlibEncoder::new(Vec::new(), flate2::Compression::default());
+    e.write_all(&vectorcraft_testkit::ai::sample_data()).unwrap();
+    [&b"%AI12_CompressedData"[..], &e.finish().unwrap()].concat()
+}
+
+proptest! {
+    #![proptest_config(config())]
+
+    /// Hostile editing data in Illustrator EPS and `.ai` files: operators in any order with any
+    /// operands, sections and dictionaries left open, images of any size.
+    #[test]
+    fn ai_hostile_editing_data_never_panics(tokens in prop::collection::vec(arb_ai_token(), 0..80)) {
+        use vectorcraft_testkit::ai;
+        let data = ai::editing_data(200.0, 100.0, &format!("%AI5_BeginLayer\n1 1 1 1 0 0 1 0 79 128 255 0 50 0 Lb\n(L) Ln\n{}\nLB\n", tokens.join(" ")));
+        survive("hostile editing data", || vectorcraft_eps::import_ai(data.as_bytes()).ok().map(|r| r.document))?;
+        let eps = ai::eps(data.as_bytes());
+        survive("hostile editing data in an EPS", || vectorcraft_engine::cmd::fileio::load("x.eps", &eps).ok().map(|l| l.doc))?;
+    }
+
+    /// Damaged editing data, as it is and compressed in a `.ai` file.
+    #[test]
+    fn ai_mutated_editing_data_never_panics(cut in 0usize..4_000, edits in prop::collection::vec((0usize..4_000, any::<u8>()), 0..12)) {
+        static PLAIN: std::sync::OnceLock<Vec<u8>> = std::sync::OnceLock::new();
+        static PACKED: std::sync::OnceLock<Vec<u8>> = std::sync::OnceLock::new();
+        for (what, sample) in [("editing data", PLAIN.get_or_init(vectorcraft_testkit::ai::sample_data)), ("compressed editing data", PACKED.get_or_init(ai_sample_compressed))] {
+            let mut bytes = sample.clone();
+            for &(at, b) in &edits {
+                let n = bytes.len();
+                bytes[at % n] = b;
+            }
+            bytes.truncate(cut.max(4));
+            survive(what, || vectorcraft_eps::import_ai(&bytes).ok().map(|r| r.document))?;
+            let file = vectorcraft_testkit::ai::ai(&bytes);
+            survive(what, || vectorcraft_engine::cmd::fileio::load("x.ai", &file).ok().map(|l| l.doc))?;
+        }
     }
 }
 

@@ -1,7 +1,7 @@
 //! The pages of a PDF to import: opening with a password, the pages picked, the box each page
 //! is cropped to ([`CropTo`]) and [`info`].
 
-use hayro_syntax::object::Dict;
+use hayro_syntax::object::{Dict, Stream};
 use hayro_syntax::page::Page;
 use hayro_syntax::{DecryptionError, LoadPdfError, Pdf};
 use kurbo::{Affine, Rect};
@@ -135,4 +135,29 @@ pub(crate) fn has_private_data(page: &Page<'_>) -> bool {
         depth < 4 && d.keys().any(|k| k.starts_with(b"AIPrivateData") || d.get::<Dict<'_>>(k.as_ref()).is_some_and(|sub| walk(&sub, depth + 1)))
     }
     page.raw().get::<Dict<'_>>(b"PieceInfo").is_some_and(|d| walk(&d, 0))
+}
+
+/// Most `AIPrivateData` streams read.
+const MAX_PRIVATE_BLOCKS: usize = 1 << 16;
+/// Largest private data read (bytes).
+const MAX_PRIVATE: usize = 512 << 20;
+
+/// The editor's private data the first page of a `.ai` file carries: its `/PieceInfo
+/// /Illustrator /Private` streams `AIPrivateData1`, `2`, … joined. `None` without any, an error
+/// when they can't be read.
+pub fn ai_private_data(bytes: &[u8], password: Option<&str>) -> Option<Result<Vec<u8>, String>> {
+    let pdf = open(bytes, password).ok()?;
+    let pages = pdf.pages();
+    let page = pages.iter().next()?;
+    let private = page.raw().get::<Dict<'_>>(b"PieceInfo")?.get::<Dict<'_>>(b"Illustrator")?.get::<Dict<'_>>(b"Private")?;
+    let mut out = Vec::new();
+    for i in 1..=MAX_PRIVATE_BLOCKS {
+        let Some(stream) = private.get::<Stream<'_>>(format!("AIPrivateData{i}").as_bytes()) else { break };
+        let Ok(data) = stream.decoded() else { return Some(Err("one of its parts can't be decoded".into())) };
+        if out.len() + data.len() > MAX_PRIVATE {
+            return Some(Err(format!("it is larger than {} MB", MAX_PRIVATE >> 20)));
+        }
+        out.extend_from_slice(&data);
+    }
+    (!out.is_empty()).then_some(Ok(out))
 }

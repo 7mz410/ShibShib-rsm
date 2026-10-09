@@ -171,7 +171,20 @@ pub fn load_with(name: &str, bytes: &[u8], opts: &LoadOptions) -> Result<Loaded>
                 .then(|| vectorcraft_pdf::editing_with(bytes, opts.password.as_deref()))
                 .flatten()
                 .map(|e| (e.intact, move || Some(e.data)));
-            restore_or_import(editing, || super::pdfimport::import(bytes, opts))?
+            restore_or_import(editing, || {
+                // An Illustrator file: the document its editing data holds, else its PDF.
+                let whole = opts.pages.is_none() && matches!(format.id, "ai" | "ait");
+                let why = match whole.then(|| vectorcraft_pdf::ai_private_data(bytes, opts.password.as_deref())).flatten() {
+                    None => return super::pdfimport::import(bytes, opts),
+                    Some(raw) => match raw.and_then(|raw| vectorcraft_eps::import_ai(&raw)) {
+                        Ok(i) => return Ok((i.document, i.warnings)),
+                        Err(why) => why,
+                    },
+                };
+                let (doc, mut warnings) = super::pdfimport::import(bytes, opts)?;
+                warnings.insert(0, vectorcraft_eps::editing_fallback(&why, vectorcraft_eps::PDF_CONTENT));
+                Ok((doc, warnings))
+            })?
         }
         "dxf" => {
             let (doc, warnings) = super::dxfimport::import(bytes, &opts.dxf)?;

@@ -22,6 +22,8 @@ vectorcraft-render = { workspace = true }
 kurbo = { workspace = true }
 image = { workspace = true }
 flate2 = { workspace = true }
+# Illustrator's editing data (Zstandard): pure Rust, builds for wasm.
+ruzstd = "0.9"
 
 [dev-dependencies]
 vectorcraft-testkit = { workspace = true }

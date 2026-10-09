@@ -24,6 +24,7 @@
 //! error, the operator and the procedures it ran in; without a preview, what was drawn before the
 //! error is kept (with that warning), else the file is refused.
 
+mod ai;
 mod data;
 mod graphics;
 mod interp;
@@ -159,12 +160,44 @@ fn reason(e: &PsError, fault: Option<&Fault>) -> String {
     }
 }
 
-/// Read an EPS or PostScript file (its first page).
+/// Read an EPS or PostScript file: an Illustrator EPS from the editing data it carries ([`ai`]),
+/// else its first page.
 pub fn import(bytes: &[u8]) -> Result<Imported, String> {
     let (ps, _) = crate::sections(bytes).ok_or("the file's preview header points outside the file")?;
     if !ps.starts_with(b"%!") {
         return Err("this is not a PostScript file".into());
     }
+    let why = match ai::eps_data(ps) {
+        None => return page(bytes, ps),
+        Some(data) => match data.and_then(|d| ai::read(&d)) {
+            Ok(i) => return Ok(i),
+            Err(why) => why,
+        },
+    };
+    let mut r = page(bytes, ps)?;
+    r.warnings.insert(0, editing_fallback(&why, PRINTED_PAGE));
+    Ok(r)
+}
+
+/// What an Illustrator EPS whose editing data can't be read opens as.
+const PRINTED_PAGE: &str = "its printed page: one layer, without hidden objects or hidden type";
+/// What an Illustrator `.ai` file whose editing data can't be read opens as.
+pub const PDF_CONTENT: &str = "its PDF content: groups flattened, without hidden objects or hidden type";
+
+/// The warning for an Illustrator file whose editing data couldn't be read (`why`), opened as
+/// `instead` ([`PDF_CONTENT`] for a `.ai` file).
+pub fn editing_fallback(why: &str, instead: &str) -> String {
+    format!("this file's Illustrator editing data couldn't be read ({why}): it opened as {instead}")
+}
+
+/// Read an Illustrator `.ai` file from its editing data (`raw`: its `AIPrivateData` streams
+/// joined).
+pub fn import_ai(raw: &[u8]) -> Result<Imported, String> {
+    ai::read(&ai::decode_private(raw)?)
+}
+
+/// The first page of an EPS or PostScript file (`ps`: its PostScript).
+fn page(bytes: &[u8], ps: &[u8]) -> Result<Imported, String> {
     let dsc = Dsc::read(ps);
     let [llx, lly, urx, ury] = dsc.bbox.unwrap_or(LETTER);
     let frame = Rect::new(0.0, 0.0, urx - llx, ury - lly);

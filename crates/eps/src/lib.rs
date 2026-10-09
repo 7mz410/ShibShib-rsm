@@ -34,7 +34,7 @@ mod ps;
 mod scene;
 mod tiff;
 
-pub use import::{Imported, family_style, import};
+pub use import::{Imported, PDF_CONTENT, editing_fallback, family_style, import, import_ai};
 pub use print::{PrintJob, PrintPage, print};
 
 use vectorcraft_doc::Document;
