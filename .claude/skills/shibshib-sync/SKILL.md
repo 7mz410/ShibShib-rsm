@@ -9,7 +9,7 @@ ShibShib rsm is a soft fork: upstream moves fast, and our changes are kept small
 easy. The branding is applied by a script after each merge rather than by hand-edited conflicts,
 because re-running the script is reliable and conflicts in renamed strings are noisy.
 
-Repo: `~/Documents/ShibShib-rsm` (`origin` = 7mz410/ShibShib-rsm, `upstream` = storytold/vectorcraft).
+Repo: `~/Documents/ShibShib/rsm` (`origin` = 7mz410/ShibShib-rsm, `upstream` = storytold/vectorcraft).
 Read `shibshib/PROJECT.md` first if this session hasn't.
 
 ## Steps

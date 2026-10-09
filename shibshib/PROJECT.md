@@ -19,13 +19,13 @@
 | mzika (مزيكا) | FL Studio | LMMS (GPL) | لاحقاً: مقامات بربع تون، آلات وإيقاعات شرقية |
 | aswat (أصوات) | Audition | Audacity/Tenacity (GPL) أو SoundCraft، يحتاج فحصاً | لاحقاً: تحويل الكلام العربي لنص |
 
-اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/testAd/Logos`.
+اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/ShibShib/logos`.
 
 ## 2. الأماكن المهمة
 
 - **الريبو:** https://github.com/7mz410/ShibShib-rsm، وهو fork لـ `storytold/vectorcraft`.
   - `origin` هو ريبونا، و`upstream` هو ArtCraft.
-- **النسخة المحلية:** `~/Documents/ShibShib-rsm`
+- **النسخة المحلية:** `~/Documents/ShibShib/rsm`
 - **الويب:** https://7mz410.github.io/ShibShib-rsm/ من فرع `gh-pages`، ويُرفع يدوياً (انظر §6).
 - **ملفاتنا داخل الريبو كلها في `shibshib/`:**
   - `PROJECT.md`: هذا الملف.
@@ -107,7 +107,7 @@
 ## 6. أوامر متكررة
 
 ```sh
-cd ~/Documents/ShibShib-rsm
+cd ~/Documents/ShibShib/rsm
 # مزامنة مع upstream
 git fetch upstream && git merge upstream/main && python3 shibshib/rebrand.py
 # الاختبارات

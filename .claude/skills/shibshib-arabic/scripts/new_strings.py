@@ -9,7 +9,7 @@ rows go to shibshib/ar-work/part_NN (the next free number), ready to translate i
 import sys
 from pathlib import Path
 
-ROOT = Path.home() / 'Documents/ShibShib-rsm'
+ROOT = Path.home() / 'Documents/ShibShib/rsm'
 I18N = ROOT / 'crates/ui-egui/src/i18n'
 WORK = ROOT / 'shibshib/ar-work'
 

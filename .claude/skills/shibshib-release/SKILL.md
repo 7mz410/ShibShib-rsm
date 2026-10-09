@@ -8,7 +8,7 @@ description: Build and publish ShibShib rsm: the macOS app bundle, the web (WebA
 The web build is what the user actually tries, so a broken or un-branded deploy costs trust.
 Every release is therefore gated on tests and on looking at the result in both languages.
 
-Repo: `~/Documents/ShibShib-rsm`. Scripts are in this skill's `scripts/` folder.
+Repo: `~/Documents/ShibShib/rsm`. Scripts are in this skill's `scripts/` folder.
 
 ## Steps
 
@@ -20,7 +20,7 @@ Repo: `~/Documents/ShibShib-rsm`. Scripts are in this skill's `scripts/` folder.
 3. Look before publishing. Serve `dist/web` locally, then take screenshots with
    `scripts/screenshot.mjs`, using `ar` and then `en`:
    ```sh
-   cd ~/Documents/ShibShib-rsm/dist/web && python3 -m http.server 8799 &
+   cd ~/Documents/ShibShib/rsm/dist/web && python3 -m http.server 8799 &
    node <skill>/scripts/screenshot.mjs http://localhost:8799/ ar /tmp/rsm-ar.png
    node <skill>/scripts/screenshot.mjs http://localhost:8799/ en /tmp/rsm-en.png
    pkill -f "http.server 8799"

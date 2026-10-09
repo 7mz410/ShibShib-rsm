@@ -9,7 +9,7 @@ ShibShib rsm proved the recipe: fork honestly, rebrand only what users see, keep
 and credit, add Arabic, and stay mergeable with upstream. Repeating it the same way for each app
 keeps the suite consistent and keeps maintenance manageable.
 
-Read `~/Documents/ShibShib-rsm/shibshib/PROJECT.md` first. Use rsm's files as the working
+Read `~/Documents/ShibShib/rsm/shibshib/PROJECT.md` first. Use rsm's files as the working
 example: `shibshib/rebrand.py`, `shibshib/CHANGES.md`, `README.md`, `NOTICE`, `ASSETS.md`, and
 `crates/ui-egui/src/i18n/{bidi.rs,ar.tsv}`.
 
@@ -29,7 +29,7 @@ Report on these, then wait for the user's go-ahead:
 ## 2. Fork
 
 - `gh repo fork <owner>/<repo> --fork-name ShibShib-<app> --clone=false`, then clone to
-  `~/Documents/ShibShib-<app>`.
+  `~/Documents/ShibShib/<app>`.
 - Keep `upstream` as a remote.
 
 ## 3. Rebrand (user-visible only)
@@ -37,7 +37,7 @@ Report on these, then wait for the user's go-ahead:
 - Write `shibshib/rebrand.py` for this app. It must be idempotent and must touch strings, window
   titles, bundle names and IDs (`com.shibshib.<app>`), and Help links only. Internals keep their
   names until the user decides on a full hard fork.
-- **App icon:** the user's logo from `~/Documents/testAd/Logos/<app>.svg`. Rebuild every icon size
+- **App icon:** the user's logo from `~/Documents/ShibShib/logos/<app>.svg`. Rebuild every icon size
   with the project's own icon script if it has one.
 - **Remove upstream brand assets** as their brand terms require. Keep licences, `NOTICE` and
   copyright lines exactly.

@@ -3,9 +3,9 @@
 #
 #   release.sh [--mac] [--web] [--deploy]     (no flags: all three)
 #
-# Run from anywhere; the repo is ~/Documents/ShibShib-rsm unless SHIBSHIB_ROOT is set.
+# Run from anywhere; the repo is ~/Documents/ShibShib/rsm unless SHIBSHIB_ROOT is set.
 set -euo pipefail
-ROOT="${SHIBSHIB_ROOT:-$HOME/Documents/ShibShib-rsm}"
+ROOT="${SHIBSHIB_ROOT:-$HOME/Documents/ShibShib/rsm}"
 REPO_URL="https://github.com/7mz410/ShibShib-rsm.git"
 # rustup comes from Homebrew and is keg-only; it provides the wasm32 target trunk needs.
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
