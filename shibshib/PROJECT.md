@@ -23,6 +23,14 @@
 
 ## 2. الأماكن المهمة
 
+- **الفولدر الأم:** `~/Documents/ShibShib/`، وفيه فولدر لكل برنامج (`rsm/`، وبعدين `ttshat/` و`mzika/`…)، وفولدر `logos/`.
+  - الفولدر الأم نفسه ريبو الموقع **https://github.com/7mz410/shibshib.art**، وهو public لأن GitHub Pages يتطلب ذلك في الحساب المجاني.
+  - كل برنامج ريبو مستقل، ومستثنى من ريبو الموقع عبر `.gitignore`.
+- **الدومين:** `shibshib.art`، مشترى من Spaceship في 2026-10-10.
+  - `shibshib.art`: صفحة الحزمة (ملف `index.html` في الفولدر الأم).
+  - `rsm.shibshib.art`: نسخة الويب من rsm (تُفعَّل بعد ضبط الـ DNS).
+  - لاحقاً: subdomain لكل برنامج، ثم نقل الاستضافة لسيرفر يعمل 24/7 من أجل sharek.
+
 - **الريبو:** https://github.com/7mz410/ShibShib-rsm، وهو fork لـ `storytold/vectorcraft`.
   - `origin` هو ريبونا، و`upstream` هو ArtCraft.
 - **النسخة المحلية:** `~/Documents/ShibShib/rsm`
