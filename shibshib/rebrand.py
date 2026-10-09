@@ -125,6 +125,12 @@ def main():
     for p in sorted((ROOT / 'crates/ui-egui/src/i18n').glob('*.tsv')):
         if rebrand_catalog(p, sources):
             changed.append(p)
+    web = ROOT / 'apps/vectorcraft-web/index.html'
+    html = web.read_text(encoding='utf-8')
+    branded = html.replace('<title>VectorCraft</title>', f'<title>{NAME}</title>').replace('Loading VectorCraft&hellip;', f'Loading {NAME}&hellip;')
+    if branded != html:
+        web.write_text(branded, encoding='utf-8')
+        changed.append(web)
     if rebrand_plist(ROOT / 'packaging/macos/Info.plist.in'):
         changed.append(ROOT / 'packaging/macos/Info.plist.in')
     for p in changed:
