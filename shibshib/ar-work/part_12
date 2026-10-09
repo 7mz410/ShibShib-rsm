@@ -1,0 +1,250 @@
+	 to set the reference point  |  
+	 to transform  |  
+	 for exact values
+	 to pan the view
+	 to zoom in  |  
+	 to zoom out  |  
+	 to zoom into an area
+	Hold
+	 right or left to zoom in or out  |  
+	 to keep zooming
+	 an object to copy its attributes  |  
+	 to apply the selection's to it  |  
+	 to sample a color
+	 across a selected object to set the gradient direction
+	 to select an artboard  |  
+	 on the canvas to create one
+	 a stroke to add a width point  |  
+	 to change one side  |  
+	 to select more points  |  
+	 a point to edit it  |  
+	 to remove points
+	 the art to add a pin  |  
+	 to select more pins  |  
+	 a pin to warp  |  
+	 near a selected pin to rotate  |  
+	 to remove pins
+	 across paths to push them along  |  
+	 to size the brush (
+	 keeps its proportions)
+	 over paths, and hold still to keep going  |  
+	 over paths to roughen their outlines  |  
+	 to move in perspective  |  
+	 to copy  |  
+	 while dragging to move perpendicular to the plane  |  
+	 to scale in perspective
+	 an object, then another to blend them  |  
+	 to blend from it  |  
+	 to set spacing and orientation
+	:
+	Isolate Selected Group
+	Release Clipping Mask
+	Make Compound Path
+	Release Compound Path
+	  — substituted by {style}
+	  — {n} characters from another font
+	[Normal Character Style]
+	[Normal Paragraph Style]
+	Top-to-Top Leading
+	Bottom-to-Bottom Leading
+	Burasagari
+	Force
+	About
+	Contributors
+	Models
+	Username
+	Display name
+	Real name
+	Sort
+	Reverse the order
+	Grab bag
+	Table
+	Name (A–Z)
+	Merged PRs
+	Commits
+	Lines added
+	Lines deleted
+	Line delta
+	Binary assets added
+	Binary assets removed
+	First commit
+	Last commit
+	First
+	Last
+	{people} contributors · {commits} commits
+	No contributor data was built into this copy.
+	No model credits were built into this copy.
+	Company
+	Version
+	% of all commits
+	Lines +/−
+	Joins
+	Miter
+	Bevel
+	Offset
+	Axis
+axis	Horizontal
+axis	Vertical
+axis	Both
+	Drag to move
+	Drag to float as a toolbar
+	Put back in the toolbar
+	Float Panel
+	Dock Panel
+	Drag to float the panel group
+	Put back in the dock
+	Drag to float the toolbar
+	Drag to the window's left edge to dock
+	Float Tool Group
+@msg	a layer couldn't be read
+@msg	it has more than one artboard
+@msg	it has no page
+@msg	it has too many text objects
+@msg	it has too much text
+@msg	its editing data doesn't say where its artboard is
+@msg	its editing data has no layers
+@msg	its editing data is damaged
+@msg	its editing data is for a different page
+@msg	its layers use {_1}, which aren't read yet
+@msg	its page has text, and its layers have no text objects to put it in
+@msg	the art on them differs from the page's in {_1}% of it
+@msg	`to` must be "corner" or "smooth"
+@msg	BMP files are RGB or grayscale: colorModel rgb or gray
+@msg	Blend colors: select at least three objects with filled colours
+@msg	Combine Slices: the slices have no bounds
+@msg	Convert to Artboards: selection has no area
+@msg	Convert to Shape: no rectangles or ellipses selected
+@msg	Copied the CSS of {rules} object(s)
+@msg	Corners edits the corners of a path
+@msg	Couldn't copy to the system clipboard: {e}
+@msg	Couldn't open {name}: {e}
+@msg	Couldn't place {name}: the document it was dropped on was closed
+@msg	Couldn't read {name}: {e}
+@msg	Couldn't save recovery data: {e}
+@msg	Create Outlines: select text objects
+@msg	Create from Guides: the document has no artboard
+@msg	Create from Guides: the guides make more than {MAX_PIECES} slices
+@msg	Create from Selection: the selection has no area
+@msg	Data Recovery has nowhere to keep copies: set Preferences → File Handling → Data Recovery → Folder (recoveryFolder)
+@msg	direct-select anchor points to cut at (not the end points of open paths)
+@msg	Divide Objects Below: select a path
+@msg	Divide Objects Below: select exactly one path
+@msg	Downloaded {_1} file(s)
+@msg	Downloaded {what}
+@msg	Expand Appearance: the selection has a basic appearance
+@msg	Expand: no brush strokes selected
+@msg	Expand: no gradient fills
+@msg	Expand: nothing to expand
+@msg	Exported {count} file(s) to {folder}
+@msg	Exported {path}
+@msg	Flatten Transparency: select objects to flatten
+@msg	Flatten Transparency: {e}
+@msg	Image Trace: the traced image is missing
+@msg	Imported {what}: {_1}
+@msg	Installed plug-in {_1}
+@msg	Internal error: {msg} (please report this bug)
+@msg	Live Paint Merge: select a Live Paint group and the paths to add
+@msg	Live Paint: select paths or compound paths
+@msg	Live Paint: these paths are too degenerate to paint
+@msg	Make Guides: select paths
+@msg	No saved selections (Select → Save Selection…)
+@msg	No saved views (View → New View…)
+@msg	Offset Path: select paths
+@msg	Opened with {_1} note(s): {_2}
+@msg	Opened {url}
+@msg	Outline Stroke: no stroked paths selected
+@msg	PDF settings are not an object
+@msg	PDF writer error: {0}
+@msg	Packaged {n} file(s) in {folder}{note}
+@msg	Packaged {n} file(s){note}
+@msg	Preview in Browser needs the desktop app (the web downloads files instead)
+@msg	Release Guides: no guides
+@msg	Release: no layer to put the rectangle in
+@msg	Replace Spine: select a blend and a path
+@msg	select two or more objects to distribute
+@msg	select paths or anchor points
+@msg	SVG parse error: {0}
+@msg	Save for Web: the image is empty
+@msg	Save writes {_1}, not {_2}: use document.export for other formats
+@msg	Saved recovery data for {title}
+@msg	Saved to User Defined: {_1}
+@msg	Saved {path}
+@msg	Select text or click into text with the Type tool to insert glyphs
+@msg	Shape Builder: no region under the pointer
+@msg	Shape Builder: select paths or compound paths
+@msg	Show All Hidden Attributes: nothing is hidden
+@msg	Split Into Grid: select paths large enough for the grid
+@msg	Targa files are RGB: colorModel rgb
+@msg	Text Wrap: select a wrap object
+@msg	`aspect` must be a number (%)
+@msg	`at` must be [x, y]
+@msg	`color` must be a colour
+@msg	`command` must be a command whose menu item opens a dialog (see ui.menuDialog)
+@msg	`freeform.points` must be an array
+@msg	`gradient` must be an object
+@msg	`library` is a library id or name (see {list})
+@msg	`mode` applies to freeform gradients
+@msg	`sampleSize` must be 1, 3 or 5
+@msg	`stops` must be an array
+@msg	`svg` must be an object of SVG options (see document.formats)
+@msg	`{_1}` is no save command
+@msg	`{area}` is no recovery area name
+@msg	`{color}` is not a colour (#rrggbb or a preset name)
+@msg	`{id}` has no envelope dialog
+@msg	`{keep}` is not a side of this axis
+@msg	`{key}` must be `auto` or a language code such as `en` or `zh-hant`
+@msg	`{key}` must be a #rrggbb colour
+@msg	`{key}` must be a number
+@msg	`{key}` must be a string
+@msg	`{key}` must be a whole number
+@msg	`{key}` must be a whole number between {min} and {max} (got {x})
+@msg	`{key}` must be between {min} and {max} (got {x})
+@msg	`{key}` must be one of {_1}
+@msg	`{key}` must be true or false
+@msg	`{k}` must be [x, y]
+@msg	`{name}` has no options
+@msg	`{name}` is a built-in workspace; choose another name
+@msg	`{name}` is a process colour: tints apply to global and spot colours
+@msg	`{name}` is no recovery entry name
+@msg	`{name}` isn't a colour swatch
+@msg	`{path}` must be a bool or an object of bools
+@msg	`{s}` is not a colour (#rrggbb or a preset name)
+@msg	`{tool}` isn't a Liquify tool
+@msg	`{tool}` isn't a freehand tool
+@msg	`{to}` is not an available name
+@msg	a PostScript error ({name} in `{op}`)
+@msg	a PostScript error ({name} in `{op}`), in {procs}
+@msg	a PostScript error ({name} in `{op}`: {at})
+@msg	a PostScript error ({name} in `{op}`: {at}), in {procs}
+@msg	a PostScript error ({name})
+@msg	a bitmap is empty
+@msg	a bitmap is too large to read
+@msg	a colour index is 0 to {_1}, not {n}
+@msg	a colour is an index, #rrggbb or a preset name, not {v}
+@msg	a document needs at least one artboard
+@msg	a document needs at least one layer
+@msg	a freeform gradient keeps at least one point
+@msg	a gradient needs at least two stops
+@msg	a graphic style named `{to}` already exists
+@msg	a page is missing
+@msg	a page out of range
+@msg	a page tree kid isn't a reference
+@msg	a page tree node has no kids
+@msg	a page's placement is not finite
+@msg	a preset named `{_1}` exists
+@msg	a slice size must be a positive number of points
+@msg	a stream runs past the end
+@msg	a stream's length is wrong
+@msg	a stream's length isn't a number
+@msg	add a format to export
+@msg	already editing a pattern
+@msg	an object can't be read
+@msg	an object in perspective would leave the edited grid
+@msg	antiAlias `{id}`: none, art or type
+@msg	artboard {0} does not exist
+@msg	at this scale the drawing is {w} × {h} pt, more than the canvas holds: choose a smaller scale or fit it to the artboard
+@msg	background {other}: transparent, white, black or a colour such as "#ff8800"
+@msg	bad color {v}
+@msg	bad colour `{hex}` (#rrggbb)
+@msg	bad page tree
+@msg	bad shortcut
