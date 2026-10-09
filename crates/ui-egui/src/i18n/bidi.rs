@@ -41,6 +41,14 @@ fn visual_line(line: &str) -> String {
     if !line.chars().any(is_rtl) {
         return line.to_string();
     }
+    // Leading and trailing spaces join fragments at runtime, so they stay where they are.
+    let core = line.trim_matches(' ');
+    let lead = &line[..line.len() - line.trim_start_matches(' ').len()];
+    let trail = &line[line.trim_end_matches(' ').len()..];
+    format!("{lead}{}{trail}", visual_core(core))
+}
+
+fn visual_core(line: &str) -> String {
     let info = BidiInfo::new(line, Some(Level::rtl()));
     let Some(para) = info.paragraphs.first() else { return line.to_string() };
     let (levels, runs) = info.visual_runs(para, para.range.clone());
@@ -96,6 +104,7 @@ mod tests {
         assert_eq!(visual("أهلاً بك في ShibShib rsm"), "ShibShib rsm في بك أهلاً");
         assert_eq!(visual("Open"), "Open");
         assert_eq!(visual("قابل للبرمجة."), ".للبرمجة قابل");
+        assert_eq!(visual(" للتحريك  |  "), " |  للتحريك  ");
     }
 
     #[test]

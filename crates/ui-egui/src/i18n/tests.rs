@@ -419,7 +419,7 @@ fn cs() -> Lang {
 }
 
 /// Languages whose catalogs leave [`MENU_KEEP_AS_IS`] in English.
-const KEEPS_MENU_NAMES: [&str; 7] = ["cs", "es", "fr", "it", "ja", "pt-br", "ru"];
+const KEEPS_MENU_NAMES: [&str; 8] = ["ar", "cs", "es", "fr", "it", "ja", "pt-br", "ru"];
 
 /// Menu labels the menu-complete catalogs (Czech, Spanish, Italian, Japanese, Brazilian Portuguese) show as they are: the product name, a format name, the built-in workspace
 /// names and the perspective grid presets (names, shown untranslated wherever else they appear).

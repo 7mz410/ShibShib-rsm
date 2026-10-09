@@ -1888,7 +1888,7 @@
 	Preset:	الإعداد:
 	Presets you save with the Save Preset button appear here.	الإعدادات التي تحفظها بزر «حفظ الإعداد» تظهر هنا.
 	Presets:	الإعدادات:
-	Press 	اضغط
+	Press 	اضغط 
 	Preview	معاينة
 	Preview All Layers	معاينة كل الطبقات
 	Preview in Browser	المعاينة في المتصفح
@@ -2825,7 +2825,7 @@
 	Updated {} image(s)	تم تحديث {} صورة
 	UPPERCASE	أحرف كبيرة
 	URL:	الرابط:
-	Use 	استخدم
+	Use 	استخدم 
 	Use Artboards	استخدام لوحات الرسم
 	Use Black Point Compensation	استخدام تعويض النقطة السوداء
 	Use Compression	استخدام الضغط
@@ -2987,62 +2987,62 @@
 @plural	{n} star|{n} stars	{n} نجمة|{n} نجمة|{n} نجمتان|{n} نجمات|{n} نجمة|{n} نجمة
 @plural	{n} step|{n} steps	{n} خطوة|{n} خطوة|{n} خطوتان|{n} خطوات|{n} خطوة|{n} خطوة
 @plural	{n} stroke|{n} strokes	{n} حد|{n} حد|{n} حدّان|{n} حدود|{n} حداً|{n} حد
-	 the object to select  |  	 الكائن لتحديده  |
-	 to select multiple objects  |  	 لتحديد عدة كائنات  |
+	 the object to select  |  	 الكائن لتحديده  |  
+	 to select multiple objects  |  	 لتحديد عدة كائنات  |  
 	 the object to duplicate	 الكائن لتكراره
-	 an anchor or path segment to select it  |  	 نقطة ربط أو مقطع مسار لتحديده  |
-	 to move  |  	 للتحريك  |
+	 an anchor or path segment to select it  |  	 نقطة ربط أو مقطع مسار لتحديده  |  
+	 to move  |  	 للتحريك  |  
 	 to add	 للإضافة
-	 to add a corner point  |  	 لإضافة نقطة زاوية  |
-	 to add a smooth point  |  	 لإضافة نقطة ناعمة  |
-	 to close  |  	 للإغلاق  |
+	 to add a corner point  |  	 لإضافة نقطة زاوية  |  
+	 to add a smooth point  |  	 لإضافة نقطة ناعمة  |  
+	 to close  |  	 للإغلاق  |  
 	 to finish	 للإنهاء
-	 to add smooth points  |  	 لإضافة نقاط ناعمة  |
-	 to toggle corner  |  	 لتبديل الزاوية  |
-	 to create point type  |  	 لإنشاء نص نقطي  |
-	 to create area type  |  	 لإنشاء نص منطقة  |
+	 to add smooth points  |  	 لإضافة نقاط ناعمة  |  
+	 to toggle corner  |  	 لتبديل الزاوية  |  
+	 to create point type  |  	 لإنشاء نص نقطي  |  
+	 to create area type  |  	 لإنشاء نص منطقة  |  
 	 to exit editing	 للخروج من التحرير
-	 to draw  |  	 للرسم  |
-	 to constrain proportions  |  	 لتقييد التناسب  |
-	 from center  |  	 من المركز  |
+	 to draw  |  	 للرسم  |  
+	 to constrain proportions  |  	 لتقييد التناسب  |  
+	 from center  |  	 من المركز  |  
 	 for exact size	 للحجم الدقيق
-	 to set the reference point  |  	 لتعيين النقطة المرجعية  |
-	 to transform  |  	 للتحويل  |
+	 to set the reference point  |  	 لتعيين النقطة المرجعية  |  
+	 to transform  |  	 للتحويل  |  
 	 for exact values	 للقيم الدقيقة
 	 to pan the view	 لتحريك العرض
-	 to zoom in  |  	 للتكبير  |
-	 to zoom out  |  	 للتصغير  |
+	 to zoom in  |  	 للتكبير  |  
+	 to zoom out  |  	 للتصغير  |  
 	 to zoom into an area	 لتكبير منطقة
 	Hold	اضغط مطولاً
-	 right or left to zoom in or out  |  	 يميناً أو يساراً للتكبير أو التصغير  |
+	 right or left to zoom in or out  |  	 يميناً أو يساراً للتكبير أو التصغير  |  
 	 to keep zooming	 لمتابعة التكبير
-	 an object to copy its attributes  |  	 كائناً لنسخ سماته  |
-	 to apply the selection's to it  |  	 لتطبيق سمات التحديد عليه  |
+	 an object to copy its attributes  |  	 كائناً لنسخ سماته  |  
+	 to apply the selection's to it  |  	 لتطبيق سمات التحديد عليه  |  
 	 to sample a color	 لأخذ عينة لون
 	 across a selected object to set the gradient direction	 عبر كائن محدد لتعيين اتجاه التدرّج
-	 to select an artboard  |  	 لتحديد لوحة رسم  |
+	 to select an artboard  |  	 لتحديد لوحة رسم  |  
 	 on the canvas to create one	 على مساحة العمل لإنشاء واحدة
-	 a stroke to add a width point  |  	 حداً لإضافة نقطة عرض  |
-	 to change one side  |  	 لتغيير جانب واحد  |
-	 to select more points  |  	 لتحديد نقاط أكثر  |
-	 a point to edit it  |  	 نقطة لتعديلها  |
+	 a stroke to add a width point  |  	 حداً لإضافة نقطة عرض  |  
+	 to change one side  |  	 لتغيير جانب واحد  |  
+	 to select more points  |  	 لتحديد نقاط أكثر  |  
+	 a point to edit it  |  	 نقطة لتعديلها  |  
 	 to remove points	 لإزالة النقاط
-	 the art to add a pin  |  	 العمل لإضافة دبوس  |
-	 to select more pins  |  	 لتحديد دبابيس أكثر  |
-	 a pin to warp  |  	 دبوساً للتطويع  |
-	 near a selected pin to rotate  |  	 قرب دبوس محدد للتدوير  |
+	 the art to add a pin  |  	 العمل لإضافة دبوس  |  
+	 to select more pins  |  	 لتحديد دبابيس أكثر  |  
+	 a pin to warp  |  	 دبوساً للتطويع  |  
+	 near a selected pin to rotate  |  	 قرب دبوس محدد للتدوير  |  
 	 to remove pins	 لإزالة الدبابيس
-	 across paths to push them along  |  	 عبر المسارات لدفعها  |
+	 across paths to push them along  |  	 عبر المسارات لدفعها  |  
 	 to size the brush (	 لتغيير حجم الفرشاة (
 	 keeps its proportions)	 يحافظ على التناسب)
-	 over paths, and hold still to keep going  |  	 فوق المسارات، وابقَ ثابتاً للمتابعة  |
-	 over paths to roughen their outlines  |  	 فوق المسارات لتخشين حوافها  |
-	 to move in perspective  |  	 للتحريك بالمنظور  |
-	 to copy  |  	 للنسخ  |
-	 while dragging to move perpendicular to the plane  |  	 أثناء السحب للتحريك عمودياً على المستوى  |
+	 over paths, and hold still to keep going  |  	 فوق المسارات، وابقَ ثابتاً للمتابعة  |  
+	 over paths to roughen their outlines  |  	 فوق المسارات لتخشين حوافها  |  
+	 to move in perspective  |  	 للتحريك بالمنظور  |  
+	 to copy  |  	 للنسخ  |  
+	 while dragging to move perpendicular to the plane  |  	 أثناء السحب للتحريك عمودياً على المستوى  |  
 	 to scale in perspective	 لتغيير المقياس بالمنظور
-	 an object, then another to blend them  |  	 كائناً، ثم آخر لمزجهما  |
-	 to blend from it  |  	 للمزج منه  |
+	 an object, then another to blend them  |  	 كائناً، ثم آخر لمزجهما  |  
+	 to blend from it  |  	 للمزج منه  |  
 	 to set spacing and orientation	 لتعيين التباعد والاتجاه
 	:	:
 	Isolate Selected Group	عزل المجموعة المحددة
@@ -3256,3 +3256,405 @@ axis	Both	كلاهما
 @msg	bad colour `{hex}` (#rrggbb)	لون غير صالح `{hex}` (#rrggbb)
 @msg	bad page tree	شجرة صفحات غير صالحة
 @msg	bad shortcut	اختصار غير صالح
+@msg	bad stream length	طول تيار بيانات غير صالح
+@msg	bad trailer	ذيل ملف غير صالح
+@msg	balance must be between 0 and 100	التوازن يجب أن يكون بين 0 و100
+@msg	batch step {_1} (`{id}`) failed: {e}	فشلت خطوة الدفعة {_1} (`{id}`): {e}
+@msg	brightness must be dark|mediumDark|mediumLight|light	السطوع يجب أن يكون dark|mediumDark|mediumLight|light
+@msg	can't encode the document: {0}	تعذّر ترميز المستند: {0}
+@msg	can't parse shortcut `{c}`	تعذّر تحليل الاختصار `{c}`
+@msg	can't parse shortcut `{s}` for `{k}`	تعذّر تحليل الاختصار `{s}` لـ `{k}`
+@msg	can't save version {0}: VectorCraft writes versions {MIN_VERSION} to {VERSION}	تعذّر الحفظ بالإصدار {0}: ShibShib rsm يكتب الإصدارات من {MIN_VERSION} إلى {VERSION}
+@msg	can't write .{ext} images	تعذّرت كتابة صور .{ext}
+@msg	cannot distort a zero-size bounding box	تعذّر تشويه إطار محيط بحجم صفر
+@msg	cannot read PDF: {0}	تعذّرت قراءة PDF: {0}
+@msg	cannot split an open path at its end point	تعذّر تقسيم مسار مفتوح عند نقطة نهايته
+@msg	check an asset to export	اختر أصلاً للتصدير
+@msg	choice must be "merge" or "add", not `{choice}`	الاختيار يجب أن يكون "merge" أو "add"، وليس `{choice}`
+@msg	choose a direction to divide in	اختر اتجاهاً للتقسيم
+@msg	choose a folder to export to	اختر مجلداً للتصدير إليه
+@msg	choose a location for the package	اختر مكاناً للحزمة
+@msg	clipboard is empty	الحافظة فارغة
+@msg	colorTable.{what}: `{h}` is not a colour such as "#ff8800"	colorTable.{what}: `{h}` ليس لوناً مثل "#ff8800"
+@msg	colorTable.{what}: at most {MAX_TABLE} colours	colorTable.{what}: {MAX_TABLE} لون كحد أقصى
+@msg	command `{0}` is not available right now: {1}	الأمر `{0}` غير متاح حالياً: {1}
+@msg	compound paths can only contain paths	المسارات المركّبة تحتوي مسارات فقط
+@msg	compressed (RLE) bitmaps can't be read yet	الصور النقطية المضغوطة (RLE) غير مقروءة بعد
+@msg	damaged	تالف
+@msg	decimals must be {_1}–{_2} (got {_3})	المنازل العشرية يجب أن تكون {_1}–{_2} (القيمة {_3})
+@msg	divide into 1 to {MAX_PIECES} slices	التقسيم إلى 1 حتى {MAX_PIECES} شريحة
+@msg	effect {k} is `{_1}`, not `{id}`	التأثير {k} هو `{_1}`، وليس `{id}`
+@msg	empty brush stroke	ضربة فرشاة فارغة
+@msg	empty cutter	أداة قطع فارغة
+@msg	empty path	مسار فارغ
+@msg	file version {0} is newer than this VectorCraft supports ({VERSION})	إصدار الملف {0} أحدث مما يدعمه ShibShib rsm هذا ({VERSION})
+@msg	freeform point {i} needs `at` [x, y] and a valid `color`	النقطة الحرة {i} تحتاج `at` [x, y] و`color` صالحاً
+@msg	give both `start` and `end` [x, y] (or neither)	أعطِ `start` و`end` معاً [x, y] (أو لا شيء منهما)
+@msg	give corners of the path: anchors between two straight sides	أعطِ زوايا المسار: نقاط ربط بين جانبين مستقيمين
+@msg	give the path `id` and the width point `index`	أعطِ `id` المسار و`index` نقطة العرض
+@msg	guides are locked	الأدلة مقفلة
+@msg	image '{key}' has no pixels and was left out	الصورة '{key}' بلا بكسلات وتم استبعادها
+@msg	image data `{_1}` is missing	بيانات الصورة `{_1}` مفقودة
+@msg	image would be too large; lower the resolution	الصورة ستكون كبيرة جداً؛ قلّل الدقة
+@msg	index must be a number or first, previous, next or last	الفهرس يجب أن يكون رقماً أو first أو previous أو next أو last
+@msg	index must be a number or first, previous, next or last, not `{other}`	الفهرس يجب أن يكون رقماً أو first أو previous أو next أو last، وليس `{other}`
+@msg	installing from a path is not available on the web; pass the module as `dataBase64`	التثبيت من مسار غير متاح على الويب؛ مرّر الوحدة كـ `dataBase64`
+@msg	internal error in `{cmd}`: {msg} (the document was left as it was before; please report this bug)	خطأ داخلي في `{cmd}`: {msg} (بقي المستند كما كان؛ يرجى الإبلاغ عن هذا الخلل)
+@msg	internal error: {msg} (please report this bug)	خطأ داخلي: {msg} (يرجى الإبلاغ عن هذا الخلل)
+@msg	invalid PDF setting: {0}	إعداد PDF غير صالح: {0}
+@msg	invalid image data for `{0}`	بيانات صورة غير صالحة لـ `{0}`
+@msg	invalid parameters for `{cmd}`: {msg}	معاملات غير صالحة لـ `{cmd}`: {msg}
+@msg	is not an image VectorCraft reads	ليست صورة يقرأها ShibShib rsm
+@msg	it uses `{at}`, which VectorCraft's PostScript reader doesn't know	يستخدم `{at}`، وهو غير معروف لقارئ PostScript في ShibShib rsm
+@msg	it uses `{at}`, which VectorCraft's PostScript reader doesn't know, in {procs}	يستخدم `{at}`، وهو غير معروف لقارئ PostScript في ShibShib rsm، في {procs}
+@msg	its Windows metafile preview was opened instead, which may simplify the art	فُتحت معاينة Windows metafile بدلاً منه، وقد يبسّط ذلك العمل
+@msg	its preview was placed instead, at screen resolution	وُضعت معاينته بدلاً منه، بدقة الشاشة
+@msg	join needs open paths	الوصل يحتاج مسارات مفتوحة
+@msg	lang must be one of {_1}	اللغة يجب أن تكون أحد {_1}
+@msg	layers can't be wrap objects	الطبقات لا يمكن أن تكون كائنات التفاف
+@msg	missing `folder`	`folder` مفقود
+@msg	missing `id` (see plugin.list)	`id` مفقود (راجع plugin.list)
+@msg	missing `name`	`name` مفقود
+@msg	missing `tool`	`tool` مفقود
+@msg	missing index	الفهرس مفقود
+@msg	multiple windows land with M11.5	النوافذ المتعددة تأتي مع M11.5
+@msg	name the file	سمِّ الملف
+@msg	no CSS to copy: select objects with CSS of their own	لا يوجد CSS للنسخ: حدد كائنات لها CSS خاص بها
+@msg	no Live Paint edge near that point	لا توجد حافة تلوين حي قرب تلك النقطة
+@msg	no Live Paint face at that point	لا يوجد وجه تلوين حي عند تلك النقطة
+@msg	no PNG encoder	لا يوجد مرمّز PNG
+@msg	no active document	لا يوجد مستند نشط
+@msg	no active perspective plane	لا يوجد مستوى منظور نشط
+@msg	no anchor points selected	لا توجد نقاط ربط محددة
+@msg	no app to open files here	لا يوجد تطبيق لفتح الملفات هنا
+@msg	no artboard	لا توجد لوحة رسم
+@msg	no artboard {i} (0-based; the document has {_1})	لا توجد لوحة رسم {i} (تبدأ من 0؛ المستند فيه {_1})
+@msg	no artboard {i} (0-based; the document has {count})	لا توجد لوحة رسم {i} (تبدأ من 0؛ المستند فيه {count})
+@msg	no artboards named	لم تُسمَّ لوحات رسم
+@msg	no artwork	لا يوجد عمل
+@msg	no blend options	لا توجد خيارات مزج
+@msg	no bounds	لا توجد حدود
+@msg	no brush named `{name}`	لا توجد فرشاة باسم `{name}`
+@msg	no catalog	لا يوجد فهرس
+@msg	no changes since the last save	لا تغييرات منذ آخر حفظ
+@msg	no clock to keep a heartbeat by	لا توجد ساعة للحفاظ على النبض
+@msg	no colour group `{g}`	لا توجد مجموعة ألوان `{g}`
+@msg	no cross-reference table	لا يوجد جدول مراجع متقاطعة
+@msg	no current layer	لا توجد طبقة حالية
+@msg	no data	لا توجد بيانات
+@msg	no dialog open	لا يوجد مربع حوار مفتوح
+@msg	no document	لا يوجد مستند
+@msg	no document open	لا يوجد مستند مفتوح
+@msg	no effect applied yet	لم يُطبَّق أي تأثير بعد
+@msg	no effect at index {k}	لا يوجد تأثير عند الفهرس {k}
+@msg	no end record	لا يوجد سجل نهاية
+@msg	no file manager here	لا يوجد مدير ملفات هنا
+@msg	no file reader	لا يوجد قارئ ملفات
+@msg	no file system here	لا يوجد نظام ملفات هنا
+@msg	no file writer	لا يوجد كاتب ملفات
+@msg	no files to place	لا توجد ملفات للوضع
+@msg	no format to export to	لا توجد صيغة للتصدير إليها
+@msg	no free recovery area	لا توجد منطقة استعادة فارغة
+@msg	no gradient stop or freeform point is selected	لا توجد نقطة توقف أو نقطة حرة محددة
+@msg	no graphic style `{name}`	لا يوجد نمط رسومي `{name}`
+@msg	no graphic style `{n}`	لا يوجد نمط رسومي `{n}`
+@msg	no interaction in progress	لا يوجد تفاعل جارٍ
+@msg	no key object	لا يوجد كائن مرجعي
+@msg	no library `{key}` (see {list})	لا توجد مكتبة `{key}` (راجع {list})
+@msg	no native format	لا توجد صيغة أصلية
+@msg	no pages	لا توجد صفحات
+@msg	no pattern `{name}`	لا يوجد نقش `{name}`
+@msg	no perspective grid preset named `{name}`	لا يوجد إعداد شبكة منظور باسم `{name}`
+@msg	no plug-in {0} is installed	الإضافة {0} غير مثبتة
+@msg	no plug-in {id} is installed	الإضافة {id} غير مثبتة
+@msg	no point {i} (the gradient has {_1})	لا توجد نقطة {i} (التدرّج فيه {_1})
+@msg	no preset editor	لا يوجد محرر إعدادات
+@msg	no previous transform	لا يوجد تحويل سابق
+@msg	no print preset named `{base}`	لا يوجد إعداد طباعة باسم `{base}`
+@msg	no print preset named `{name}`	لا يوجد إعداد طباعة باسم `{name}`
+@msg	no print service	لا توجد خدمة طباعة
+@msg	no revert command	لا يوجد أمر رجوع
+@msg	no saved PDF preset named `{name}` (built-in presets are read-only: start a new one from them)	لا يوجد إعداد PDF محفوظ باسم `{name}` (الإعدادات المدمجة للقراءة فقط: ابدأ إعداداً جديداً منها)
+@msg	no saved presets	لا توجد إعدادات محفوظة
+@msg	no saved print preset named `{name}` ({DEFAULT_PRESET} is protected: start a new one from it)	لا يوجد إعداد طباعة محفوظ باسم `{name}` ({DEFAULT_PRESET} محمي: ابدأ إعداداً جديداً منه)
+@msg	no saved profiles	لا توجد ملفات تعريف محفوظة
+@msg	no saved selections	لا توجد تحديدات محفوظة
+@msg	no saved themes	لا توجد سمات محفوظة
+@msg	no segment {segment} on line {line}	لا يوجد مقطع {segment} في السطر {line}
+@msg	no selected slice in the image: select slices, or save all of them	لا توجد شريحة محددة في الصورة: حدد شرائح، أو احفظها كلها
+@msg	no selection bounds	لا توجد حدود للتحديد
+@msg	no slice selected	لا توجد شريحة محددة
+@msg	no such action	لا يوجد إجراء كهذا
+@msg	no such anchor	لا توجد نقطة ربط كهذه
+@msg	no such artboard	لا توجد لوحة رسم كهذه
+@msg	no such document	لا يوجد مستند كهذا
+@msg	no such layer or object	لا توجد طبقة أو كائن كهذا
+@msg	no such object {0}	لا يوجد كائن {0}
+@msg	no such perspective grid preset	لا يوجد إعداد شبكة منظور كهذا
+@msg	no such recent file	لا يوجد ملف أخير كهذا
+@msg	no such recent font	لا يوجد خط أخير كهذا
+@msg	no such saved selection	لا يوجد تحديد محفوظ كهذا
+@msg	no such segment	لا يوجد مقطع كهذا
+@msg	no such subpath	لا يوجد مسار فرعي كهذا
+@msg	no such user library	لا توجد مكتبة مستخدم كهذه
+@msg	no such view	لا توجد طريقة عرض كهذه
+@msg	no such width point	لا توجد نقطة عرض كهذه
+@msg	no swatch `{name}`	لا توجد عينة `{name}`
+@msg	no swatch library `{l}` (see swatch.library.list)	لا توجد مكتبة عينات `{l}` (راجع swatch.library.list)
+@msg	no symbol instances selected	لا توجد نسخ رموز محددة
+@msg	no target object has an opacity mask: select one or give `id`	لا يوجد كائن مستهدف بقناع شفافية: حدد واحداً أو أعطِ `id`
+@msg	no threaded text selected	لا يوجد نص مترابط محدد
+@msg	no user workspace `{from}`	لا توجد مساحة عمل مستخدم `{from}`
+@msg	node {_1} is not text	العقدة {_1} ليست نصاً
+@msg	not a DXF drawing	ليس رسماً بصيغة DXF
+@msg	not a VectorCraft file: {0}	ليس ملف ShibShib rsm: {0}
+@msg	not a ShibShib rsm shortcut set (missing `overrides`)	ليست مجموعة اختصارات ShibShib rsm (`overrides` مفقود)
+@msg	not a graphic style library (format `{_1}`)	ليست مكتبة أنماط رسومية (الصيغة `{_1}`)
+@msg	not a stored central record	ليس سجلاً مركزياً مخزّناً
+@msg	not a valid plug-in module: {0}	ليست وحدة إضافة صالحة: {0}
+@msg	not an EMF or WMF file	ليس ملف EMF أو WMF
+@msg	not found	غير موجود
+@msg	not in pattern editing mode	لست في وضع تحرير النقش
+@msg	nothing encoded	لم يُرمَّز شيء
+@msg	nothing selected	لا شيء محدد
+@msg	nothing to align	لا شيء للمحاذاة
+@msg	nothing to distort	لا شيء للتشويه
+@msg	nothing to export: the document has no visible art (or turn on Use Artboards)	لا شيء للتصدير: المستند بلا عمل مرئي (أو فعّل «استخدام لوحات الرسم»)
+@msg	nothing to preview	لا شيء للمعاينة
+@msg	nothing to print	لا شيء للطباعة
+@msg	nothing to redo	لا شيء للإعادة
+@msg	nothing to save: the document has no visible art	لا شيء للحفظ: المستند بلا عمل مرئي
+@msg	nothing to undo	لا شيء للتراجع
+@msg	nothing to warp	لا شيء للتطويع
+@msg	nothing to wrap	لا شيء للالتفاف
+@msg	object {0} cannot have children	الكائن {0} لا يمكن أن يحتوي عناصر
+@msg	object {id} is not a path	الكائن {id} ليس مساراً
+@msg	page size {w} × {h}	حجم الصفحة {w} × {h}
+@msg	page {0} does not exist (the PDF has {1})	الصفحة {0} غير موجودة (ملف PDF فيه {1})
+@msg	paste unavailable	اللصق غير متاح
+@msg	path is already closed	المسار مغلق مسبقاً
+@msg	paths contain invalid coordinates	المسارات فيها إحداثيات غير صالحة
+@msg	paths: give at least one file	paths: أعطِ ملفاً واحداً على الأقل
+@msg	pattern missing	النقش مفقود
+@msg	patterns nested too deeply are filled with mid-grey	النقوش المتداخلة بعمق كبير تُعبّأ برمادي متوسط
+@msg	percent must be above 0 and at most 6400, not {p}	النسبة يجب أن تكون فوق 0 وحتى 6400، وليس {p}
+@msg	pick a colour, gradient or pattern to save as a swatch	اختر لوناً أو تدرّجاً أو نقشاً لحفظه كعينة
+@msg	plane must be left, right or ground	المستوى يجب أن يكون left أو right أو ground
+@msg	plug-in ABI: {0}	ABI الإضافة: {0}
+@msg	plug-in exceeded its {0}	الإضافة تجاوزت {0}
+@msg	plug-in failed: {0}	فشلت الإضافة: {0}
+@msg	plug-in manifest: {0}	بيان الإضافة: {0}
+@msg	plug-in output: {0}	مخرجات الإضافة: {0}
+@msg	plug-in parameters: {0}	معاملات الإضافة: {0}
+@msg	plug-in trapped: {0}	توقفت الإضافة بخطأ: {0}
+@msg	print settings are not an object	إعدادات الطباعة ليست كائناً
+@msg	printing isn't available here	الطباعة غير متاحة هنا
+@msg	range `{s}` is empty	النطاق `{s}` فارغ
+@msg	range `{s}`: `{part}` names no number	النطاق `{s}`: `{part}` لا يحدد رقماً
+@msg	range `{s}`: `{part}` runs backwards	النطاق `{s}`: `{part}` معكوس
+@msg	range `{s}`: `{t}` is not a number from 1 to {count}	النطاق `{s}`: `{t}` ليس رقماً من 1 إلى {count}
+@msg	recovery copy `{file}`: {e}	نسخة الاستعادة `{file}`: {e}
+@msg	resolutions must be between 1 and 2400 ppi	الدقة يجب أن تكون بين 1 و2400 ppi
+@msg	result would exceed the canvas (coordinates out of range)	النتيجة ستتجاوز مساحة العمل (إحداثيات خارج النطاق)
+@msg	scale must be a number from {_1} to {_2}, not {_3}	المقياس يجب أن يكون رقماً من {_1} إلى {_2}، وليس {_3}
+@msg	scale must be a number from {_1} to {_2}, not {s}	المقياس يجب أن يكون رقماً من {_1} إلى {_2}، وليس {s}
+@msg	select (or target) objects whose appearance isn't basic	حدد (أو استهدف) كائنات مظهرها ليس أساسياً
+@msg	select a Live Paint group	حدد مجموعة تلوين حي
+@msg	select a blend	حدد مزجاً
+@msg	select a clip group	حدد مجموعة قص
+@msg	select a gradient mesh	حدد شبكة تدرّج
+@msg	select a linked image: an embedded one has no file	حدد صورة مرتبطة: الصورة المضمّنة بلا ملف
+@msg	select a repeat	حدد تكراراً
+@msg	select a stroke with a variable width	حدد حداً بعرض متغير
+@msg	select a symbol instance	حدد نسخة رمز
+@msg	select an Image Trace object	حدد كائن تتبّع صورة
+@msg	could not decode image: {0}	تعذّر فك ترميز الصورة: {0}
+@msg	image is empty	الصورة فارغة
+@msg	the image is {width} × {height} pixels, more than Image Trace takes ({max} megapixels)	الصورة {width} × {height} بكسل، أكبر مما يأخذه تتبّع الصورة ({max} ميغابكسل)
+@msg	this trace would make more than {max} anchor points, more than the document can show smoothly: raise Noise, lower Paths or Colors, or pick a lower-fidelity preset	هذا التتبّع سينتج أكثر من {max} نقطة ربط، أكثر مما يعرضه المستند بسلاسة: ارفع الضوضاء، أو قلّل المسارات أو الألوان، أو اختر إعداداً أقل دقة
+@msg	select an envelope	حدد غلافاً
+@msg	select an image	حدد صورة
+@msg	select an object in perspective	حدد كائناً بالمنظور
+@msg	select artwork (or a colour group) to recolor	حدد عملاً (أو مجموعة ألوان) لإعادة تلوينه
+@msg	select at least two objects	حدد كائنين على الأقل
+@msg	select objects, not layers	حدد كائنات، وليس طبقات
+@msg	select one path, or give its `id`	حدد مساراً واحداً، أو أعطِ `id` له
+@msg	select paths to join	حدد مسارات للوصل
+@msg	select the art to repeat	حدد العمل المراد تكراره
+@msg	select the artwork to warp	حدد العمل المراد تطويعه
+@msg	select the objects to transform in perspective	حدد الكائنات المراد تحويلها بالمنظور
+@msg	select two or more graphic styles to merge	حدد نمطين رسوميين أو أكثر للدمج
+@msg	select type in perspective	حدد نصاً بالمنظور
+@msg	selection has no bounds	التحديد بلا حدود
+@msg	shadings of an unknown type were left out	تم استبعاد تظليلات من نوع غير معروف
+@msg	shadings of more than 4096 patches or triangles were left out	تم استبعاد تظليلات فيها أكثر من 4096 رقعة أو مثلث
+@msg	shadings whose functions are of an unknown type are filled with their middle colour	التظليلات ذات الدوال من نوع غير معروف تُعبّأ بلونها الأوسط
+@msg	shortcut for `{k}` must be a string	اختصار `{k}` يجب أن يكون نصاً
+@msg	stop {i} needs `offset`	نقطة التوقف {i} تحتاج `offset`
+@msg	stop {i} needs a valid `color`	نقطة التوقف {i} تحتاج `color` صالحاً
+@msg	stop {i}: `{k}` must be a number	نقطة التوقف {i}: `{k}` يجب أن يكون رقماً
+@msg	the EMF header is damaged	ترويسة EMF تالفة
+@msg	the PDF has no pages	ملف PDF بلا صفحات
+@msg	the PDF is no longer loaded	ملف PDF لم يعد محمّلاً
+@msg	the PDF is password-protected: give its password	ملف PDF محمي بكلمة مرور: أعطِ كلمة المرور
+@msg	the PDF password is wrong	كلمة مرور PDF خاطئة
+@msg	the Save PDF dialog didn't open	لم يُفتح مربع حوار حفظ PDF
+@msg	the WMF header is damaged	ترويسة WMF تالفة
+@msg	the art could not be sampled	تعذّر أخذ عينات من العمل
+@msg	the art has no bounds	العمل بلا حدود
+@msg	the art is too light for any dots	العمل فاتح جداً لأي نقاط
+@msg	the artboard to fit must be a positive size up to {_1} pt	لوحة الرسم المراد ملاءمتها يجب أن يكون حجمها موجباً حتى {_1} pt
+@msg	the background worker stopped	توقف العامل في الخلفية
+@msg	the compressed file unpacks to more than {_1} MB	الملف المضغوط يتجاوز {_1} MB عند فكّه
+@msg	the document has never been saved	المستند لم يُحفظ أبداً
+@msg	the document has no artboard	المستند بلا لوحة رسم
+@msg	the document has no artboards	المستند بلا لوحات رسم
+@msg	the document has no patterns	المستند بلا نقوش
+@msg	the document has no slices	المستند بلا شرائح
+@msg	the document has no symbols	المستند بلا رموز
+@msg	the drawing has no layout `{_1}` (it has {_2})	الرسم بلا تخطيط `{_1}` (فيه {_2})
+@msg	the drawing is no longer loaded	الرسم لم يعد محمّلاً
+@msg	the drawing is too large to open	الرسم أكبر من أن يُفتح
+@msg	the export region is empty	منطقة التصدير فارغة
+@msg	the export region is not finite	منطقة التصدير غير محدودة
+@msg	the export returned unreadable data	التصدير أعاد بيانات غير مقروءة
+@msg	the export wrote no file	التصدير لم يكتب أي ملف
+@msg	the file holds only a placeholder page, not its art (it was saved without PDF compatibility): save it again with PDF compatibility on, or as PDF or SVG	الملف يحتوي صفحة مؤقتة فقط وليس العمل (حُفظ بدون توافق PDF): احفظه مجدداً مع تفعيل توافق PDF، أو كـ PDF أو SVG
+@msg	the file was read up to an error ({why}): what follows it was left out	قُرئ الملف حتى خطأ ({why}): ما بعده تم استبعاده
+@msg	the file's preview header points outside the file	ترويسة المعاينة في الملف تشير إلى خارجه
+@msg	the image's pixels don't match its size	بكسلات الصورة لا تطابق حجمها
+@msg	the layer has no objects to clip by	الطبقة بلا كائنات للقص بها
+@msg	the layer or group is locked	الطبقة أو المجموعة مقفلة
+@msg	the layer to flatten into is hidden	الطبقة المراد التسطيح فيها مخفية
+@msg	the object already has an opacity mask	الكائن له قناع شفافية مسبقاً
+@msg	the object has no geometry	الكائن بلا شكل هندسي
+@msg	the object has no opacity mask	الكائن بلا قناع شفافية
+@msg	the object has no stroke	الكائن بلا حد
+@msg	the object is beyond the plane's horizon	الكائن خلف أفق المستوى
+@msg	the object isn't in perspective	الكائن ليس بالمنظور
+@msg	the object isn't on a perspective plane	الكائن ليس على مستوى منظور
+@msg	the object would cross the horizon of the perspective plane	الكائن سيعبر أفق مستوى المنظور
+@msg	the objects would leave the grid	الكائنات ستخرج من الشبكة
+@msg	the package came back damaged	عادت الحزمة تالفة
+@msg	the pointer is beyond the plane's horizon	المؤشر خلف أفق المستوى
+@msg	the preview image is empty	صورة المعاينة فارغة
+@msg	the print job has no data	مهمة الطباعة بلا بيانات
+@msg	the scale is not a usable number	المقياس ليس رقماً صالحاً
+@msg	the selected stroke's profile is already listed as {_1}	ملف تعريف الحد المحدد مدرج مسبقاً باسم {_1}
+@msg	the selection has no URL (or they differ)	التحديد بلا رابط (أو الروابط مختلفة)
+@msg	the selection isn't in perspective	التحديد ليس بالمنظور
+@msg	the stroke has no weight	الحد بلا سماكة
+@msg	the thumbnail image is malformed	الصورة المصغرة تالفة
+@msg	the top object must be a path, compound path or text object to use as a clipping mask	الكائن العلوي يجب أن يكون مساراً أو مساراً مركّباً أو كائناً نصياً لاستخدامه كقناع قص
+@msg	the {tool} tool has no options	أداة {tool} بلا خيارات
+@msg	there are no objects to release	لا توجد كائنات للتحرير
+@msg	there are no printer settings to open here	لا توجد إعدادات طابعة لفتحها هنا
+@msg	this PostScript file can't be read ({_1}): save it as PDF or SVG in the app that made it	ملف PostScript هذا غير مقروء ({_1}): احفظه كـ PDF أو SVG من التطبيق الذي أنشأه
+@msg	this file's PostScript couldn't be read ({why}): {what}	تعذّرت قراءة PostScript في هذا الملف ({why}): {what}
+@msg	this format holds one artboard: export several as PDF or with document.exportForScreens	هذه الصيغة تحمل لوحة رسم واحدة: صدّر عدة لوحات كـ PDF أو باستخدام document.exportForScreens
+@msg	this is a DWG drawing, which can't be read: save it from the CAD app as an ASCII DXF and open that	هذا رسم DWG وهو غير مقروء: احفظه من تطبيق CAD كملف DXF بصيغة ASCII وافتحه
+@msg	this is a PostScript file (an .ai saved in an older format or without PDF compatibility, or an EPS file), which can't be opened yet: save it as PDF, PDF-compatible .ai or SVG	هذا ملف PostScript (ملف .ai محفوظ بصيغة قديمة أو بدون توافق PDF، أو ملف EPS)، ولا يمكن فتحه بعد: احفظه كـ PDF أو .ai متوافق مع PDF أو SVG
+@msg	this is not a PostScript file	هذا ليس ملف PostScript
+@msg	tool shortcuts must be a single key (optionally with Shift)	اختصارات الأدوات يجب أن تكون مفتاحاً واحداً (مع Shift اختيارياً)
+@msg	truncated	مقطوع
+@msg	unknown command `{0}`	أمر غير معروف `{0}`
+@msg	unknown effect `{id}`	تأثير غير معروف `{id}`
+@msg	unknown format	صيغة غير معروفة
+@msg	unknown format `{f}` (Save writes {_1})	صيغة غير معروفة `{f}` (الحفظ يكتب {_1})
+@msg	unknown freeform mode `{m}` (points, lines)	وضع حر غير معروف `{m}` (points، lines)
+@msg	unknown gradient kind `{k}` (linear, radial, freeform)	نوع تدرّج غير معروف `{k}` (linear، radial، freeform)
+@msg	unknown highlight `{h}`	تمييز غير معروف `{h}`
+@msg	unknown option `{path}.{k}`	خيار غير معروف `{path}.{k}`
+@msg	unknown overprints `{o}` (preserve, simulate or discard)	طباعة فوقية غير معروفة `{o}` (preserve أو simulate أو discard)
+@msg	unknown panel `{raw}`	لوحة غير معروفة `{raw}`
+@msg	unknown preference `{key}`	تفضيل غير معروف `{key}`
+@msg	unknown preset (one of {_1})	إعداد غير معروف (أحد {_1})
+@msg	unknown preset `{name}` (high, medium, low or a saved one: see flattener.presets.list)	إعداد غير معروف `{name}` (high أو medium أو low أو إعداد محفوظ: راجع flattener.presets.list)
+@msg	unknown preset `{name}` (see flattener.presets.list)	إعداد غير معروف `{name}` (راجع flattener.presets.list)
+@msg	unknown preset `{name}` (see webExport.presets.list)	إعداد غير معروف `{name}` (راجع webExport.presets.list)
+@msg	unknown side `{other}` (left|right|top|bottom)	جانب غير معروف `{other}` (left|right|top|bottom)
+@msg	unknown tool `{tool}`	أداة غير معروفة `{tool}`
+@msg	unknown tool `{t}`	أداة غير معروفة `{t}`
+@msg	unknown tool or command `{key}`	أداة أو أمر غير معروف `{key}`
+@msg	unknown workspace (one of {_1})	مساحة عمل غير معروفة (أحد {_1})
+@msg	unsupported: {0}	غير مدعوم: {0}
+@msg	version {0} files can't be compressed: only version {COMPRESSED_SINCE} and later open compressed files	ملفات الإصدار {0} لا يمكن ضغطها: الإصدار {COMPRESSED_SINCE} وما بعده فقط يفتح الملفات المضغوطة
+@msg	width and height are at least 1 pixel	العرض والارتفاع بكسل واحد على الأقل
+@msg	workspace name can't be empty	اسم مساحة العمل لا يمكن أن يكون فارغاً
+@msg	{C}: no effect at index {from}	{C}: لا يوجد تأثير عند الفهرس {from}
+@msg	{_1} failed: {e}	فشل {_1}: {e}
+@msg	{_1} files can be opened but not written (see document.formats)	ملفات {_1} تُفتح لكن لا تُكتب (راجع document.formats)
+@msg	{_1} font families available	{_1} عائلة خطوط متاحة
+@msg	{_1} is a live effect (Effect › Plug-ins)	{_1} تأثير حي (تأثير › الإضافات)
+@msg	{_1} is already used by {_2}	{_1} مستخدم مسبقاً من {_2}
+@msg	{_1} linked file(s) can't be read here: their previews show	{_1} ملف مرتبط غير مقروء هنا: تظهر معايناتها
+@msg	{_1} linked image(s) changed on disk: Update Links shows the new versions	{_1} صورة مرتبطة تغيّرت على القرص: «تحديث الروابط» يُظهر النسخ الجديدة
+@msg	{_1}: not saved, so not closed	{_1}: لم يُحفظ، لذا لم يُغلق
+@msg	{bpp}-bit bitmaps can't be read	الصور النقطية بعمق {bpp} بت غير مقروءة
+@msg	{command} didn't create an object	{command} لم ينشئ كائناً
+@msg	{label} produced an empty result	{label} أنتج نتيجة فارغة
+@msg	{label}: lost track of a shape's style	{label}: فُقد تتبّع نمط شكل
+@msg	{label}: select paths	{label}: حدد مسارات
+@msg	{label}: select paths, compound paths, groups or text	{label}: حدد مسارات أو مسارات مركّبة أو مجموعات أو نصاً
+@msg	{label}…	{label}…
+@msg	{name}: CRC mismatch	{name}: عدم تطابق CRC
+@msg	{name}: no local header	{name}: لا توجد ترويسة محلية
+@msg	{name}: no such recovery entry	{name}: لا يوجد إدخال استعادة كهذا
+@msg	{path} can't be found: relink it first	{path} غير موجود: أعد ربطه أولاً
+@msg	{path}: no file system here (pass dataBase64 to open; omit the path to get dataBase64)	{path}: لا يوجد نظام ملفات هنا (مرّر dataBase64 للفتح؛ أو احذف المسار للحصول على dataBase64)
+@msg	{path}: {e}	{path}: {e}
+@msg	{status} ({e})	{status} ({e})
+@msg	Couldn't place {name}: {e}	تعذّر وضع {name}: {e}
+@msg	Couldn't paste from the clipboard: {e}	تعذّر اللصق من الحافظة: {e}
+@msg	Saved {path} with {_1} note(s): {first}	تم حفظ {path} مع {_1} ملاحظة: {first}
+@msg	Exported {what} with {_1} note(s): {first}	تم تصدير {what} مع {_1} ملاحظة: {first}
+@msg	Exported {what}	تم تصدير {what}
+@msg	Saved {n} files beside {path}	تم حفظ {n} ملف بجانب {path}
+@msg	Saving	جارٍ الحفظ
+@msg	Saving {_1}	جارٍ حفظ {_1}
+@msg	Exporting {_1}	جارٍ تصدير {_1}
+@msg	Saving recovery data for {_1}	جارٍ حفظ بيانات الاستعادة لـ {_1}
+@msg	Discarded {_1} recovered document(s)	تم تجاهل {_1} مستند مستعاد
+@msg	Restored {_1} recovered document(s): save them to keep them	تمت استعادة {_1} مستند: احفظها للاحتفاظ بها
+@msg	Embedded {n} image(s); {missing} missing: relink them first	تم تضمين {n} صورة؛ {missing} مفقودة: أعد ربطها أولاً
+@msg	Embedded {n} image(s)	تم تضمين {n} صورة
+@msg	Relinked {_1} image(s)	تمت إعادة ربط {_1} صورة
+@msg	Relinked {n} image(s)	تمت إعادة ربط {n} صورة
+@msg	Relinked {n} image(s); not in that folder: {_1}	تمت إعادة ربط {n} صورة؛ غير موجودة في ذلك المجلد: {_1}
+@msg	Updated {_1} image(s)	تم تحديث {_1} صورة
+@msg	Unembedded to {_1}	أُلغي التضمين إلى {_1}
+@msg	Reset {_1}	إعادة ضبط {_1}
+@msg	Sent to {_1}	أُرسل إلى {_1}
+@msg	{_1} files	ملفات {_1}
+@msg	The graphics were lost and have been restarted	فُقدت الرسوميات وأُعيد تشغيلها
+@msg	The graphics processor tried first couldn't show the window, so VectorCraft started again on {summary}	معالج الرسوميات الأول لم يستطع عرض النافذة، فأُعيد تشغيل ShibShib rsm على {summary}
+@msg	Loading VectorCraft…	جارٍ تحميل ShibShib rsm…
+@msg	VectorCraft failed to start: {e}	فشل تشغيل ShibShib rsm: {e}
+@msg	A browser with WebGPU or WebGL2 is required.	يلزم متصفح يدعم WebGPU أو WebGL2.
+@msg	The graphics were lost and couldn't be restarted.	فُقدت الرسوميات وتعذّرت إعادة تشغيلها.
+@msg	Your unsaved changes are kept in this browser: reload the page to get them back.	تغييراتك غير المحفوظة محفوظة في هذا المتصفح: أعد تحميل الصفحة لاستعادتها.
+@msg	Reload the page to go on (changes not saved yet may be lost).	أعد تحميل الصفحة للمتابعة (قد تضيع التغييرات غير المحفوظة).
+@msg	tool (a tool id) is required	tool (معرّف أداة) مطلوب
+@msg	{tool} isn't in a toolbar group of several tools	{tool} ليست ضمن مجموعة أدوات متعددة في الشريط
+@msg	onto must name a panel floating in another group	onto يجب أن يسمّي لوحة عائمة في مجموعة أخرى
+@msg	x and y must both be numbers	x وy يجب أن يكونا رقمين
+@msg	"{0}" is not a colour: write it as #rrggbb	"{0}" ليس لوناً: اكتبه بصيغة #rrggbb
+@msg	this isn't a flat-colour logo ({_1}% of its solid areas match a few flat colours), so Flat Logo mode would turn its gradients into patches: use Color mode instead	هذا ليس شعاراً بألوان مسطّحة ({_1}% من مساحاته المصمتة تطابق ألواناً مسطّحة قليلة)، لذا وضع الشعار المسطّح سيحوّل تدرّجاته إلى رقع: استخدم وضع الألوان بدلاً منه
+	Services	الخدمات
+	Hide ShibShib rsm	إخفاء ShibShib rsm
+	Zoom	تكبير
+	Bring All to Front	إحضار الكل إلى الأمام
+	Settings	الإعدادات
+	Break Link	فك الارتباط
+	On: one locked object showing the document, updated when it changes.	تشغيل: كائن مقفل واحد يعرض المستند، ويتحدث عند تغيّره.
+	Off: an editable copy of its art, embedded in this document.	إيقاف: نسخة قابلة للتعديل من العمل، مضمّنة في هذا المستند.
+	Images: link to the file instead of only embedding it.	الصور: ربط بالملف بدلاً من تضمينه فقط.
+	ShibShib rsm documents: one locked object, updated when the file changes.	مستندات ShibShib rsm: كائن مقفل واحد، يتحدث عند تغيّر الملف.
+	A file dialog is open: choose there first	مربع حوار ملف مفتوح: اختر منه أولاً
+	Shaper	المُشكِّل
+	Expand Shaper Group	توسيع مجموعة المُشكِّل
+	Release Shaper Group	تحرير مجموعة المُشكِّل
+	Select Shaper Face	تحديد وجه المُشكِّل
+	Constrain	تقييد
+	Free Transform	تحويل حر
+	Perspective Distort	تشويه المنظور

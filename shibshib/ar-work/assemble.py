@@ -34,6 +34,10 @@ for part in sorted(HERE.glob('part_*')):
         if k in seen:
             continue
         seen.add(k)
-        rows.append(f'{k}\t{v}')
+        # Fragments joined at runtime keep the source's leading and trailing spaces.
+        src = k.split('\t', 1)[1]
+        lead = src[:len(src) - len(src.lstrip(' '))]
+        trail = src[len(src.rstrip(' ')):]
+        rows.append(f'{k}\t{lead}{v.strip(" ")}{trail}')
 OUT.write_text(HEADER + '\n'.join(rows) + '\n', encoding='utf-8')
 print(f'{len(rows)} rows -> {OUT.relative_to(ROOT)}')
