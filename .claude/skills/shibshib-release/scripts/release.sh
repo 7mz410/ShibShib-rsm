@@ -7,6 +7,7 @@
 set -euo pipefail
 ROOT="${SHIBSHIB_ROOT:-$HOME/Documents/ShibShib/rsm}"
 REPO_URL="https://github.com/7mz410/ShibShib-rsm.git"
+DOMAIN="rsm.shibshib.art"
 # rustup comes from Homebrew and is keg-only; it provides the wasm32 target trunk needs.
 export PATH="/opt/homebrew/opt/rustup/bin:$PATH"
 
@@ -42,6 +43,8 @@ if [ $deploy = 1 ]; then
   trap 'rm -rf "$site"' EXIT
   cp -R dist/web/. "$site/"
   touch "$site/.nojekyll"
+  # GitHub Pages reads the custom domain from this file on every deploy.
+  echo "$DOMAIN" > "$site/CNAME"
   (
     cd "$site"
     git init -q -b gh-pages
@@ -49,5 +52,5 @@ if [ $deploy = 1 ]; then
     git -c user.name="Hamza Abu Ayyash" -c user.email=hamza.abu3ayash@gmail.com commit -q -m "Deploy ShibShib rsm web ($(git -C "$ROOT" rev-parse --short HEAD))"
     git push -q -f "$REPO_URL" gh-pages
   )
-  echo "deployed: https://7mz410.github.io/ShibShib-rsm/"
+  echo "deployed: https://$DOMAIN/"
 fi

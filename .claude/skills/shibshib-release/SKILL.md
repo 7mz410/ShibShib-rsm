@@ -1,6 +1,6 @@
 ---
 name: shibshib-release
-description: Build and publish ShibShib rsm: the macOS app bundle, the web (WebAssembly) build, and the GitHub Pages deployment at 7mz410.github.io/ShibShib-rsm, with an Arabic and English screenshot check before publishing. Use whenever the user asks to update the web version, deploy, publish, release, give them a link to try, build the Mac app, or "ارفع النسخة" / "حدّث الويب" / "بدي لينك", and after any change to the interface that the user should see.
+description: Build and publish ShibShib rsm: the macOS app bundle, the web (WebAssembly) build, and the GitHub Pages deployment at rsm.shibshib.art, with an Arabic and English screenshot check before publishing. Use whenever the user asks to update the web version, deploy, publish, release, give them a link to try, build the Mac app, or "ارفع النسخة" / "حدّث الويب" / "بدي لينك", and after any change to the interface that the user should see.
 ---
 
 # Release ShibShib rsm

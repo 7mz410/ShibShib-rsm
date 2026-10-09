@@ -13,6 +13,11 @@
 </p>
 
 <p align="center">
+  <a href="https://rsm.shibshib.art/"><b>Try it in your browser · جرّبه في المتصفح</b></a> ·
+  <a href="https://shibshib.art/">shibshib.art</a>
+</p>
+
+<p align="center">
   <img alt="License: MIT OR Apache-2.0" src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-555555">
   <img alt="Based on VectorCraft" src="https://img.shields.io/badge/based%20on-VectorCraft-e8573f">
 </p>
