@@ -17,6 +17,15 @@ Generated-in-code art is original and has no file to list. This covers the defau
 | `docs/shibshib/logo-rsm-white.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | Project logo; replaces the upstream brand |
 | `docs/shibshib/mark-rsm-black.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | Project logo; replaces the upstream brand |
 | `docs/shibshib/mark-rsm-white.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | Project logo; replaces the upstream brand |
+| `docs/shibshib/suite/7rrek.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/effectat.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/main_logo.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/rsm-white.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/rsm.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/sharek.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/tlween.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/trteeb.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
+| `docs/shibshib/suite/tsweer.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
 | `assets/app-icon/LICENSE.txt` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
 | `assets/app-icon/README.md` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
 | `assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png` | Hamza Abu Ayyash (ShibShib) | Original ShibShib rsm mark (`docs/shibshib/mark-rsm-white.svg`) on a black tile, rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (ShibShib rsm mark) |

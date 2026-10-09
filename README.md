@@ -1,7 +1,7 @@
 <p align="center">
   <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="docs/shibshib/logo-rsm-white.svg">
-    <img alt="ShibShib rsm" src="docs/shibshib/logo-rsm-black.svg" width="160">
+    <source media="(prefers-color-scheme: dark)" srcset="docs/shibshib/suite/rsm-white.svg">
+    <img alt="ShibShib rsm" src="docs/shibshib/suite/rsm.svg" width="140">
   </picture>
 </p>
 
@@ -39,6 +39,9 @@ improvements that help everyone, such as the Arabic translation, back upstream.
 | ShibShib tlween | Image editing | [PhotoCraft](https://github.com/storytold/photocraft) | Planned |
 | ShibShib trteeb | Page layout | [DesignCraft](https://github.com/storytold/designcraft) | Planned (upstream in development) |
 | ShibShib tsweer | Video editing | [FilmCraft](https://github.com/storytold/filmcraft) | Planned |
+| ShibShib effectat | Motion graphics | [EffectCraft](https://github.com/storytold/effectcraft) | Planned |
+| ShibShib 7rrek | Character animation (tweens + frame by frame) | ShibShib rsm | Planned |
+| ShibShib sharek | Collaborative design | to be decided | Planned |
 
 ## Quick start
 
