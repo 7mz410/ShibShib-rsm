@@ -49,7 +49,10 @@ fn visual_line(line: &str) -> String {
 }
 
 fn visual_core(line: &str) -> String {
-    let info = BidiInfo::new(line, Some(Level::rtl()));
+    // Sizes such as 1920×1080 read left to right: the bidi analysis sees a strong left-to-right
+    // letter of the same byte length in place of a `×` between digits, so the size stays one run.
+    let analysed = keep_sizes_together(line);
+    let info = BidiInfo::new(&analysed, Some(Level::rtl()));
     let Some(para) = info.paragraphs.first() else { return line.to_string() };
     let (levels, runs) = info.visual_runs(para, para.range.clone());
     let mut out = String::with_capacity(line.len());
@@ -64,6 +67,18 @@ fn visual_core(line: &str) -> String {
         }
     }
     out
+}
+
+fn keep_sizes_together(line: &str) -> String {
+    let chars: Vec<char> = line.chars().collect();
+    chars
+        .iter()
+        .enumerate()
+        .map(|(i, &c)| {
+            let between_digits = i > 0 && i + 1 < chars.len() && chars[i - 1].is_ascii_digit() && chars[i + 1].is_ascii_digit();
+            if c == '×' && between_digits { 'é' } else { c }
+        })
+        .collect()
 }
 
 /// The pieces of a right-to-left run whose order flips: right-to-left words, whitespace, and each
@@ -105,6 +120,7 @@ mod tests {
         assert_eq!(visual("Open"), "Open");
         assert_eq!(visual("قابل للبرمجة."), ".للبرمجة قابل");
         assert_eq!(visual(" للتحريك  |  "), " |  للتحريك  ");
+        assert_eq!(visual("ويب 1920×1080"), "1920×1080 ويب");
     }
 
     #[test]

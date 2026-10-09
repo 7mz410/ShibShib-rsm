@@ -54,11 +54,8 @@ fn link(app: &mut VectorcraftApp, ui: &mut Ui, icon: &str, label: &str, cmd: &st
 
 /// The Discord button and the website / app page / GitHub links.
 pub fn links(app: &mut VectorcraftApp, ui: &mut Ui) {
-    discord_button(app, ui, true);
-    ui.add_space(8.0);
     let l = app.session.execute("help.links", &serde_json::json!({})).unwrap_or_default();
     let s = |k: &str| l[k].as_str().unwrap_or("").to_string();
-    link(app, ui, "globe", tl!("ArtCraft website"), "help.website", &s("website"));
     link(app, ui, "external-link", tl!("ShibShib rsm Website"), "help.appPage", &s("appPage"));
     link(app, ui, "git-branch", tl!("Source code on GitHub"), "help.github", &s("github"));
 }

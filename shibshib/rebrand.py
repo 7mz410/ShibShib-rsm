@@ -33,7 +33,21 @@ SPECIFIC = {
         ('label: "VectorCraft",', f'label: "{NAME}",'),
         ('label: "VectorCraft Template",', f'label: "{NAME} Template",'),
     ],
+    # No ShibShib Discord yet: drop the upstream community button and the ArtCraft website link.
+    'crates/ui-egui/src/chrome.rs': [
+        ('let discord = room >= with_search + 10.0 + gap + crate::community::discord_width(ui, false);',
+         'let discord = false; // ShibShib: no community Discord button yet'),
+    ],
+    'crates/ui-egui/src/titlebar.rs': [
+        ('assert_eq!((has("Discord"), has("Search commands and tools")), (width > 1000.0, width > 1000.0), "{width}: {texts:?}");',
+         'assert_eq!((has("Discord"), has("Search commands and tools")), (false, width > 1000.0), "{width}: {texts:?}");'),
+    ],
     'crates/ui-egui/src/community.rs': [
+        ('''    discord_button(app, ui, true);
+    ui.add_space(8.0);
+''', ''),
+        ('''    link(app, ui, "globe", tl!("ArtCraft website"), "help.website", &s("website"));
+''', ''),
         ('''                "https://getartcraft.com",
                 "https://getartcraft.com/apps/vectorcraft",
                 "https://github.com/storytold/vectorcraft"''',
@@ -52,6 +66,8 @@ LITERALS = [
     ('ArtCraft Website', 'ShibShib Project'),
     ('Join Our Discord', 'Upstream Community on Discord'),
 ]
+# Catalog rows for strings the rebranded UI no longer shows.
+DROPPED_ROWS = {'ArtCraft website'}
 # The About credit line must keep naming VectorCraft.
 CREDIT = 'Based on VectorCraft by the ArtCraft team'
 
@@ -92,6 +108,8 @@ def rebrand_catalog(path: Path, sources: set) -> bool:
     rows = []
     for line in src.split('\n'):
         cells = line.split('\t')
+        if len(cells) >= 3 and not line.startswith('#') and cells[1] in DROPPED_ROWS:
+            continue
         if len(cells) >= 3 and not line.startswith('#'):
             renamed = rename(cells[1])
             if renamed != cells[1] and renamed in sources:
