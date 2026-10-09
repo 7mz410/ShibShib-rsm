@@ -2006,3 +2006,1253 @@
 	Recent URLs	الروابط الأخيرة
 	Recolor	إعادة تلوين
 	Recolor Artwork	إعادة تلوين العمل
+	Recolor Artwork…	إعادة تلوين العمل…
+	Recolor this row	إعادة تلوين هذا الصف
+	Recolor with Preset	إعادة التلوين بإعداد
+	Recover Documents	استعادة المستندات
+	Recovery Data	بيانات الاستعادة
+	Rectangle	مستطيل
+	Rectangle Cut	قطع مستطيل
+	Rectangle Cut Tool	أداة القطع المستطيل
+	Rectangle Properties:	خصائص المستطيل:
+	Rectangle Tool	أداة المستطيل
+	Rectangle: Sunshine	مستطيل: إشراق
+	Rectangle…	مستطيل…
+	Rectangular Grid	شبكة مستطيلة
+	Rectangular Grid Tool	أداة الشبكة المستطيلة
+	Red	أحمر
+	Redefine Character Style	إعادة تعريف نمط الحروف
+	Redefine Graphic Style	إعادة تعريف النمط الرسومي
+	Redefine Graphic Style “{name}”	إعادة تعريف النمط الرسومي «{name}»
+	Redefine Paragraph Style	إعادة تعريف نمط الفقرة
+	Redefine Symbol	إعادة تعريف الرمز
+	Redefine {kind} Style	إعادة تعريف نمط {kind}
+	Redo	إعادة
+	Redo {name}	إعادة {name}
+	Redo {}	إعادة {}
+	Reduce Colors	تقليل الألوان
+	Reduce to Basic Appearance	الإرجاع إلى المظهر الأساسي
+	Reduction:	التقليل:
+	Reference Point	النقطة المرجعية
+	Reflect	انعكاس
+	Reflect Horizontal	انعكاس أفقي
+	Reflect Tool	أداة الانعكاس
+	Reflect X	انعكاس X
+	Reflect Y	انعكاس Y
+	Reflect…	انعكاس…
+	Refresh	تحديث
+	Refresh Font List	تحديث قائمة الخطوط
+	Registered Trademark Symbol	رمز العلامة التجارية المسجلة
+	Registration marks	علامات التسجيل
+	Registry name:	اسم السجل:
+	Regular	عادي
+	Release	تحرير
+	Release Compound Shape	تحرير الشكل المركّب
+	Release Guides	تحرير الأدلة
+	Release Opacity Mask	تحرير قناع الشفافية
+	Release Selection	تحرير التحديد
+	Release to Layers (Build)	تحرير إلى طبقات (بناء)
+	Release to Layers (Sequence)	تحرير إلى طبقات (تسلسل)
+	Release with Perspective	تحرير مع المنظور
+	Relink	إعادة الربط
+	Relink Linked Files to the Document	إعادة ربط الملفات المرتبطة بالمستند
+	Relink to Folder…	إعادة الربط بمجلد…
+	Relinked {n} image(s)	تمت إعادة ربط {n} صورة
+	Relinked {n} image(s); not in that folder: {}	تمت إعادة ربط {n} صورة؛ غير موجودة في ذلك المجلد: {}
+	Relinked {} image(s)	تمت إعادة ربط {} صورة
+	Relink…	إعادة الربط…
+	Reload Plug-ins	إعادة تحميل الإضافات
+	Remove	إزالة
+	Remove Anchor Points	إزالة نقاط الربط
+	Remove Asset	إزالة الأصل
+	Remove blank lines between paragraphs	إزالة الأسطر الفارغة بين الفقرات
+	Remove Brush Stroke	إزالة ضربة الفرشاة
+	Remove Effect	إزالة التأثير
+	Remove Guide	إزالة الدليل
+	Remove Item	إزالة العنصر
+	Remove Plug-in	إزالة الإضافة
+	Remove Selected Assets	إزالة الأصول المحددة
+	Remove Threading	إزالة ربط النص
+	Remove “{keyword}”	إزالة «{keyword}»
+	Rename	إعادة تسمية
+	Rename Asset	إعادة تسمية الأصل
+	Rename Character Style	إعادة تسمية نمط الحروف
+	Rename Graphic Style	إعادة تسمية النمط الرسومي
+	Rename Paragraph Style	إعادة تسمية نمط الفقرة
+	Rename Workspace	إعادة تسمية مساحة العمل
+	Render Threads (-1 = Automatic)	خيوط المعالجة (-1 = تلقائي)
+	Rendering intent:	غرض العرض:
+	Reorder	إعادة ترتيب
+	Reorder Appearance Item	إعادة ترتيب عنصر المظهر
+	Repeat	تكرار
+	Repeat Options	خيارات التكرار
+	Repeat Pathfinder	تكرار Pathfinder
+	Repeat Tab	تكرار علامة الجدولة
+	Repeat {name}	تكرار {name}
+	Replace	استبدال
+	Replace Font	استبدال الخط
+	Replace it with another file, or ignore it: its images keep showing the preview saved with the document.	استبدله بملف آخر، أو تجاهله: صوره تبقى تُظهر المعاينة المحفوظة مع المستند.
+	Replace Spine	استبدال العمود الفقري
+	Replace Symbol	استبدال الرمز
+	Replace With Font	الاستبدال بالخط
+	Replaces the saved preset of that name.	يستبدل الإعداد المحفوظ بنفس الاسم.
+	Replace…	استبدال…
+	Require a password to open the document	طلب كلمة مرور لفتح المستند
+	Reselect	إعادة التحديد
+	Reset	إعادة ضبط
+	Reset Bounding Box	إعادة ضبط الإطار المحيط
+	Reset Envelope Mesh	إعادة ضبط شبكة الغلاف
+	Reset Envelope Shape	إعادة ضبط شكل الغلاف
+	Reset Essentials	إعادة ضبط الأساسيات
+	Reset Keyboard Shortcuts	إعادة ضبط اختصارات لوحة المفاتيح
+	Reset OpenType Features	إعادة ضبط ميزات OpenType
+	Reset Panel	إعادة ضبط اللوحة
+	Reset Preferences	إعادة ضبط التفضيلات
+	Reset Profiles	إعادة ضبط الملفات الشخصية
+	Reset Rotate View	إعادة ضبط تدوير العرض
+	Reset the rows to the artwork's colors	إعادة الصفوف إلى ألوان العمل
+	Reset to Default	إعادة إلى الافتراضي
+	Reset to White, Black	إعادة إلى الأبيض والأسود
+	Reset with Mesh	إعادة الضبط بشبكة
+	Reset with Mesh…	إعادة الضبط بشبكة…
+	Reset with Warp	إعادة الضبط بالتطويع
+	Reset with Warp…	إعادة الضبط بالتطويع…
+	Reset {name}	إعادة ضبط {name}
+	Reset {}	إعادة ضبط {}
+	Reshape	إعادة تشكيل
+	Reshape Segment	إعادة تشكيل المقطع
+	Reshape Tool	أداة إعادة التشكيل
+	Reshape Type Area	إعادة تشكيل منطقة النص
+	Resolution:	الدقة:
+	Responsive	متجاوب
+	Restore	استعادة
+	Restore every preference to its default (applied on OK)	إعادة كل التفضيلات إلى قيمها الافتراضية (تُطبّق عند الموافقة)
+	Restore Recovered Documents	استعادة المستندات المستعادة
+	Restored documents open unsaved: save them to keep them.	المستندات المستعادة تُفتح بدون حفظ: احفظها للاحتفاظ بها.
+	Restored {} recovered document(s): save them to keep them	تمت استعادة {} مستند: احفظها للاحتفاظ بها
+	Restrict printing, editing and other tasks	تقييد الطباعة والتحرير والمهام الأخرى
+	Reverse Front to Back	عكس من الأمام إلى الخلف
+	Reverse Gradient	عكس التدرّج
+	Reverse Order	عكس الترتيب
+	Reverse Path Direction	عكس اتجاه المسار
+	Reverse Path Direction Off	إيقاف عكس اتجاه المسار
+	Reverse Path Direction On	تشغيل عكس اتجاه المسار
+	Reverse Spine	عكس العمود الفقري
+	Revert	الرجوع
+	Revert to the saved version of “{name}”?	الرجوع إلى النسخة المحفوظة من «{name}»؟
+	Replace “{name}”, the file this document was opened from?	استبدال «{name}»، الملف الذي فُتح منه هذا المستند؟
+	Opening it left out what ShibShib rsm can't read yet ({what}), so replacing it loses that for good. Save under another name to keep it.	فتحه أهمل ما لا يستطيع ShibShib rsm قراءته بعد ({what})، لذا استبداله يفقد ذلك نهائياً. احفظه باسم آخر للاحتفاظ به.
+	Revolve…	دوران حول محور…
+	RGB Color	لون RGB
+	Right	يمين
+	Right Grid:	الشبكة اليمنى:
+	Right in Front	اليمين في الأمام
+	Right Indent	مسافة بادئة يمنى
+	Right Plane	المستوى الأيمن
+	Right-Justified Tab	علامة جدولة لليمين
+	Right-to-Left Paragraph Direction	اتجاه الفقرة من اليمين لليسار
+	Right:	اليمين:
+	Rise…	ارتفاع…
+	Roman Baseline	خط الأساس الروماني
+	Roman Hanging Punctuation	علامات الترقيم المعلقة الرومانية
+	Rotate	تدوير
+	Rotate 90° CW	تدوير 90° مع عقارب الساعة
+	Rotate Tool	أداة التدوير
+	Rotate View Tool	أداة تدوير العرض
+	Rotate…	تدوير…
+	Rotation	الدوران
+	Roughen…	خشونة…
+	Round Cap	نهاية دائرية
+	Round Corners…	تدوير الزوايا…
+	Round Join	وصلة دائرية
+	Rounded	مدوّر
+	Rounded Rectangle	مستطيل مدوّر الزوايا
+	Rounded Rectangle Tool	أداة المستطيل مدوّر الزوايا
+	Rounded Rectangle…	مستطيل مدوّر الزوايا…
+	Row Size:	حجم الصف:
+	Rows:	الصفوف:
+	Rule:	القاعدة:
+	Rulers	المساطر
+	Rulers & Grids	المساطر والشبكات
+	Run Plug-in	تشغيل الإضافة
+	Same	نفسه
+	Same As Source	مثل المصدر
+	Sample Color	لون العينة
+	Sans Serif / Gothic	Sans Serif / Gothic
+	Saturate	تشبيع
+	Saturate…	تشبيع…
+	Saturation	التشبّع
+	Save	حفظ
+	Save a Copy	حفظ نسخة
+	Save a Copy…	حفظ نسخة…
+	Save As	حفظ باسم
+	Save as PDF…	حفظ كـ PDF…
+	Save as preset:	حفظ كإعداد:
+	Save as Template	حفظ كقالب
+	Save as Template…	حفظ كقالب…
+	Save As…	حفظ باسم…
+	Save changes to {name}	حفظ التغييرات على {name}
+	Save color group to Swatch panel	حفظ مجموعة الألوان في لوحة العينات
+	Save Colors as Swatches	حفظ الألوان كعينات
+	Save Document	حفظ المستند
+	Save Document Info…	حفظ معلومات المستند…
+	Save each artboard to a separate file	حفظ كل لوحة رسم في ملف منفصل
+	Save for Office Documents	حفظ لمستندات Office
+	Save for Office Documents…	حفظ لمستندات Office…
+	Save for Web	حفظ للويب
+	Save for Web (Legacy)…	حفظ للويب (قديم)…
+	Save for Web Presets	إعدادات الحفظ للويب
+	Save for Web Preview	معاينة الحفظ للويب
+	Save for Web Settings	إعدادات الحفظ للويب
+	Save Graphic Style Library	حفظ مكتبة الأنماط الرسومية
+	Save Graphic Style Library…	حفظ مكتبة الأنماط الرسومية…
+	Save Grid as Preset	حفظ الشبكة كإعداد
+	Save Grid as Preset…	حفظ الشبكة كإعداد…
+	Save PDF	حفظ PDF
+	Save PDF Dialog	مربع حوار حفظ PDF
+	Save PDF Preset	حفظ إعداد PDF
+	Save Perspective Grid Preset	حفظ إعداد شبكة المنظور
+	Save Preset	حفظ الإعداد
+	Save Preset…	حفظ الإعداد…
+	Save Print Preset	حفظ إعداد الطباعة
+	Save Recovery Data	حفظ بيانات الاستعادة
+	Save Save for Web Preset	حفظ إعداد الحفظ للويب
+	Save selected colors as swatches	حفظ الألوان المحددة كعينات
+	Save Selection…	حفظ التحديد…
+	Save Swatch Library	حفظ مكتبة العينات
+	Save Swatch Library…	حفظ مكتبة العينات…
+	Save the current layout under this name	حفظ التخطيط الحالي بهذا الاسم
+	Save the document first?	حفظ المستند أولاً؟
+	Save the selected preset to a file	حفظ الإعداد المحدد في ملف
+	Save the settings as a preset	حفظ الإعدادات كإعداد مسبق
+	Save Theme	حفظ السمة
+	Save theme to My Themes	حفظ السمة في سماتي
+	Save these settings as a preset	حفظ هذه الإعدادات كإعداد مسبق
+	Save these settings as a print preset	حفظ هذه الإعدادات كإعداد طباعة
+	Save to Swatches	حفظ في العينات
+	Save To:	الحفظ في:
+	Save Transparency Flattener Preset	حفظ إعداد تسطيح الشفافية
+	Save Transparency Flattener Preset…	حفظ إعداد تسطيح الشفافية…
+	SAVED	المحفوظة
+	Saved	محفوظ
+	Saved recovery data for {title}	تم حفظ بيانات الاستعادة لـ {title}
+	Saved Selection 1	التحديد المحفوظ 1
+	Saved Selection 10	التحديد المحفوظ 10
+	Saved Selection 11	التحديد المحفوظ 11
+	Saved Selection 12	التحديد المحفوظ 12
+	Saved Selection 13	التحديد المحفوظ 13
+	Saved Selection 14	التحديد المحفوظ 14
+	Saved Selection 15	التحديد المحفوظ 15
+	Saved Selection 16	التحديد المحفوظ 16
+	Saved Selection 17	التحديد المحفوظ 17
+	Saved Selection 18	التحديد المحفوظ 18
+	Saved Selection 19	التحديد المحفوظ 19
+	Saved Selection 2	التحديد المحفوظ 2
+	Saved Selection 20	التحديد المحفوظ 20
+	Saved Selection 21	التحديد المحفوظ 21
+	Saved Selection 22	التحديد المحفوظ 22
+	Saved Selection 23	التحديد المحفوظ 23
+	Saved Selection 24	التحديد المحفوظ 24
+	Saved Selection 25	التحديد المحفوظ 25
+	Saved Selection 3	التحديد المحفوظ 3
+	Saved Selection 4	التحديد المحفوظ 4
+	Saved Selection 5	التحديد المحفوظ 5
+	Saved Selection 6	التحديد المحفوظ 6
+	Saved Selection 7	التحديد المحفوظ 7
+	Saved Selection 8	التحديد المحفوظ 8
+	Saved Selection 9	التحديد المحفوظ 9
+	Saved Selections	التحديدات المحفوظة
+	Saved to User Defined: {}	حُفظ في تعريفات المستخدم: {}
+	Saved View 1	طريقة العرض المحفوظة 1
+	Saved View 10	طريقة العرض المحفوظة 10
+	Saved View 2	طريقة العرض المحفوظة 2
+	Saved View 3	طريقة العرض المحفوظة 3
+	Saved View 4	طريقة العرض المحفوظة 4
+	Saved View 5	طريقة العرض المحفوظة 5
+	Saved View 6	طريقة العرض المحفوظة 6
+	Saved View 7	طريقة العرض المحفوظة 7
+	Saved View 8	طريقة العرض المحفوظة 8
+	Saved View 9	طريقة العرض المحفوظة 9
+	Saved Views	طرق العرض المحفوظة
+	Saved {n} files beside {path}	تم حفظ {n} ملف بجانب {path}
+	Saved {path}	تم حفظ {path}
+	Saved {path} with {} note(s): {first}	تم حفظ {path} مع {} ملاحظة: {first}
+	Saves the current bars, toolbar and panel layout.	يحفظ تخطيط الأشرطة وشريط الأدوات واللوحات الحالي.
+	Save…	حفظ…
+	Saving	جارٍ الحفظ
+	Saving Poster.vectorcraft	جارٍ حفظ Poster.vectorcraft
+	Saving recovery data for {}	جارٍ حفظ بيانات الاستعادة لـ {}
+	Saving {}	جارٍ حفظ {}
+	Scale	المقياس
+	Scale Corners	تغيير مقياس الزوايا
+	Scale Cursor Proportional to UI	تغيير حجم المؤشر بتناسب مع الواجهة
+	Scale Lineweights	تغيير مقياس سماكة الخطوط
+	Scale Strokes & Effects	تغيير مقياس الحدود والتأثيرات
+	Scale to Fit Artboard	تغيير المقياس لملاءمة لوحة الرسم
+	Scale Tool	أداة المقياس
+	Scale:	المقياس:
+	Scale…	المقياس…
+	Scaling	تغيير المقياس
+	Scaling:	تغيير المقياس:
+	Scallop Tool	أداة التمويج
+	Scans:	المسوحات:
+	Scatter	تبعثر
+	Scatter Graph Tool	أداة الرسم البياني المبعثر
+	Scissors Tool	أداة المقص
+	Scratch Disks	أقراص التخزين المؤقت
+	Screen	شاشة
+	Screen (72 ppi)	شاشة (72 ppi)
+	Screen Mode	وضع الشاشة
+	Screens	الشاشات
+	Scribble…	خربشة…
+	Script / Brush	نصي / فرشاة
+	Scripts	السكربتات
+	Search	بحث
+	Search All	البحث في الكل
+	Search commands and tools	ابحث في الأوامر والأدوات
+	Search commands and tools…	ابحث في الأوامر والأدوات…
+	Search Commands…	البحث في الأوامر…
+	Secondary	ثانوي
+	Section Symbol	رمز القسم
+	Security	الأمان
+	Select	تحديد
+	Select a text object	حدد كائناً نصياً
+	Select a text object to edit its character attributes.	حدد كائناً نصياً لتعديل سمات أحرفه.
+	Select a text object to edit its paragraph attributes.	حدد كائناً نصياً لتعديل سمات فقراته.
+	Select a text object to set its tab stops.	حدد كائناً نصياً لضبط علامات الجدولة فيه.
+	Select All	تحديد الكل
+	Select All Art on Layer	تحديد كل العمل في الطبقة
+	Select All Assets	تحديد كل الأصول
+	Select All Instances	تحديد كل النسخ
+	Select All Pins	تحديد كل الدبابيس
+	Select All Unused	تحديد كل غير المستخدم
+	Select an image to see its Link Info.	حدد صورة لرؤية معلومات رابطها.
+	Select an image to trace	حدد صورة لتتبّعها
+	Select Anchors	تحديد نقاط الربط
+	Select Appearance Item	تحديد عنصر المظهر
+	Select Art	تحديد العمل
+	Select art and choose Object › Pattern › Make.	حدد العمل واختر كائن › النقش › إنشاء.
+	Select art and click New Symbol to make one.	حدد العمل وانقر «رمز جديد» لإنشاء رمز.
+	Select art and use New Brush to make one.	حدد العمل واستخدم «فرشاة جديدة» لإنشاء فرشاة.
+	Select Freeform Point	تحديد النقطة الحرة
+	Select Gradient Stop	تحديد نقطة توقف التدرّج
+	Select Guides	تحديد الأدلة
+	Select Objects	تحديد الكائنات
+	Select objects to see their CSS, or Generate CSS for the whole document.	حدد كائنات لرؤية CSS الخاص بها، أو أنشئ CSS للمستند كله.
+	Select Same Tint %	تحديد نفس نسبة الدرجة
+	Select Slices	تحديد الشرائح
+	Select styled art and click New Graphic Style.	حدد عملاً منسّقاً وانقر «نمط رسومي جديد».
+	Select text	حدد نصاً
+	Select Text by Font	تحديد النص حسب الخط
+	Select text or click into text with the Type tool to insert glyphs	حدد نصاً أو انقر داخل نص بأداة النص لإدراج حروف
+	Select text to set its OpenType features.	حدد نصاً لضبط ميزات OpenType الخاصة به.
+	Select the art (and, on top of it, the mask object)	حدد العمل (وفوقه كائن القناع)
+	Select Tool	أداة التحديد
+	Select:	التحديد:
+	Selected Artwork	العمل المحدد
+	Selected Styles Only	الأنماط المحددة فقط
+	Selected Swatches	العينات المحددة
+	Selected Swatches Only	العينات المحددة فقط
+	Selection	التحديد
+	Selection & Anchor Display	عرض التحديد ونقاط الربط
+	Selection Only	التحديد فقط
+	Selection Tool	أداة التحديد
+	Send Backward	إرجاع خطوة
+	Send to Back	إرسال إلى الخلف
+	Send to Current Layer	إرسال إلى الطبقة الحالية
+	Sentence case	حالة الجملة
+	Separate colors into rows	فصل الألوان إلى صفوف
+	Separate several keywords with commas.	افصل الكلمات المفتاحية بفواصل.
+	Separations list the document's inks here: one page per ink that prints.	الفصل اللوني يعرض أحبار المستند هنا: صفحة لكل حبر يُطبع.
+	Separations Preview	معاينة الفصل اللوني
+	Serialize Document	تسلسل المستند
+	Serif / Mincho	Serif / Mincho
+	Server-side (.map)	من جهة الخادم (.map)
+	Set 1	المجموعة 1
+	Set Anchors	ضبط نقاط الربط
+	Set base color	تعيين اللون الأساسي
+	Set base color to the current color	تعيين اللون الأساسي إلى اللون الحالي
+	Set Bounds	ضبط الحدود
+	Set Current Layer	تعيين الطبقة الحالية
+	Set Key Object	تعيين الكائن المرجعي
+	Set Keyboard Shortcut	تعيين اختصار لوحة المفاتيح
+	Set Mesh Point Color	تعيين لون نقطة الشبكة
+	Set Preference	تعيين تفضيل
+	Set Slice Rectangle	ضبط مستطيل الشريحة
+	Set Tab Stops	ضبط علامات الجدولة
+	Set Text	ضبط النص
+	Set the selected color to the current color	تعيين اللون المحدد إلى اللون الحالي
+	Set Zoom	ضبط التكبير
+	Settings…	الإعدادات…
+	Setup…	الإعداد…
+	Shadows and Glows	الظلال والتوهجات
+	Shape	الشكل
+	Shape Builder	منشئ الأشكال
+	Shape Builder Regions	مناطق منشئ الأشكال
+	Shape Builder Tool	أداة منشئ الأشكال
+	Shape Effects	تأثيرات الأشكال
+	Shape Modes:	أوضاع الأشكال:
+	Shape Properties:	خصائص الشكل:
+	Shaper Tool	أداة المُشكِّل
+	Shapes	الأشكال
+	Shear	إمالة
+	Shear Tool	أداة الإمالة
+	Shear…	إمالة…
+	Shell Lower…	صدفة سفلية…
+	Shell Upper…	صدفة علوية…
+	Shift	Shift
+	Shift to Color…	إزاحة إلى اللون…
+	Shifts the tints of global and spot colors; other colors stay.	يزيح درجات الألوان العامة والموضعية؛ والألوان الأخرى تبقى.
+	Show	إظهار
+	Show Active Plane Widget	إظهار أداة المستوى النشط
+	Show All	إظهار الكل
+	Show All Hidden Attributes	إظهار كل السمات المخفية
+	Show All Layers	إظهار كل الطبقات
+	Show All Plates	إظهار كل الألواح
+	Show all plates	إظهار كل الألواح
+	Show All Swatches	إظهار كل العينات
+	Show and print from the Lab definition; PDF files carry it as the ink's alternate color.	العرض والطباعة من تعريف Lab؛ ملفات PDF تحمله كلون بديل للحبر.
+	Show and separate through the working CMYK space, as in older documents.	العرض والفصل عبر فضاء CMYK الحالي، كما في المستندات الأقدم.
+	Show Artboards	إظهار لوحات الرسم
+	Show Bounding Box	إظهار الإطار المحيط
+	Show Brush Size	إظهار حجم الفرشاة
+	Show Center	إظهار المركز
+	Show Code	إظهار الكود
+	Show Color Groups	إظهار مجموعات الألوان
+	Show Color Swatches	إظهار عينات الألوان
+	Show Corner Widget	إظهار أداة الزاوية
+	Show East Asian Options	إظهار خيارات شرق آسيا
+	Show Edges	إظهار الحواف
+	Show Embedded	إظهار المضمّن
+	Show Find Field	إظهار حقل البحث
+	Show Font Names in English	إظهار أسماء الخطوط بالإنجليزية
+	Show Gradient Annotator	إظهار أداة التحكم بالتدرّج
+	Show Gradient Swatches	إظهار عينات التدرّج
+	Show Grid	إظهار الشبكة
+	Show Grid (⌘')	إظهار الشبكة (⌘')
+	Show Guides	إظهار الأدلة
+	Show handles when multiple anchors are selected	إظهار المقابض عند تحديد عدة نقاط ربط
+	Show Hidden Characters	إظهار الأحرف المخفية
+	Show Images in Outline Mode	إظهار الصور في وضع الخطوط الخارجية
+	Show in Folder	إظهار في المجلد
+	Show Indic Options	إظهار خيارات الهندية
+	Show Layers Only	إظهار الطبقات فقط
+	Show Link Info	إظهار معلومات الرابط
+	Show List View	إظهار عرض القائمة
+	Show Mesh	إظهار الشبكة
+	Show Missing	إظهار المفقود
+	Show Modified	إظهار المعدّل
+	Show Note	إظهار الملاحظة
+	Show Options	إظهار الخيارات
+	Show Package	إظهار الحزمة
+	Show Panel	إظهار اللوحة
+	Show Pattern Swatches	إظهار عينات النقوش
+	Show Perspective Grid	إظهار شبكة المنظور
+	Show Pixel Grid (Above 600% Zoom)	إظهار شبكة البكسل (فوق تكبير 600%)
+	Show Print Tiling	إظهار تجانب الطباعة
+	Show Rulers	إظهار المساطر
+	Show Rulers (⌘R)	إظهار المساطر (⌘R)
+	Show Slice Numbers	إظهار أرقام الشرائح
+	Show Slices	إظهار الشرائح
+	Show Swatch Bounds	إظهار حدود العينة
+	Show Swatch Kinds	إظهار أنواع العينات
+	Show Text Threads	إظهار روابط النص
+	Show The Home Screen When No Documents Are Open	إظهار الشاشة الرئيسية عند عدم وجود مستندات مفتوحة
+	Show Thumbnail	إظهار الصورة المصغرة
+	Show Thumbnail View	إظهار عرض الصور المصغرة
+	Show Thumbnails	إظهار الصور المصغرة
+	Show Tile Edge	إظهار حافة البلاطة
+	Show Tints/Shades	إظهار الدرجات الفاتحة/الداكنة
+	Show Tool Tips	إظهار تلميحات الأدوات
+	Show Transparency Grid	إظهار شبكة الشفافية
+	Show Video Rulers	إظهار مساطر الفيديو
+	Show Vivid/Muted	إظهار الحيوي/الباهت
+	Show Warm/Cool	إظهار الدافئ/البارد
+	Show {kind} Brushes	إظهار فرش {kind}
+	Show/hide plate (Alt-click: only this plate)	إظهار/إخفاء اللوح (Alt+نقر: هذا اللوح فقط)
+	Show:	إظهار:
+	Shown with the optimised preview.	معروض مع المعاينة المحسّنة.
+	Side 1:	الجانب 1:
+	Side 2:	الجانب 2:
+	Sides:	الأضلاع:
+	Simplify	تبسيط
+	Simplify:	التبسيط:
+	Simplify…	تبسيط…
+	Simulate Colored Paper	محاكاة ورق ملون
+	Simulate Paper	محاكاة الورق
+	Double Column	عمودان
+	Single Left Quotation Mark	علامة اقتباس يسرى مفردة
+	Single Quotes:	علامات الاقتباس المفردة:
+	Single Right Quotation Mark	علامة اقتباس يمنى مفردة
+	Single-line Composer	منضّد السطر الواحد
+	Sixth Space	سدس مسافة
+	Size	الحجم
+	Size Tile to Art	ملاءمة البلاطة للعمل
+	Size/Leading	الحجم/تباعد الأسطر
+	Size:	الحجم:
+	Size: {size}  Tracking: {tracking}	الحجم: {size}  التتبّع: {tracking}
+	Skew	إمالة
+	Skin Tone Ramps	تدرّجات لون البشرة
+	Skip Blank Artboards	تخطي لوحات الرسم الفارغة
+	Sky Gradients	تدرّجات السماء
+	Slice	شريحة
+	Slice Options	خيارات الشريحة
+	Slice Options…	خيارات الشريحة…
+	Slice Selection Tool	أداة تحديد الشريحة
+	Slice Tool	أداة الشريحة
+	Slice Type:	نوع الشريحة:
+	Slices	الشرائح
+	slices across, evenly spaced	شرائح أفقية، بتباعد متساوٍ
+	slices down, evenly spaced	شرائح عمودية، بتباعد متساوٍ
+	Slices:	الشرائح:
+	Small	صغير
+	Small Caps	أحرف كبيرة صغيرة
+	Small Caps (on the roadmap)	أحرف كبيرة صغيرة (ضمن خطة العمل)
+	Small Caps:	أحرف كبيرة صغيرة:
+	Small List View	عرض قائمة صغيرة
+	Small Thumbnail View	عرض صور مصغرة صغيرة
+	Small Thumbnails	صور مصغرة صغيرة
+	Smaller ↔ Larger	أصغر ↔ أكبر
+	Smart Guides	الأدلة الذكية
+	Smart Guides (View → Smart Guides)	الأدلة الذكية (عرض ← الأدلة الذكية)
+	Smart Guides (⌘U)	الأدلة الذكية (⌘U)
+	Smart Punctuation…	علامات ترقيم ذكية…
+	Smooth	ناعم
+	Smooth Color	لون ناعم
+	Smooth Tool	أداة التنعيم
+	Snap Curves To Lines	محاذاة المنحنيات إلى خطوط
+	View:	العرض:
+	Tracing Result	نتيجة التتبّع
+	Tracing Result with Outlines	نتيجة التتبّع مع الخطوط الخارجية
+	Outlines	الخطوط الخارجية
+	Outlines with Source Image	الخطوط الخارجية مع الصورة المصدر
+	Source Image	الصورة المصدر
+	Image Trace View	عرض تتبّع الصورة
+	Snap Options	خيارات المحاذاة
+	Snap to Glyph	محاذاة إلى الحرف
+	Snap to Grid	محاذاة إلى الشبكة
+	Snap to Pixel	محاذاة إلى البكسل
+	Snap to Point	محاذاة إلى النقطة
+	Snapping Tolerance	تفاوت المحاذاة
+	Social Square Post 1080×1080	منشور مربع للتواصل الاجتماعي 1080×1080
+	Soft Light	ضوء ناعم
+	Solid	مصمت
+	Sort by Kind	ترتيب حسب النوع
+	Sort by Name	ترتيب حسب الاسم
+	Sort by Status	ترتيب حسب الحالة
+	Source code on GitHub	الكود المصدري على GitHub
+	Source Sans 3	Source Sans 3
+	Space After Paragraph	مسافة بعد الفقرة
+	Space Before Paragraph	مسافة قبل الفقرة
+	Spaces	المسافات
+	Spacing Guides	أدلة التباعد
+	Spacing:	التباعد:
+	Spanish	الإسبانية
+	Specified Distance	مسافة محددة
+	Specified Steps	خطوات محددة
+	Specify:	تحديد:
+	Spectrum Gradients	تدرّجات الطيف
+	Spelling	الإملاء
+	Spiral	لولب
+	Spiral Tool	أداة اللولب
+	Split Freeform Line	تقسيم الخط الحر
+	Split Into Grid	تقسيم إلى شبكة
+	Split Into Grid…	تقسيم إلى شبكة…
+	Split Path	تقسيم المسار
+	spot	موضعي
+	Spot Color	لون موضعي
+	Spot Colors	ألوان موضعية
+	Spot Colors…	ألوان موضعية…
+	Spread:	الانتشار:
+	Square	مربع
+	Squeeze…	ضغط…
+	Stacked Bar Graph Tool	أداة الرسم البياني الشريطي المكدّس
+	Stacked Column Graph Tool	أداة الرسم البياني العمودي المكدّس
+	Stair Step	درجات السلم
+	Standard Ligatures	الحروف المركّبة القياسية
+	Standard Vertical Roman Alignment	محاذاة رومانية عمودية قياسية
+	Standard:	القياسي:
+	Star	نجمة
+	Star Tool	أداة النجمة
+	Start arrowhead	رأس السهم في البداية
+	Start Global Edit	بدء التحرير العام
+	Status	الحالة
+	Steps:	الخطوات:
+	Stop Editing Opacity Mask	إيقاف تحرير قناع الشفافية
+	Stop editing the opacity mask	إيقاف تحرير قناع الشفافية
+	Stop Playing/Recording	إيقاف التشغيل/التسجيل
+	Stray Points	نقاط شاردة
+	Strikethrough	يتوسطه خط
+	Stroke	الحدود
+	Stroke (X), double-click for the Color Picker	الحدود (X)، وانقر مرتين لمنتقي الألوان
+	Stroke Color	لون الحدود
+	Stroke Options	خيارات الحدود
+	Character:	الحرف:
+	Character options	خيارات الحرف
+	Stroke options	خيارات الحدود
+	Transform options	خيارات التحويل
+	Stroke Weight	سماكة الحدود
+	Stroke:	الحدود:
+	Stroke: click for swatches, Shift-click for the color mixer	الحدود: انقر للعينات، وShift+نقر لخلّاط الألوان
+	Style	النمط
+	Style Attributes	سمات النمط
+	Style Attributes (Entity References)	سمات النمط (مراجع الكيانات)
+	Style Name:	اسم النمط:
+	Style:	النمط:
+	Styling:	التنسيق:
+	Stylize	أسلبة
+	Subdivisions	التقسيمات الفرعية
+	Subscript	منخفض
+	Subscript (on the roadmap)	منخفض (ضمن خطة العمل)
+	Subscript:	منخفض:
+	Subset fonts below:	تجزئة الخطوط تحت:
+	Subtract	طرح
+	Suffix	اللاحقة
+	Summary	الملخّص
+	Superscript	مرتفع
+	Superscript (on the roadmap)	مرتفع (ضمن خطة العمل)
+	Superscript:	مرتفع:
+	SVG Filters	مرشحات SVG
+	SVG Interactivity	تفاعلية SVG
+	SVG Options	خيارات SVG
+	SVG Profile:	ملف تعريف SVG:
+	Swap Fill and Stroke	تبديل التعبئة والحدود
+	Swap Fill and Stroke (Shift+X)	تبديل التعبئة والحدود (Shift+X)
+	Swap start and end arrowheads	تبديل رأسي السهم في البداية والنهاية
+	Swap the selected object for the file, keeping its place and transform	استبدال الكائن المحدد بالملف مع الحفاظ على مكانه وتحويله
+	Swash	حروف مزخرفة
+	Swatch Conflict	تعارض عينة
+	Swatch Conflicts	تعارضات العينات
+	Swatch Libraries	مكتبات العينات
+	Swatch Libraries Menu	قائمة مكتبات العينات
+	Swatch Library	مكتبة العينات
+	Swatch Name:	اسم العينة:
+	Swatch Options	خيارات العينة
+	Swatch Options…	خيارات العينة…
+	Swatch Tiles	بلاطات العينات
+	Swatches	العينات
+	Switch workspace	تبديل مساحة العمل
+	Symbol Instance	نسخة رمز
+	Symbol Libraries	مكتبات الرموز
+	Symbol Libraries (on the roadmap)	مكتبات الرموز (ضمن خطة العمل)
+	Symbol Screener Tool	أداة شفافية الرموز
+	Symbol Scruncher Tool	أداة تقريب الرموز
+	Symbol Shifter Tool	أداة إزاحة الرموز
+	Symbol Sizer Tool	أداة تحجيم الرموز
+	Symbol Spinner Tool	أداة تدوير الرموز
+	Symbol Sprayer	رشّاش الرموز
+	Symbol Sprayer Tool	أداة رشّاش الرموز
+	Symbol Stainer Tool	أداة تلوين الرموز
+	Symbol Styler Tool	أداة تنسيق الرموز
+	Symbolism Tool	أداة الرموز
+	Symbols	الرموز
+	System Layout	تخطيط النظام
+	Tab	Tab
+	Tab Stops	علامات الجدولة
+	Tabs	علامات الجدولة
+	Tabular Lining	أرقام جدولية
+	Tabular Oldstyle	أرقام جدولية قديمة الطراز
+	Target	الهدف
+	Target Contents	استهداف المحتوى
+	Target:	الهدف:
+	Tate-chu-yoko	Tate-chu-yoko
+	Temperature	الحرارة
+	Temperature/Tint…	الحرارة/الصبغة…
+	Template	قالب
+	Templates	القوالب
+	Templates Folder	مجلد القوالب
+	Templates…	القوالب…
+	Text Displayed in Cell:	النص المعروض في الخلية:
+	Text Export Options	خيارات تصدير النص
+	Text Fill Color	لون تعبئة النص
+	Text Import Options	خيارات استيراد النص
+	Text Stroke Color	لون حدود النص
+	Text Wrap	التفاف النص
+	Text Wrap Options	خيارات التفاف النص
+	Text Wrap Options…	خيارات التفاف النص…
+	The bounds of the visible art.	حدود العمل المرئي.
+	The cell shows the type object's text as HTML.	الخلية تعرض نص الكائن النصي كـ HTML.
+	The document has no colour swatches.	المستند لا يحتوي على عينات ألوان.
+	The edge of the paper the printer can't reach: the art goes inside it, and the preview shows it dashed.	حافة الورقة التي لا تصلها الطابعة: العمل يكون داخلها، والمعاينة تُظهرها متقطعة.
+	The page as it prints	الصفحة كما تُطبع
+	the preset	الإعداد
+	The Print Tiling tool placed the pages.	أداة تجانب الطباعة وضعت الصفحات.
+	The selected objects have no CSS of their own (see below).	الكائنات المحددة ليس لها CSS خاص بها (انظر أدناه).
+	The system's settings of this printer	إعدادات النظام لهذه الطابعة
+	Thin Space	مسافة رفيعة
+	Third Space	ثلث مسافة
+	Third Vanishing Point:	نقطة التلاشي الثالثة:
+	This document already has a swatch named “{name}” with another color.	المستند فيه عينة باسم «{name}» بلون آخر.
+	This library is empty.	هذه المكتبة فارغة.
+	This panel is on the roadmap (see the parity plan).	هذه اللوحة ضمن خطة العمل (راجع خطة التكافؤ).
+	Threaded Text	نص مترابط
+	Threads	روابط النص
+	Three Point	ثلاث نقاط
+	Three Point Perspective	منظور بثلاث نقاط
+	Three Point Perspective Preset 1	إعداد منظور بثلاث نقاط 1
+	Three Point Perspective Preset 2	إعداد منظور بثلاث نقاط 2
+	Three Point Perspective Preset 3	إعداد منظور بثلاث نقاط 3
+	Three Point Perspective Preset 4	إعداد منظور بثلاث نقاط 4
+	Three Point Perspective Preset 5	إعداد منظور بثلاث نقاط 5
+	Threshold	العتبة
+	Thumbnail View	عرض الصور المصغرة
+	Thumbnails:	الصور المصغرة:
+	Tile	تجانب
+	Tile Edge Color	لون حافة البلاطة
+	Tile Edge Color…	لون حافة البلاطة…
+	Tile Full Pages	تجانب الصفحات الكاملة
+	Tile Range:	نطاق البلاطات:
+	Tile Type:	نوع البلاطة:
+	tile {number}	البلاطة {number}
+	Tiles are numbered across, then down; leave the range empty for every tile.	البلاطات مرقّمة أفقياً ثم عمودياً؛ اترك النطاق فارغاً لكل البلاطات.
+	Tint	صبغة
+	Tip extends past the end point	الطرف يتجاوز نقطة النهاية
+	Tip on the end point	الطرف على نقطة النهاية
+	Title Case	أحرف كبيرة في بداية الكلمات
+	to	إلى
+	Toggle Fill/Stroke Focus	تبديل التركيز بين التعبئة والحدود
+	Toggle Selection	تبديل التحديد
+	Toggle single/double column	تبديل عمود واحد/عمودين
+	Tolerance	التفاوت
+	Tolerance:	التفاوت:
+	Tool Option	خيار الأداة
+	Tool Options…	خيارات الأداة…
+	Toolbar: Advanced / Basic	شريط الأدوات: متقدم / أساسي
+	Toolbar: Single/Double Column	شريط الأدوات: عمود واحد/عمودان
+	Toolbars	أشرطة الأدوات
+	Tools	الأدوات
+	Top	أعلى
+	Top in Front	الأعلى في الأمام
+	Top:	الأعلى:
+	Total Width:	العرض الكلي:
+	Touch Type Tool	أداة اللمس للنص
+	Trace	تتبّع
+	Trace the image with the Default preset	تتبّع الصورة بالإعداد الافتراضي
+	Tracking	التتبّع
+	Trademark Symbol	رمز العلامة التجارية
+	Transform	تحويل
+	Transform Again	التحويل مرة أخرى
+	Transform Both	تحويل الاثنين
+	Transform Each	تحويل كل واحد
+	Transform Each…	تحويل كل واحد…
+	Transform in Perspective	التحويل بالمنظور
+	Transform Object Only	تحويل الكائن فقط
+	Transform Panel	لوحة التحويل
+	Transform Pattern Only	تحويل النقش فقط
+	Transform Pattern Tiles	تحويل بلاطات النقش
+	Transform Patterns	تحويل النقوش
+	Transform Tools	أدوات التحويل
+	Transforms	التحويلات
+	Transform…	تحويل…
+	Transparency	الشفافية
+	Transparency Flattener Presets	إعدادات تسطيح الشفافية
+	Transparency Flattener Presets…	إعدادات تسطيح الشفافية…
+	Transparency Grid	شبكة الشفافية
+	Transparency Info	معلومات الشفافية
+	Transparency is flattened with the preset. Type is written as outlines; gradients as bands of colour.	الشفافية تُسطّح بالإعداد. النص يُكتب كخطوط خارجية؛ والتدرّجات كشرائط ألوان.
+	Transparency is flattened with the preset. Type is written as outlines; gradients stay smooth.	الشفافية تُسطّح بالإعداد. النص يُكتب كخطوط خارجية؛ والتدرّجات تبقى ناعمة.
+	Transparency Options	خيارات الشفافية
+	Transparent	شفاف
+	Transparent (Default)	شفاف (افتراضي)
+	Transparent Background	خلفية شفافة
+	Transverse (the page a quarter turn on the paper)	عرضي (الصفحة بربع دورة على الورقة)
+	Trap…	معالجة التداخل…
+	Trim	تشذيب
+	Trim mark weight:	سماكة علامة القص:
+	Trim marks	علامات القص
+	Trim View	عرض القص
+	True colour needs version 2004 or later: the nearest of 256 colours is written.	الألوان الحقيقية تحتاج إصدار 2004 أو أحدث: يُكتب أقرب لون من 256 لوناً.
+	Turn off Data Recovery for complex documents	إيقاف استعادة البيانات للمستندات المعقدة
+	Tweak…	تعديل طفيف…
+	Twirl Rate:	معدل الالتفاف:
+	Twirl Tool	أداة الالتفاف
+	Twist…	لفّ…
+	Two Point	نقطتان
+	Two Point Perspective	منظور بنقطتين
+	Two Point Perspective Preset 1	إعداد منظور بنقطتين 1
+	Two Point Perspective Preset 2	إعداد منظور بنقطتين 2
+	Two Point Perspective Preset 3	إعداد منظور بنقطتين 3
+	Two Point Perspective Preset 4	إعداد منظور بنقطتين 4
+	Two Point Perspective Preset 5	إعداد منظور بنقطتين 5
+	Type	نص
+	Type becomes outlines, and strokes a CAD line can't draw become filled shapes.	يصبح النص خطوطاً خارجية، والحدود التي لا يرسمها خط CAD تصبح أشكالاً معبأة.
+	Type Object Selection by Path Only	تحديد الكائن النصي بالمسار فقط
+	Type on a Path	نص على مسار
+	Type on a Path Options	خيارات النص على مسار
+	Type on a Path Options…	خيارات النص على مسار…
+	Type on a Path Tool	أداة النص على مسار
+	Type Orientation	اتجاه النص
+	Type stays text, and every stroke is a line with its lineweight and dashes.	يبقى النص نصاً، وكل حد يصبح خطاً بسماكته وشرطاته.
+	Type Tool	أداة النص
+	Type:	النوع:
+	Type…	نص…
+	UI Brightness	سطوع الواجهة
+	UI Scaling	تحجيم الواجهة
+	Underline	تسطير
+	Undo	تراجع
+	Undo {name}	تراجع {name}
+	Undo {}	تراجع {}
+	Unembed	إلغاء التضمين
+	Unembedded to {}	أُلغي التضمين إلى {}
+	Unembed…	إلغاء التضمين…
+	Ungroup	فك التجميع
+	Ungroup Color Group	فك مجموعة الألوان
+	Unicode	Unicode
+	Unicode (UTF-16)	Unicode (UTF-16)
+	Unicode (UTF-8)	Unicode (UTF-8)
+	Uniform	موحّد
+	Unique	فريد
+	Unite	توحيد
+	Unite and Simplify	توحيد وتبسيط
+	Units	الوحدات
+	Units:	الوحدات:
+	Units: {units}	الوحدات: {units}
+	Unlink harmony colors	فك ربط ألوان التناغم
+	Unlink Opacity Mask	فك ربط قناع الشفافية
+	Unlink the mask	فك ربط القناع
+	Unlock	فتح القفل
+	Unlock All	فتح قفل الكل
+	Unlock All Layers	فتح قفل كل الطبقات
+	Unlock Grid	فتح قفل الشبكة
+	Unlock Guides	فتح قفل الأدلة
+	Unnamed Objects	كائنات بدون اسم
+	Unprintable margin:	الهامش غير القابل للطباعة:
+	Unshift	إلغاء الإزاحة
+	Untitled	بدون عنوان
+	Update Link	تحديث الرابط
+	Update Links	تحديث الروابط
+	Update Modified Links	تحديث الروابط المعدّلة
+	Updated {} image(s)	تم تحديث {} صورة
+	UPPERCASE	أحرف كبيرة
+	URL:	الرابط:
+	Use 	استخدم
+	Use Artboards	استخدام لوحات الرسم
+	Use Black Point Compensation	استخدام تعويض النقطة السوداء
+	Use Compression	استخدام الضغط
+	Use document bleed settings	استخدام إعدادات نزف المستند
+	Use Even-Odd Fill Rule	استخدام قاعدة التعبئة الفردي-الزوجي
+	Use Japanese Crop Marks	استخدام علامات القص اليابانية
+	Use Low Resolution Proxy for Linked EPS	استخدام نسخة منخفضة الدقة لملفات EPS المرتبطة
+	Use Non-Zero Winding Fill Rule	استخدام قاعدة التعبئة غير الصفرية
+	Use Precise Cursors	استخدام مؤشرات دقيقة
+	Use Pressure Pen	استخدام قلم الضغط
+	Use Preview Bounds	استخدام حدود المعاينة
+	Use Registration Point for Symbol	استخدام نقطة التسجيل للرمز
+	Use Square for Previews	استخدام مربع للمعاينات
+	Use Text for Previews	استخدام نص للمعاينات
+	Use the document's swatch: pasted colors take its color.	استخدام عينة المستند: الألوان الملصقة تأخذ لونها.
+	Use the Selected Text's Font	استخدام خط النص المحدد
+	Use Typographer's Quotes	استخدام علامات الاقتباس الطباعية
+	User Defined	تعريفات المستخدم
+	User Defined Libraries	مكتبات المستخدم
+	User Graphic Style Library 1	مكتبة الأنماط الرسومية للمستخدم 1
+	User Graphic Style Library 10	مكتبة الأنماط الرسومية للمستخدم 10
+	User Graphic Style Library 2	مكتبة الأنماط الرسومية للمستخدم 2
+	User Graphic Style Library 3	مكتبة الأنماط الرسومية للمستخدم 3
+	User Graphic Style Library 4	مكتبة الأنماط الرسومية للمستخدم 4
+	User Graphic Style Library 5	مكتبة الأنماط الرسومية للمستخدم 5
+	User Graphic Style Library 6	مكتبة الأنماط الرسومية للمستخدم 6
+	User Graphic Style Library 7	مكتبة الأنماط الرسومية للمستخدم 7
+	User Graphic Style Library 8	مكتبة الأنماط الرسومية للمستخدم 8
+	User Graphic Style Library 9	مكتبة الأنماط الرسومية للمستخدم 9
+	User Interface	واجهة المستخدم
+	User Library	مكتبة المستخدم
+	User Preset	إعداد المستخدم
+	User Swatch Library 1	مكتبة عينات المستخدم 1
+	User Swatch Library 10	مكتبة عينات المستخدم 10
+	User Swatch Library 2	مكتبة عينات المستخدم 2
+	User Swatch Library 3	مكتبة عينات المستخدم 3
+	User Swatch Library 4	مكتبة عينات المستخدم 4
+	User Swatch Library 5	مكتبة عينات المستخدم 5
+	User Swatch Library 6	مكتبة عينات المستخدم 6
+	User Swatch Library 7	مكتبة عينات المستخدم 7
+	User Swatch Library 8	مكتبة عينات المستخدم 8
+	User Swatch Library 9	مكتبة عينات المستخدم 9
+	V Spacing:	التباعد العمودي:
+	V:	ع:
+	Variable Width Profile	ملف تعريف العرض المتغير
+	Variables	المتغيرات
+	Variation:	التنويع:
+	Vector Effects	التأثيرات المتجهية
+	Vector Halftone	نقطية نصفية متجهية
+	Vector Halftone…	نقطية نصفية متجهية…
+	Vector illustration — fast, open, scriptable.	رسم متجهي — سريع، مفتوح، قابل للبرمجة.
+	ShibShib rsm didn't quit normally last time. These documents had unsaved changes:	لم يُغلق ShibShib rsm بشكل طبيعي في المرة السابقة. هذه المستندات فيها تغييرات غير محفوظة:
+	ShibShib rsm Help…	مساعدة ShibShib rsm…
+	ShibShib rsm Website	موقع ShibShib rsm
+	ShibShib rsm on GitHub	ShibShib rsm على GitHub
+	Vectors	المتجهات
+	Version {version} — open-source vector illustration in pure Rust.	الإصدار {version} — رسم متجهي مفتوح المصدر بلغة Rust.
+	Version:	الإصدار:
+	Vertical	عمودي
+	Vertical %	عمودي %
+	Vertical Align Bottom	محاذاة عمودية للأسفل
+	Vertical Align Center	محاذاة عمودية للمنتصف
+	Vertical Align Top	محاذاة عمودية للأعلى
+	Vertical Area Type Tool	أداة نص المنطقة العمودي
+	Vertical Distribute Bottom	توزيع عمودي على الأسفل
+	Vertical Distribute Center	توزيع عمودي على المراكز
+	Vertical Distribute Space	توزيع المسافات عمودياً
+	Vertical Distribute Top	توزيع عمودي على الأعلى
+	Vertical Scale %	المقياس العمودي %
+	Vertical Type on a Path Tool	أداة النص العمودي على مسار
+	Vertical Type Tool	أداة النص العمودي
+	Vertical:	عمودي:
+	Very High	عالية جداً
+	View	عرض
+	View Artboard Only	عرض لوحة الرسم فقط
+	View Opacity Mask	عرض قناع الشفافية
+	View PDF after saving	عرض PDF بعد الحفظ
+	View {n}	طريقة العرض {n}
+	Viewing Angle:	زاوية الرؤية:
+	Viewing Distance:	مسافة الرؤية:
+	W:	ع:
+	Warnings	التحذيرات
+	Warp	تطويع
+	Warp Options	خيارات التطويع
+	Warp Tool	أداة التطويع
+	Wave…	موجة…
+	Web 1920×1080	ويب 1920×1080
+	Web Safe 216	آمن للويب 216
+	Web Safe RGB	RGB آمن للويب
+	Web Shift	إزاحة الويب
+	Web Snap:	محاذاة الويب:
+	Weight	السماكة
+	Weight:	السماكة:
+	Welcome to ShibShib rsm	أهلاً بك في شبشب رسم
+	When pasting text	عند لصق النص
+	White	أبيض
+	Widget Position:	موضع الأداة:
+	Width	العرض
+	Width and Height	العرض والارتفاع
+	Width Point	نقطة العرض
+	Width Point Edit	تعديل نقطة العرض
+	Width Point Edit…	تعديل نقطة العرض…
+	Width Profile	ملف تعريف العرض
+	Width Profiles	ملفات تعريف العرض
+	Width Tool	أداة العرض
+	Width:	العرض:
+	Window	نافذة
+	Windows	Windows
+	Working CMYK	CMYK العمل
+	Working CMYK (don't tag)	CMYK العمل (بدون وسم)
+	Workspace	مساحة العمل
+	Workspace {i}	مساحة العمل {i}
+	Wrinkle Tool	أداة التجعّد
+	Write Layers	كتابة الطبقات
+	XML ID	XML ID
+	Yards	ياردة
+	Yellow	أصفر
+	Your browser downloads the files (several as one .zip).	متصفحك ينزّل الملفات (عدة ملفات في ‎.zip واحد).
+	Your changes will be lost if you don't save them.	ستضيع تغييراتك إذا لم تحفظها.
+	Zig Zag…	متعرّج…
+	Zoom In	تكبير
+	Zoom Out	تصغير
+	Zoom to Selection	تكبير إلى التحديد
+	Zoom Tool	أداة التكبير
+	Zoom with Mouse Wheel	التكبير بعجلة الفأرة
+	Scrub Numeric Fields by Dragging	تغيير الحقول الرقمية بالسحب
+	{count} file(s) in {folder}{note}. Show the package folder?	{count} ملف في {folder}{note}. إظهار مجلد الحزمة؟
+	{count} linked file(s) not found	{count} ملف مرتبط غير موجود
+	{count} linked image(s) changed since this document was saved. Show the new versions?	{count} صورة مرتبطة تغيّرت منذ حفظ هذا المستند. إظهار النسخ الجديدة؟
+	{count} more rules: Export writes every one.	{count} قاعدة أخرى: التصدير يكتبها كلها.
+	{count} unnamed objects left out: name them, or turn on Unnamed Objects in the panel menu.	تُركت {count} كائنات بدون اسم: سمّها، أو فعّل «كائنات بدون اسم» في قائمة اللوحة.
+	{effect} is already applied	{effect} مطبّق مسبقاً
+	{format} Options	خيارات {format}
+	{kind} Gradient	تدرّج {kind}
+	{kind} Style Options…	خيارات نمط {kind}…
+	{kind}, {model}	{kind}، {model}
+	{name} (spot)	{name} (موضعي)
+	{pages} in all, {count} per copy	{pages} إجمالاً، {count} لكل نسخة
+	{page} of {count}	{page} من {count}
+	{percent}% opacity	شفافية {percent}%
+	{secs} sec	{secs} ث
+	{shortcut} with the tool sizes the brush	{shortcut} مع الأداة يغيّر حجم الفرشاة
+	{title} (selection)	{title} (التحديد)
+	{tool} Options	خيارات {tool}
+	{tool} Tool Options	خيارات أداة {tool}
+	{warning}: click to correct to the closest color ({hex})	{warning}: انقر للتصحيح إلى أقرب لون ({hex})
+	“{file}” is protected by a password.	«{file}» محمي بكلمة مرور.
+	● Recording	● جارٍ التسجيل
+@plural	{n} item|{n} items	{n} عنصر|{n} عنصر|{n} عنصران|{n} عناصر|{n} عنصراً|{n} عنصر
+@plural	Color Table ({n} color)|Color Table ({n} colors)	جدول الألوان ({n} لون)|جدول الألوان ({n} لون)|جدول الألوان ({n} لونان)|جدول الألوان ({n} ألوان)|جدول الألوان ({n} لوناً)|جدول الألوان ({n} لون)
+@plural	Delete this {n} graphic style?|Delete these {n} graphic styles?	حذف هذا النمط الرسومي ({n})؟|حذف هذا النمط الرسومي ({n})؟|حذف النمطين الرسوميين ({n})؟|حذف هذه الأنماط الرسومية ({n})؟|حذف هذه الأنماط الرسومية ({n})؟|حذف هذه الأنماط الرسومية ({n})؟
+@plural	{n} Layer|{n} Layers	{n} طبقة|{n} طبقة|{n} طبقتان|{n} طبقات|{n} طبقة|{n} طبقة
+@plural	{n} Object|{n} Objects	{n} كائن|{n} كائن|{n} كائنان|{n} كائنات|{n} كائناً|{n} كائن
+@plural	{n} area highlighted|{n} areas highlighted	{n} منطقة مميزة|{n} منطقة مميزة|{n} منطقتان مميزتان|{n} مناطق مميزة|{n} منطقة مميزة|{n} منطقة مميزة
+@plural	{n} color|{n} colors	{n} لون|{n} لون|{n} لونان|{n} ألوان|{n} لوناً|{n} لون
+@plural	{n} fill|{n} fills	{n} تعبئة|{n} تعبئة|{n} تعبئتان|{n} تعبئات|{n} تعبئة|{n} تعبئة
+@plural	{n} glyph|{n} glyphs	{n} حرف|{n} حرف|{n} حرفان|{n} أحرف|{n} حرفاً|{n} حرف
+@plural	{n} object highlighted|{n} objects highlighted	{n} كائن مميز|{n} كائن مميز|{n} كائنان مميزان|{n} كائنات مميزة|{n} كائناً مميزاً|{n} كائن مميز
+@plural	{n} star|{n} stars	{n} نجمة|{n} نجمة|{n} نجمتان|{n} نجمات|{n} نجمة|{n} نجمة
+@plural	{n} step|{n} steps	{n} خطوة|{n} خطوة|{n} خطوتان|{n} خطوات|{n} خطوة|{n} خطوة
+@plural	{n} stroke|{n} strokes	{n} حد|{n} حد|{n} حدّان|{n} حدود|{n} حداً|{n} حد
+	 the object to select  |  	 الكائن لتحديده  |
+	 to select multiple objects  |  	 لتحديد عدة كائنات  |
+	 the object to duplicate	 الكائن لتكراره
+	 an anchor or path segment to select it  |  	 نقطة ربط أو مقطع مسار لتحديده  |
+	 to move  |  	 للتحريك  |
+	 to add	 للإضافة
+	 to add a corner point  |  	 لإضافة نقطة زاوية  |
+	 to add a smooth point  |  	 لإضافة نقطة ناعمة  |
+	 to close  |  	 للإغلاق  |
+	 to finish	 للإنهاء
+	 to add smooth points  |  	 لإضافة نقاط ناعمة  |
+	 to toggle corner  |  	 لتبديل الزاوية  |
+	 to create point type  |  	 لإنشاء نص نقطي  |
+	 to create area type  |  	 لإنشاء نص منطقة  |
+	 to exit editing	 للخروج من التحرير
+	 to draw  |  	 للرسم  |
+	 to constrain proportions  |  	 لتقييد التناسب  |
+	 from center  |  	 من المركز  |
+	 for exact size	 للحجم الدقيق
+	 to set the reference point  |  	 لتعيين النقطة المرجعية  |
+	 to transform  |  	 للتحويل  |
+	 for exact values	 للقيم الدقيقة
+	 to pan the view	 لتحريك العرض
+	 to zoom in  |  	 للتكبير  |
+	 to zoom out  |  	 للتصغير  |
+	 to zoom into an area	 لتكبير منطقة
+	Hold	اضغط مطولاً
+	 right or left to zoom in or out  |  	 يميناً أو يساراً للتكبير أو التصغير  |
+	 to keep zooming	 لمتابعة التكبير
+	 an object to copy its attributes  |  	 كائناً لنسخ سماته  |
+	 to apply the selection's to it  |  	 لتطبيق سمات التحديد عليه  |
+	 to sample a color	 لأخذ عينة لون
+	 across a selected object to set the gradient direction	 عبر كائن محدد لتعيين اتجاه التدرّج
+	 to select an artboard  |  	 لتحديد لوحة رسم  |
+	 on the canvas to create one	 على مساحة العمل لإنشاء واحدة
+	 a stroke to add a width point  |  	 حداً لإضافة نقطة عرض  |
+	 to change one side  |  	 لتغيير جانب واحد  |
+	 to select more points  |  	 لتحديد نقاط أكثر  |
+	 a point to edit it  |  	 نقطة لتعديلها  |
+	 to remove points	 لإزالة النقاط
+	 the art to add a pin  |  	 العمل لإضافة دبوس  |
+	 to select more pins  |  	 لتحديد دبابيس أكثر  |
+	 a pin to warp  |  	 دبوساً للتطويع  |
+	 near a selected pin to rotate  |  	 قرب دبوس محدد للتدوير  |
+	 to remove pins	 لإزالة الدبابيس
+	 across paths to push them along  |  	 عبر المسارات لدفعها  |
+	 to size the brush (	 لتغيير حجم الفرشاة (
+	 keeps its proportions)	 يحافظ على التناسب)
+	 over paths, and hold still to keep going  |  	 فوق المسارات، وابقَ ثابتاً للمتابعة  |
+	 over paths to roughen their outlines  |  	 فوق المسارات لتخشين حوافها  |
+	 to move in perspective  |  	 للتحريك بالمنظور  |
+	 to copy  |  	 للنسخ  |
+	 while dragging to move perpendicular to the plane  |  	 أثناء السحب للتحريك عمودياً على المستوى  |
+	 to scale in perspective	 لتغيير المقياس بالمنظور
+	 an object, then another to blend them  |  	 كائناً، ثم آخر لمزجهما  |
+	 to blend from it  |  	 للمزج منه  |
+	 to set spacing and orientation	 لتعيين التباعد والاتجاه
+	:	:
+	Isolate Selected Group	عزل المجموعة المحددة
+	Release Clipping Mask	تحرير قناع القص
+	Make Compound Path	إنشاء مسار مركّب
+	Release Compound Path	تحرير المسار المركّب
+	  — substituted by {style}	  — مستبدل بـ {style}
+	  — {n} characters from another font	  — {n} حرف من خط آخر
+	[Normal Character Style]	[نمط الحروف العادي]
+	[Normal Paragraph Style]	[نمط الفقرة العادي]
+	Top-to-Top Leading	تباعد أسطر من أعلى لأعلى
+	Bottom-to-Bottom Leading	تباعد أسطر من أسفل لأسفل
+	Burasagari	Burasagari
+	Force	إجباري
+	About	حول
+	Contributors	المساهمون
+	Models	النماذج
+	Username	اسم المستخدم
+	Display name	الاسم المعروض
+	Real name	الاسم الحقيقي
+	Sort	ترتيب
+	Reverse the order	عكس الترتيب
+	Grab bag	عشوائي
+	Table	جدول
+	Name (A–Z)	الاسم (أ–ي)
+	Merged PRs	طلبات الدمج المدموجة
+	Commits	الإيداعات
+	Lines added	الأسطر المضافة
+	Lines deleted	الأسطر المحذوفة
+	Line delta	فرق الأسطر
+	Binary assets added	الأصول الثنائية المضافة
+	Binary assets removed	الأصول الثنائية المحذوفة
+	First commit	أول إيداع
+	Last commit	آخر إيداع
+	First	الأول
+	Last	الأخير
+	{people} contributors · {commits} commits	{people} مساهم · {commits} إيداع
+	No contributor data was built into this copy.	لا توجد بيانات مساهمين في هذه النسخة.
+	No model credits were built into this copy.	لا توجد اعتمادات نماذج في هذه النسخة.
+	Company	الشركة
+	Version	الإصدار
+	% of all commits	% من كل الإيداعات
+	Lines +/−	الأسطر +/−
+	Joins	الوصلات
+	Miter	حادة
+	Bevel	مشطوفة
+	Offset	الإزاحة
+	Axis	المحور
+axis	Horizontal	أفقي
+axis	Vertical	عمودي
+axis	Both	كلاهما
+	Drag to move	اسحب للتحريك
+	Drag to float as a toolbar	اسحب للتعويم كشريط أدوات
+	Put back in the toolbar	إرجاع إلى شريط الأدوات
+	Float Panel	تعويم اللوحة
+	Dock Panel	إرساء اللوحة
+	Drag to float the panel group	اسحب لتعويم مجموعة اللوحات
+	Put back in the dock	إرجاع إلى الرصيف
+	Drag to float the toolbar	اسحب لتعويم شريط الأدوات
+	Drag to the window's left edge to dock	اسحب إلى الحافة اليسرى للنافذة للإرساء
+	Float Tool Group	تعويم مجموعة الأدوات
+@msg	a layer couldn't be read	تعذّرت قراءة طبقة
+@msg	it has more than one artboard	فيه أكثر من لوحة رسم
+@msg	it has no page	ليس فيه صفحة
+@msg	it has too many text objects	فيه كائنات نصية كثيرة جداً
+@msg	it has too much text	فيه نص كثير جداً
+@msg	its editing data doesn't say where its artboard is	بيانات التحرير فيه لا تحدد مكان لوحة الرسم
+@msg	its editing data has no layers	بيانات التحرير فيه بلا طبقات
+@msg	its editing data is damaged	بيانات التحرير فيه تالفة
+@msg	its editing data is for a different page	بيانات التحرير فيه لصفحة أخرى
+@msg	its layers use {_1}, which aren't read yet	طبقاته تستخدم {_1}، وهي غير مقروءة بعد
+@msg	its page has text, and its layers have no text objects to put it in	صفحته فيها نص، وطبقاته بلا كائنات نصية لوضعه فيها
+@msg	the art on them differs from the page's in {_1}% of it	العمل عليها يختلف عن الصفحة في {_1}% منه
+@msg	`to` must be "corner" or "smooth"	`to` يجب أن يكون "corner" أو "smooth"
+@msg	BMP files are RGB or grayscale: colorModel rgb or gray	ملفات BMP بنظام RGB أو تدرّج رمادي: colorModel rgb أو gray
+@msg	Blend colors: select at least three objects with filled colours	مزج الألوان: حدد ثلاثة كائنات على الأقل بألوان تعبئة
+@msg	Combine Slices: the slices have no bounds	دمج الشرائح: الشرائح بلا حدود
+@msg	Convert to Artboards: selection has no area	التحويل إلى لوحات رسم: التحديد بلا مساحة
+@msg	Convert to Shape: no rectangles or ellipses selected	التحويل إلى شكل: لا توجد مستطيلات أو أشكال بيضاوية محددة
+@msg	Copied the CSS of {rules} object(s)	نُسخ CSS لـ {rules} كائن
+@msg	Corners edits the corners of a path	«الزوايا» يعدّل زوايا المسار
+@msg	Couldn't copy to the system clipboard: {e}	تعذّر النسخ إلى حافظة النظام: {e}
+@msg	Couldn't open {name}: {e}	تعذّر فتح {name}: {e}
+@msg	Couldn't place {name}: the document it was dropped on was closed	تعذّر وضع {name}: المستند الذي أُفلت عليه أُغلق
+@msg	Couldn't read {name}: {e}	تعذّرت قراءة {name}: {e}
+@msg	Couldn't save recovery data: {e}	تعذّر حفظ بيانات الاستعادة: {e}
+@msg	Create Outlines: select text objects	إنشاء خطوط خارجية: حدد كائنات نصية
+@msg	Create from Guides: the document has no artboard	إنشاء من الأدلة: المستند بلا لوحة رسم
+@msg	Create from Guides: the guides make more than {MAX_PIECES} slices	إنشاء من الأدلة: الأدلة تنتج أكثر من {MAX_PIECES} شريحة
+@msg	Create from Selection: the selection has no area	إنشاء من التحديد: التحديد بلا مساحة
+@msg	Data Recovery has nowhere to keep copies: set Preferences → File Handling → Data Recovery → Folder (recoveryFolder)	استعادة البيانات لا تجد مكاناً لحفظ النسخ: اضبط التفضيلات ← التعامل مع الملفات ← استعادة البيانات ← المجلد (recoveryFolder)
+@msg	direct-select anchor points to cut at (not the end points of open paths)	حدد نقاط الربط مباشرة للقطع عندها (ليس نقاط نهاية المسارات المفتوحة)
+@msg	Divide Objects Below: select a path	تقسيم الكائنات في الأسفل: حدد مساراً
+@msg	Divide Objects Below: select exactly one path	تقسيم الكائنات في الأسفل: حدد مساراً واحداً بالضبط
+@msg	Downloaded {_1} file(s)	تم تنزيل {_1} ملف
+@msg	Downloaded {what}	تم تنزيل {what}
+@msg	Expand Appearance: the selection has a basic appearance	توسيع المظهر: التحديد بمظهر أساسي
+@msg	Expand: no brush strokes selected	توسيع: لا توجد ضربات فرشاة محددة
+@msg	Expand: no gradient fills	توسيع: لا توجد تعبئات تدرّج
+@msg	Expand: nothing to expand	توسيع: لا شيء للتوسيع
+@msg	Exported {count} file(s) to {folder}	تم تصدير {count} ملف إلى {folder}
+@msg	Exported {path}	تم تصدير {path}
+@msg	Flatten Transparency: select objects to flatten	تسطيح الشفافية: حدد كائنات لتسطيحها
+@msg	Flatten Transparency: {e}	تسطيح الشفافية: {e}
+@msg	Image Trace: the traced image is missing	تتبّع الصورة: الصورة المتتبَّعة مفقودة
+@msg	Imported {what}: {_1}	تم استيراد {what}: {_1}
+@msg	Installed plug-in {_1}	تم تثبيت الإضافة {_1}
+@msg	Internal error: {msg} (please report this bug)	خطأ داخلي: {msg} (يرجى الإبلاغ عن هذا الخلل)
+@msg	Live Paint Merge: select a Live Paint group and the paths to add	دمج التلوين الحي: حدد مجموعة تلوين حي والمسارات المراد إضافتها
+@msg	Live Paint: select paths or compound paths	التلوين الحي: حدد مسارات أو مسارات مركّبة
+@msg	Live Paint: these paths are too degenerate to paint	التلوين الحي: هذه المسارات متدهورة جداً للتلوين
+@msg	Make Guides: select paths	إنشاء أدلة: حدد مسارات
+@msg	No saved selections (Select → Save Selection…)	لا توجد تحديدات محفوظة (تحديد ← حفظ التحديد…)
+@msg	No saved views (View → New View…)	لا توجد طرق عرض محفوظة (عرض ← طريقة عرض جديدة…)
+@msg	Offset Path: select paths	إزاحة المسار: حدد مسارات
+@msg	Opened with {_1} note(s): {_2}	فُتح مع {_1} ملاحظة: {_2}
+@msg	Opened {url}	تم فتح {url}
+@msg	Outline Stroke: no stroked paths selected	تحويل الحد إلى خط خارجي: لا توجد مسارات بحدود محددة
+@msg	PDF settings are not an object	إعدادات PDF ليست كائناً
+@msg	PDF writer error: {0}	خطأ في كاتب PDF: {0}
+@msg	Packaged {n} file(s) in {folder}{note}	تم تجميع {n} ملف في {folder}{note}
+@msg	Packaged {n} file(s){note}	تم تجميع {n} ملف{note}
+@msg	Preview in Browser needs the desktop app (the web downloads files instead)	المعاينة في المتصفح تحتاج تطبيق سطح المكتب (نسخة الويب تنزّل الملفات بدلاً من ذلك)
+@msg	Release Guides: no guides	تحرير الأدلة: لا توجد أدلة
+@msg	Release: no layer to put the rectangle in	تحرير: لا توجد طبقة لوضع المستطيل فيها
+@msg	Replace Spine: select a blend and a path	استبدال العمود الفقري: حدد مزجاً ومساراً
+@msg	select two or more objects to distribute	حدد كائنين أو أكثر للتوزيع
+@msg	select paths or anchor points	حدد مسارات أو نقاط ربط
+@msg	SVG parse error: {0}	خطأ في تحليل SVG: {0}
+@msg	Save for Web: the image is empty	الحفظ للويب: الصورة فارغة
+@msg	Save writes {_1}, not {_2}: use document.export for other formats	الحفظ يكتب {_1} وليس {_2}: استخدم document.export للصيغ الأخرى
+@msg	Saved recovery data for {title}	تم حفظ بيانات الاستعادة لـ {title}
+@msg	Saved to User Defined: {_1}	حُفظ في تعريفات المستخدم: {_1}
+@msg	Saved {path}	تم حفظ {path}
+@msg	Select text or click into text with the Type tool to insert glyphs	حدد نصاً أو انقر داخل نص بأداة النص لإدراج حروف
+@msg	Shape Builder: no region under the pointer	منشئ الأشكال: لا توجد منطقة تحت المؤشر
+@msg	Shape Builder: select paths or compound paths	منشئ الأشكال: حدد مسارات أو مسارات مركّبة
+@msg	Show All Hidden Attributes: nothing is hidden	إظهار كل السمات المخفية: لا شيء مخفي
+@msg	Split Into Grid: select paths large enough for the grid	تقسيم إلى شبكة: حدد مسارات كبيرة بما يكفي للشبكة
+@msg	Targa files are RGB: colorModel rgb	ملفات Targa بنظام RGB: colorModel rgb
+@msg	Text Wrap: select a wrap object	التفاف النص: حدد كائن الالتفاف
+@msg	`aspect` must be a number (%)	`aspect` يجب أن يكون رقماً (%)
+@msg	`at` must be [x, y]	`at` يجب أن يكون [x, y]
+@msg	`color` must be a colour	`color` يجب أن يكون لوناً
+@msg	`command` must be a command whose menu item opens a dialog (see ui.menuDialog)	`command` يجب أن يكون أمراً يفتح عنصر قائمته مربع حوار (راجع ui.menuDialog)
+@msg	`freeform.points` must be an array	`freeform.points` يجب أن يكون مصفوفة
+@msg	`gradient` must be an object	`gradient` يجب أن يكون كائناً
+@msg	`library` is a library id or name (see {list})	`library` معرّف مكتبة أو اسمها (راجع {list})
+@msg	`mode` applies to freeform gradients	`mode` ينطبق على التدرّجات الحرة
+@msg	`sampleSize` must be 1, 3 or 5	`sampleSize` يجب أن يكون 1 أو 3 أو 5
+@msg	`stops` must be an array	`stops` يجب أن يكون مصفوفة
+@msg	`svg` must be an object of SVG options (see document.formats)	`svg` يجب أن يكون كائن خيارات SVG (راجع document.formats)
+@msg	`{_1}` is no save command	`{_1}` ليس أمر حفظ
+@msg	`{area}` is no recovery area name	`{area}` ليس اسم منطقة استعادة
+@msg	`{color}` is not a colour (#rrggbb or a preset name)	`{color}` ليس لوناً (#rrggbb أو اسم إعداد)
+@msg	`{id}` has no envelope dialog	`{id}` بلا مربع حوار غلاف
+@msg	`{keep}` is not a side of this axis	`{keep}` ليس جانباً من هذا المحور
+@msg	`{key}` must be `auto` or a language code such as `en` or `zh-hant`	`{key}` يجب أن يكون `auto` أو رمز لغة مثل `en` أو `zh-hant`
+@msg	`{key}` must be a #rrggbb colour	`{key}` يجب أن يكون لوناً #rrggbb
+@msg	`{key}` must be a number	`{key}` يجب أن يكون رقماً
+@msg	`{key}` must be a string	`{key}` يجب أن يكون نصاً
+@msg	`{key}` must be a whole number	`{key}` يجب أن يكون عدداً صحيحاً
+@msg	`{key}` must be a whole number between {min} and {max} (got {x})	`{key}` يجب أن يكون عدداً صحيحاً بين {min} و{max} (القيمة {x})
+@msg	`{key}` must be between {min} and {max} (got {x})	`{key}` يجب أن يكون بين {min} و{max} (القيمة {x})
+@msg	`{key}` must be one of {_1}	`{key}` يجب أن يكون أحد {_1}
+@msg	`{key}` must be true or false	`{key}` يجب أن يكون true أو false
+@msg	`{k}` must be [x, y]	`{k}` يجب أن يكون [x, y]
+@msg	`{name}` has no options	`{name}` بلا خيارات
+@msg	`{name}` is a built-in workspace; choose another name	`{name}` مساحة عمل مدمجة؛ اختر اسماً آخر
+@msg	`{name}` is a process colour: tints apply to global and spot colours	`{name}` لون طباعة: الدرجات تنطبق على الألوان العامة والموضعية
+@msg	`{name}` is no recovery entry name	`{name}` ليس اسم إدخال استعادة
+@msg	`{name}` isn't a colour swatch	`{name}` ليس عينة لون
+@msg	`{path}` must be a bool or an object of bools	`{path}` يجب أن يكون قيمة منطقية أو كائناً من القيم المنطقية
+@msg	`{s}` is not a colour (#rrggbb or a preset name)	`{s}` ليس لوناً (#rrggbb أو اسم إعداد)
+@msg	`{tool}` isn't a Liquify tool	`{tool}` ليست أداة تسييل
+@msg	`{tool}` isn't a freehand tool	`{tool}` ليست أداة رسم حر
+@msg	`{to}` is not an available name	`{to}` ليس اسماً متاحاً
+@msg	a PostScript error ({name} in `{op}`)	خطأ PostScript ({name} في `{op}`)
+@msg	a PostScript error ({name} in `{op}`), in {procs}	خطأ PostScript ({name} في `{op}`)، في {procs}
+@msg	a PostScript error ({name} in `{op}`: {at})	خطأ PostScript ({name} في `{op}`: {at})
+@msg	a PostScript error ({name} in `{op}`: {at}), in {procs}	خطأ PostScript ({name} في `{op}`: {at})، في {procs}
+@msg	a PostScript error ({name})	خطأ PostScript ({name})
+@msg	a bitmap is empty	صورة نقطية فارغة
+@msg	a bitmap is too large to read	صورة نقطية أكبر من أن تُقرأ
+@msg	a colour index is 0 to {_1}, not {n}	فهرس اللون من 0 إلى {_1}، وليس {n}
+@msg	a colour is an index, #rrggbb or a preset name, not {v}	اللون فهرس أو #rrggbb أو اسم إعداد، وليس {v}
+@msg	a document needs at least one artboard	المستند يحتاج لوحة رسم واحدة على الأقل
+@msg	a document needs at least one layer	المستند يحتاج طبقة واحدة على الأقل
+@msg	a freeform gradient keeps at least one point	التدرّج الحر يحتفظ بنقطة واحدة على الأقل
+@msg	a gradient needs at least two stops	التدرّج يحتاج نقطتي توقف على الأقل
+@msg	a graphic style named `{to}` already exists	يوجد نمط رسومي باسم `{to}` مسبقاً
+@msg	a page is missing	صفحة مفقودة
+@msg	a page out of range	صفحة خارج النطاق
+@msg	a page tree kid isn't a reference	عنصر في شجرة الصفحات ليس مرجعاً
+@msg	a page tree node has no kids	عقدة في شجرة الصفحات بلا عناصر
+@msg	a page's placement is not finite	موضع صفحة غير محدود
+@msg	a preset named `{_1}` exists	يوجد إعداد باسم `{_1}`
+@msg	a slice size must be a positive number of points	حجم الشريحة يجب أن يكون عدداً موجباً من النقاط
+@msg	a stream runs past the end	تيار بيانات يتجاوز النهاية
+@msg	a stream's length is wrong	طول تيار بيانات خاطئ
+@msg	a stream's length isn't a number	طول تيار بيانات ليس رقماً
+@msg	add a format to export	أضف صيغة للتصدير
+@msg	already editing a pattern	يجري تحرير نقش مسبقاً
+@msg	an object can't be read	تعذّرت قراءة كائن
+@msg	an object in perspective would leave the edited grid	كائن بالمنظور سيخرج من الشبكة المعدّلة
+@msg	antiAlias `{id}`: none, art or type	antiAlias `{id}`: none أو art أو type
+@msg	artboard {0} does not exist	لوحة الرسم {0} غير موجودة
+@msg	at this scale the drawing is {w} × {h} pt, more than the canvas holds: choose a smaller scale or fit it to the artboard	بهذا المقياس يصبح الرسم {w} × {h} pt، أكبر مما تتسعه مساحة العمل: اختر مقياساً أصغر أو لائمه مع لوحة الرسم
+@msg	background {other}: transparent, white, black or a colour such as "#ff8800"	الخلفية {other}: transparent أو white أو black أو لون مثل "#ff8800"
+@msg	bad color {v}	لون غير صالح {v}
+@msg	bad colour `{hex}` (#rrggbb)	لون غير صالح `{hex}` (#rrggbb)
+@msg	bad page tree	شجرة صفحات غير صالحة
+@msg	bad shortcut	اختصار غير صالح
