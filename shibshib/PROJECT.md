@@ -1,6 +1,6 @@
 # ShibShib — ملف المشروع (اقرأه أولاً)
 
-آخر تحديث: 2026-10-10. هذا الملف هو نقطة البداية لأي جلسة جديدة. اقرأه بدل إعادة استكشاف المشروع، وحدّثه في نهاية كل جلسة.
+آخر تحديث: 2026-10-10 (بعد جلسة البرينستورم). هذا الملف هو نقطة البداية لأي جلسة جديدة. اقرأه بدل إعادة استكشاف المشروع، وحدّثه في نهاية كل جلسة.
 
 ## 1. الفكرة
 
@@ -15,6 +15,9 @@
 | effectat (تأثيرات) | After Effects | EffectCraft | لاحقاً |
 | 7rrek (حرّك) | Animate/Flash | **نبنيه فوق rsm**: timeline، tweens، frame by frame | بعد rsm مباشرة |
 | sharek (شارك) | Figma | Penpot على الأغلب، ويحتاج سيرفر | لاحقاً |
+| ttshat (تحشات) | Lightroom | LightCraft (من نفس عائلة ArtCraft) | سهل، بعد 7rrek |
+| mzika (مزيكا) | FL Studio | LMMS (GPL) | لاحقاً: مقامات بربع تون، آلات وإيقاعات شرقية |
+| aswat (أصوات) | Audition | Audacity/Tenacity (GPL) أو SoundCraft، يحتاج فحصاً | لاحقاً: تحويل الكلام العربي لنص |
 
 اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/testAd/Logos`.
 
@@ -61,22 +64,44 @@
 3. **rsm:**
    - تم: fork، وتغيير الاسم، والأيقونة، والـ credits، ونسخة Mac (`dist/ShibShib rsm.app`)، ونسخة ويب.
    - تم: اللغة العربية بالكامل، 3652 جملة. الحروف تتصل صح، وترتيب الكلمات صحيح.
-4. **آخر نقطة وقفنا عندها (2026-10-09):**
-   - الترجمة كاملة ومرفوعة على `main`، **لكن الويب لم يُحدَّث بها بعد**.
-   - اختبار جديد فاشل: `tests_nativemenu::language_and_appearance_are_in_the_app_menu`، والسبب غالباً إضافة العربي لقائمة اللغات. **لازم يتصلّح أولاً.**
-   - اختبار `save_a_copy_and_template_suggest_their_names` يفشل في upstream نفسه، فليس من عندنا.
-   - upstream عنده commits جديدة لم ندمجها بعد.
+4. **آخر نقطة (2026-10-10):**
+   - تصلّح اختبار قائمة اللغات ("English" يبقى بالإنجليزية).
+   - الأرقام مثل 1920×1080 صارت صحيحة في النص العربي.
+   - انشال زر Discord ورابط ArtCraft من الواجهة.
+   - الويب محدّث بالواجهة العربية الكاملة.
+   - صارت عندنا 4 سكيلز خاصة في `.claude/skills/` (انظر §8).
+   - الاختبار الوحيد الفاشل هو `save_a_copy_and_template_suggest_their_names`، ويفشل في upstream نفسه.
+   - لم ندمج تحديثات upstream بعد (استعمل `shibshib-sync`).
+
+## 4.5 قرارات البرينستورم (2026-10-10)
+
+- **الخطّاط (لوحة الخط العربي داخل rsm)** هي الإضافة الحقيقية لشبشب، وتأتي بعد RTL مباشرة. فيها:
+  - كشيدة تمتد بالسحب، وبدائل الحروف، وتحريك التشكيل.
+  - التركيب على طريقة الثلث والديواني، وقوالب تكوينات.
+  - التنفيذ clean-room: لا نفكك برامج مغلقة مثل كلك أو Tasmeem. الأساس هو harfrust الموجود، وخطوط Google المفتوحة (Amiri وAref Ruqaa وReem Kufi وScheherazade New).
+- **الاستقلال (hard fork):** حمزة يريد لاحقاً fork مستقلاً، مع نسب الأصل في قائمة منفصلة.
+  - **إلزامي:** ملفات الرخصة، وسطور الحقوق، ومحتوى NOTICE.
+  - **اختياري:** الشكر في README أو About، ولافتة "forked from" (فصلها عبر دعم GitHub).
+  - **الخطة:** `CREDITS.md`، وسطر واحد في README وAbout.
+  - **التوقيت:** بعد أن تتعمق تعديلاتنا (RTL، الخطّاط، الأسماء الداخلية).
+  - البرامج المبنية على GPL تبقى GPL.
+- الحزمة صارت 10 برامج. ترتيب الأولوية:
+  1. rsm مع RTL والخطّاط.
+  2. 7rrek.
+  3. ttshat.
+  4. mzika.
+  5. الباقي.
 
 ## 5. شو بدنا نعمل (بالترتيب)
 
-1. إصلاح اختبار قائمة اللغات، ثم مراجعة screenshot الواجهة العربية، ثم رفع الويب.
-2. دمج upstream، ثم `rebrand.py`، ثم الاختبارات.
+1. ~~إصلاح الاختبار ورفع الويب~~ ✅
+2. دمج upstream بسكيل `shibshib-sync`.
 3. **قلب الواجهة لليمين (RTL):** اللوحات والقوائم وشريط الأدوات والمحاذاة. هذا أصعب جزء، لأن egui لا يقلب الواجهة تلقائياً.
-4. إزالة بقايا ArtCraft من الواجهة: زر Discord في الشريط، ورابط "ArtCraft website" في صفحة الترحيب.
-5. ترجمة شاشة الترحيب: أسماء مقاسات القوالب والروابط.
+4. ~~إزالة بقايا ArtCraft من الواجهة~~ ✅
+5. **الخطّاط:** لوحة الخط العربي (انظر §4.5).
 6. اقتراح الترجمة العربية على upstream كـ Pull Request.
 7. **7rrek:** timeline وkeyframes وonion skin وmotion/shape tweens وsymbols بـ timeline خاص، والتصدير إلى فيديو وGIF وLottie.
-8. بعدها: tlween ثم tsweer ثم effectat ثم trteeb (عندما يجهز upstream)، ثم sharek.
+8. بعدها: ttshat، ثم mzika، ثم tlween وtsweer وeffectat، ثم aswat، ثم trteeb (عندما يجهز upstream)، ثم sharek. كلها عبر سكيل `shibshib-fork-app`.
 9. لاحقاً: تغيير الأسماء الداخلية بالكامل، وربط الموقع the-247.com.
 
 ## 6. أوامر متكررة
@@ -139,11 +164,11 @@ python3 shibshib/ar-work/assemble.py                    # بناء ar.tsv
 | `skill-creator` | لبناء السكيلز الخاصة بنا (تحت) |
 | `fewer-permission-prompts` | تقليل طلبات الإذن للأوامر الآمنة المتكررة |
 
-**سكيلز نبنيها لاحقاً بـ `skill-creator`:**
-1. **`shibshib-sync`:** fetch، ثم merge من upstream، ثم `rebrand.py`، ثم الاختبارات، ثم assets وbrands، ثم تقرير بما تغيّر.
-2. **`shibshib-release`:** بناء Mac والويب، ورفع gh-pages، وفحص screenshot عربي وإنجليزي.
-3. **`shibshib-arabic`:** إضافة جمل جديدة من upstream للترجمة (`check.py` و`assemble.py`)، مع قاموس مصطلحات ثابت.
-4. **`shibshib-fork-app`:** fork برنامج جديد من ArtCraft بنفس الخطوات: rebrand وأيقونة وcredits وعربي. نستعمله لـ tlween وtsweer وeffectat.
+**سكيلزنا الخاصة (موجودة في `.claude/skills/` داخل الريبو، وتعمل عندما تبدأ الجلسة من مجلد الريبو):**
+1. **`shibshib-sync`:** fetch، ثم merge من upstream، ثم `rebrand.py`، ثم الاختبارات، ثم assets وbrands، ثم تقرير.
+2. **`shibshib-release`:** بناء Mac والويب، وscreenshots عربي وإنجليزي، ورفع gh-pages. فيه `scripts/release.sh` و`scripts/screenshot.mjs`.
+3. **`shibshib-arabic`:** إضافة الجمل الجديدة للترجمة (`scripts/new_strings.py`)، مع قاموس مصطلحات ثابت.
+4. **`shibshib-fork-app`:** وصفة fork برنامج جديد (تقييم، fork، rebrand، credits، عربي، نشر).
 
 **قواعد الجودة:**
 - لا commit بدون اختبارات تمرّ، أو ذكر صريح للاختبار الفاشل وسببه.
