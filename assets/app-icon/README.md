@@ -1,25 +1,14 @@
-# VectorCraft app icon
+# ShibShib rsm app icon
 
-**Creature:** a regal engraved dragon, VectorCraft's mascot.
+**Artwork:** the ShibShib rsm mark (`docs/shibshib/mark-rsm-white.svg`), white on a black tile. It
+replaces upstream VectorCraft's dragon icon.
 
-**Style:** an engraving-style portrait in the Crafting Apps owl template (the FilmCraft owl): a tight
-head-and-shoulders portrait on a full-bleed field, no frame or roundel, with the body running off the tile.
+**Palette:** ink `#ffffff` on field `#000000`.
 
-**Palette** (exactly three colours):
-
-| Colour | Hex | Used for |
-|---|---|---|
-| Ink | `#0b0b0c` | line work and contour |
-| Paper | `#efe9dc` | the figure |
-| VectorCraft colour | `#e8573f` | the full-bleed field |
-
-**Tile:** `viewBox="0 0 512 512"`, a rounded square with `rx=112`, clipped. The macOS files add Apple's
-transparent margin (tile = 824/1024 of the canvas); Windows and Linux use the tile edge to edge.
-
-**Provenance:** the owner's original ArtCraft drawing (2880 px, keyed to the palette), vectorised with
-craftrules `assets/logo-options/_tools/vectorize_tile.py`. The drawing is kept in craftrules at
-`craftrules/assets/app-icons/vectorcraft/source.png`, not here. `vectorcraft.svg` is the canonical
-artwork. Licence: see `LICENSE.txt`.
+**Tile:** `viewBox="0 0 512 512"`, a rounded square with `rx=112`, clipped, with the mark inset 72
+units on each side. The macOS files add Apple's transparent margin (tile = 824/1024 of the canvas);
+Windows and Linux use the tile edge to edge. File names keep upstream's `vectorcraft` names so the
+build and packaging scripts work unchanged. Regenerate everything with `packaging/icons.sh`.
 
 ## Files
 
