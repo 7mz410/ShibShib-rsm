@@ -24,6 +24,7 @@
 //!   rows hold whole messages or templates such as `Couldn't open {name}: {e}`, and the values in
 //!   the placeholders are translated in turn (the reason after `: {e}` is often a message too).
 
+mod bidi;
 mod catalog;
 
 use std::sync::OnceLock;
@@ -48,6 +49,18 @@ pub struct LangInfo {
 
 fn plural_one_other(n: u64) -> usize {
     usize::from(n != 1)
+}
+
+/// Arabic: zero, one, two, few (n % 100 in 3–10), many (n % 100 in 11–99), other.
+fn plural_arabic(n: u64) -> usize {
+    match (n, n % 100) {
+        (0, _) => 0,
+        (1, _) => 1,
+        (2, _) => 2,
+        (_, 3..=10) => 3,
+        (_, 11..=99) => 4,
+        _ => 5,
+    }
 }
 
 fn plural_none(_: u64) -> usize {
@@ -81,10 +94,12 @@ fn plural_russian(n: u64) -> usize {
 }
 
 /// The registry. English first: it is the fallback and the source language.
-pub static LANGUAGES: [LangInfo; 10] = [
+pub static LANGUAGES: [LangInfo; 11] = [
     LangInfo { code: "en", name: "English", source: "", plural: plural_one_other, complete_menus: false, catalog: OnceLock::new() },
     // Japanese: the whole interface (every menu string and `tl!` literal), keeping the product,
     // workspace and perspective preset names in English (`MENU_KEEP_AS_IS`).
+    // Arabic (ShibShib): partial, being completed; drawn with IBM Plex Sans Arabic.
+    LangInfo { code: "ar", name: "العربية", source: include_str!("ar.tsv"), plural: plural_arabic, complete_menus: false, catalog: OnceLock::new() },
     LangInfo { code: "ja", name: "日本語", source: include_str!("ja.tsv"), plural: plural_none, complete_menus: true, catalog: OnceLock::new() },
     // Czech: every menu label (`menu_catalogs_translate_every_menu_label`); panels and dialogs not yet.
     LangInfo { code: "cs", name: "Čeština", source: include_str!("cs.tsv"), plural: plural_czech, complete_menus: false, catalog: OnceLock::new() },
@@ -151,7 +166,13 @@ pub static LANGUAGES: [LangInfo; 10] = [
 
 impl LangInfo {
     fn catalog(&self) -> &Catalog {
-        self.catalog.get_or_init(|| Catalog::parse(self.source))
+        self.catalog.get_or_init(|| {
+            if bidi::RTL_CODES.contains(&self.code) {
+                Catalog::parse(&bidi::visual_catalog(self.source))
+            } else {
+                Catalog::parse(self.source)
+            }
+        })
     }
 }
 

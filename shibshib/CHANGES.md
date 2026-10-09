@@ -23,3 +23,12 @@ git fetch upstream
 git merge upstream/main          # resolve conflicts in branded strings in favour of upstream
 python3 shibshib/rebrand.py      # re-apply the branding
 ```
+
+## Arabic interface
+
+- Arabic (`ar`) added to the interface languages, with a catalog in `crates/ui-egui/src/i18n/ar.tsv`
+  (being completed) and Arabic plural rules.
+- IBM Plex Sans Arabic (OFL) added to the UI fonts so Arabic draws without system fonts, including
+  in the web build.
+- `crates/ui-egui/src/i18n/bidi.rs` stores right-to-left translations in visual order, because egui
+  shapes words but lays them out left to right.

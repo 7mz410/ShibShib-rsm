@@ -1,0 +1,29 @@
+# Arabic (ar) catalog, ShibShib addition. Same format as zh-hant.tsv:  context <TAB> source <TAB> translation
+#
+# Written from the meaning of the English labels in Modern Standard Arabic, using the terms Arabic
+# designers know for vector illustration (لوحة الرسم، الطبقات، التعبئة، الحدود، القلم، نقطة الربط).
+# Commands use the imperative-free noun or verb form common in Arabic software menus (فتح، حفظ، تصدير).
+# Plurals have six forms: zero|one|two|few|many|other (see `plural_arabic` in i18n/mod.rs).
+#
+# Coverage: partial, being completed. Strings without a row show in English.
+	File	ملف
+	Edit	تحرير
+	Object	كائن
+	Type	نص
+	Select	تحديد
+	Effect	تأثير
+	View	عرض
+	Window	نافذة
+	Help	مساعدة
+	New file	ملف جديد
+	Open	فتح
+	Quickly start a new file	ابدأ ملفاً جديداً بسرعة
+	Community	المجتمع
+	Welcome to ShibShib rsm	أهلاً بك في شبشب رسم
+	Vector illustration — fast, open, scriptable.	رسم متجهي — سريع، مفتوح، قابل للبرمجة.
+	Properties	الخصائص
+	Layers	الطبقات
+	Libraries	المكتبات
+	No document open	لا يوجد مستند مفتوح
+	Search commands and tools	ابحث في الأوامر والأدوات
+	Selection	التحديد

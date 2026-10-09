@@ -241,11 +241,15 @@ pub fn install_fonts(ctx: &egui::Context) {
     add(&mut fonts, "SourceSans3", include_bytes!("../../../assets/fonts/SourceSans3-Regular.ttf"));
     add(&mut fonts, "SourceSans3-Semibold", include_bytes!("../../../assets/fonts/SourceSans3-Semibold.ttf"));
     add(&mut fonts, "JetBrainsMono", include_bytes!("../../../assets/fonts/JetBrainsMono-Regular.ttf"));
-    let fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
+    // ShibShib: Arabic UI text, right after the Latin faces in every family.
+    add(&mut fonts, "IBMPlexSansArabic", include_bytes!("../../../assets/fonts/IBMPlexSansArabic-Regular.ttf"));
+    add(&mut fonts, "IBMPlexSansArabic-SemiBold", include_bytes!("../../../assets/fonts/IBMPlexSansArabic-SemiBold.ttf"));
+    let mut fallback: Vec<String> = fonts.families.get(&FontFamily::Proportional).cloned().unwrap_or_default();
+    fallback.insert(0, "IBMPlexSansArabic".to_string());
     let mut prop = vec!["SourceSans3".to_string()];
     prop.extend(fallback.clone());
     fonts.families.insert(FontFamily::Proportional, prop);
-    let mut semi = vec!["SourceSans3-Semibold".to_string()];
+    let mut semi = vec!["SourceSans3-Semibold".to_string(), "IBMPlexSansArabic-SemiBold".to_string()];
     semi.extend(fallback.clone());
     fonts.families.insert(FontFamily::Name(FONT_UI_SEMIBOLD.into()), semi);
     let mut ui = vec!["SourceSans3".to_string()];
