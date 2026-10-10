@@ -166,6 +166,7 @@ python3 shibshib/ar-work/assemble.py                    # بناء ar.tsv
 | `replica-test` | خطة اختبار كاملة للأدوات (click-through وPlaywright) |
 | `replica-diff` | قياس التكافؤ مع Illustrator وما الذي ينقص |
 | `ponytail` | أبسط حل يعمل، ومنع التعقيد |
+| `caveman` | ردود قصيرة ومباشرة بدون حشو. حمزة بيفضّلها، شغّلها من أول الجلسة |
 | `humanizer` | تحسين نصوص الـ README والإعلانات قبل النشر |
 | `artifact-design` و`docs` | صفحات وتقارير نشاركها |
 | `loop` / `schedule` | متابعة upstream بشكل دوري، مثلاً تقرير يومي بالجديد |
