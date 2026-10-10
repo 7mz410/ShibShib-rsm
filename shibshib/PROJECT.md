@@ -19,7 +19,7 @@
 | mzika (مزيكا) | FL Studio | LMMS (GPL) | لاحقاً: مقامات بربع تون، آلات وإيقاعات شرقية |
 | aswat (أصوات) | Audition | Audacity/Tenacity (GPL) أو SoundCraft، يحتاج فحصاً | لاحقاً: تحويل الكلام العربي لنص |
 
-اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/ShibShib/logos`.
+اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/ShibShib/logos` (الشعار الرئيسي: `shibshib_main.svg`). بعد أي تعديل على اللوغوهات: انسخها لـ `suite/`، وأعد توليد `rsm-white.svg`، وأضف أي ملف جديد لـ `ASSETS.md`. أيقونة البرنامج تأتي من `mark-rsm-white.svg` (عبر `packaging/icons.sh`).
 
 ## 2. الأماكن المهمة
 
