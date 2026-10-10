@@ -3743,3 +3743,17 @@ axis	Both	Les deux
 	Insert Inline Symbol	Insérer un symbole dans le texte
 	ICF Top/Right	ICF haut/droite
 	ICF Bottom/Left	ICF bas/gauche
+	AI Agents…	Agents IA…
+	AI Agents	Agents IA
+	Add this to the agent's MCP settings:	Ajoutez ceci aux réglages MCP de l’agent :
+	Agents can connect now.	Les agents peuvent se connecter.
+	Agents need the desktop app.	Les agents nécessitent l’app de bureau.
+	Allow AI agents to control this app	Autoriser les agents IA à contrôler cette app
+	Connect	Connecter
+	Connect an agent app	Connecter une app d’agent
+	Connected	Connecté
+	Other agents	Autres agents
+	AI agents such as Claude and Gemini can work in this app while you watch.	Les agents IA comme Claude et Gemini peuvent travailler dans cette app sous vos yeux.
+	They connect on this computer only.	Ils se connectent uniquement sur cet ordinateur.
+	Adds this app to the agent's settings.	Ajoute cette app aux réglages de l’agent.
+	Restart the agent app afterwards.	Redémarrez ensuite l’app de l’agent.

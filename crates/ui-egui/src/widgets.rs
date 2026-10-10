@@ -972,8 +972,15 @@ fn choice_row(ui: &mut Ui, label: &str, enabled: bool) -> (Rect, Response, Color
         ui.painter().layout_no_wrap(tl!(label).to_string(), egui::FontId::proportional(12.5), if enabled { t.text } else { t.text_disabled });
     let (rect, resp) =
         ui.allocate_exact_size(vec2(18.0 + galley.size().x, 20.0f32.max(galley.size().y)), if enabled { Sense::click() } else { Sense::hover() });
-    let bx = Rect::from_min_size(pos2(rect.left(), rect.center().y - 6.5), Vec2::splat(13.0));
-    ui.painter().galley(pos2(bx.right() + 5.0, rect.center().y - galley.size().y / 2.0), galley, t.text);
+    // ShibShib: right to left, the box sits on the right and its label to its left.
+    let (bx, text_x) = if egui::is_rtl() {
+        let bx = Rect::from_min_size(pos2(rect.right() - 13.0, rect.center().y - 6.5), Vec2::splat(13.0));
+        (bx, bx.left() - 5.0 - galley.size().x)
+    } else {
+        let bx = Rect::from_min_size(pos2(rect.left(), rect.center().y - 6.5), Vec2::splat(13.0));
+        (bx, bx.right() + 5.0)
+    };
+    ui.painter().galley(pos2(text_x, rect.center().y - galley.size().y / 2.0), galley, t.text);
     let border = if !enabled {
         t.divider
     } else if resp.hovered() {

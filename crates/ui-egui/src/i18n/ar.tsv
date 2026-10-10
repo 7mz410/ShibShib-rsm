@@ -3710,3 +3710,17 @@ axis	Both	كلاهما
 @msg	an image whose data is cut short was left out	أُهملت صورة بياناتها مقطوعة
 @msg	its editing data doesn't say where its art is	بيانات التعديل فيه لا تحدد مكان العمل الفني
 @msg	this file was saved without PDF compatibility, and its editing data can't be read ({why})	حُفظ هذا الملف بدون توافق مع PDF، ولا يمكن قراءة بيانات التعديل فيه ({why})
+	AI Agents	وكلاء الذكاء الاصطناعي
+	AI Agents…	وكلاء الذكاء الاصطناعي…
+	Add this to the agent's MCP settings:	أضف هذا إلى إعدادات MCP في الوكيل:
+	Agents can connect now.	يمكن للوكلاء الاتصال الآن.
+	Agents need the desktop app.	الوكلاء يحتاجون نسخة سطح المكتب.
+	Allow AI agents to control this app	السماح لوكلاء الذكاء الاصطناعي بالتحكم بهذا البرنامج
+	Connect	اتصال
+	Connect an agent app	ربط برنامج وكيل
+	Connected	متصل
+	Other agents	وكلاء آخرون
+	AI agents such as Claude and Gemini can work in this app while you watch.	يستطيع وكلاء الذكاء الاصطناعي مثل Claude وGemini العمل هنا وأنت تشاهد.
+	They connect on this computer only.	يتصلون على هذا الجهاز فقط.
+	Adds this app to the agent's settings.	يضيف هذا البرنامج إلى إعدادات الوكيل.
+	Restart the agent app afterwards.	أعد تشغيل برنامج الوكيل بعدها.

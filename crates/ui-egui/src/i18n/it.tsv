@@ -3732,3 +3732,17 @@ axis	Both	Entrambi
 	Constrain	Vincola
 	Free Transform	Trasformazione libera
 	Perspective Distort	Distorsione prospettica
+	AI Agents…	Agenti IA…
+	AI Agents	Agenti IA
+	Add this to the agent's MCP settings:	Aggiungi questo alle impostazioni MCP dell’agente:
+	Agents can connect now.	Gli agenti possono collegarsi ora.
+	Agents need the desktop app.	Gli agenti richiedono l’app desktop.
+	Allow AI agents to control this app	Consenti agli agenti IA di controllare questa app
+	Connect	Collega
+	Connect an agent app	Collega un’app agente
+	Connected	Collegato
+	Other agents	Altri agenti
+	AI agents such as Claude and Gemini can work in this app while you watch.	Gli agenti IA come Claude e Gemini possono lavorare in questa app mentre guardi.
+	They connect on this computer only.	Si collegano solo su questo computer.
+	Adds this app to the agent's settings.	Aggiunge questa app alle impostazioni dell’agente.
+	Restart the agent app afterwards.	Poi riavvia l’app dell’agente.

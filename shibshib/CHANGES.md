@@ -42,3 +42,8 @@ python3 shibshib/rebrand.py      # re-apply the branding
   (`assets/app-icon/rsm-document.icns`). Applied by `rebrand.py` (`EXT_FILES`, `EXT_TESTS`).
 - Right-to-left interface for Arabic through a patched egui in `vendor/egui` (`shibshib/RTL.md`),
   with `crates/ui-egui/tests/rtl.rs`. Arabic `{placeholders}` stay whole in visual order.
+- Help › AI Agents (`crates/ui-egui/src/agents.rs`, `apps/vectorcraft/src/shibshib_agents.rs`):
+  allow agents to control the app (the localhost control channel then starts with the app; the
+  choice is saved in `shibshib-agents.json` next to the preferences), and add the app's MCP server
+  to Claude Desktop, Claude Code or Gemini CLI. Strings for other languages: `shibshib/i18n/`.
+- Checkboxes and radio buttons put their box on the right in the right-to-left interface.

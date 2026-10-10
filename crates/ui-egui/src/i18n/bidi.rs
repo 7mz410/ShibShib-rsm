@@ -76,14 +76,14 @@ fn keep_sizes_together(line: &str) -> String {
     let mut in_placeholder = vec![false; chars.len()];
     let mut i = 0;
     while i < chars.len() {
-        if chars[i] == '{' {
-            if let Some(len) = chars[i + 1..].iter().position(|&c| c == '}') {
-                let name = &chars[i + 1..i + 1 + len];
-                if !name.is_empty() && name.iter().all(|c| c.is_ascii_alphanumeric() || *c == '_') {
-                    in_placeholder[i..=i + 1 + len].fill(true);
-                    i += len + 2;
-                    continue;
-                }
+        if chars[i] == '{'
+            && let Some(len) = chars[i + 1..].iter().position(|&c| c == '}')
+        {
+            let name = &chars[i + 1..i + 1 + len];
+            if !name.is_empty() && name.iter().all(|c| c.is_ascii_alphanumeric() || *c == '_') {
+                in_placeholder[i..=i + 1 + len].fill(true);
+                i += len + 2;
+                continue;
             }
         }
         i += 1;
@@ -114,7 +114,15 @@ fn tokens(s: &str) -> Vec<&str> {
         Space,
         Other,
     }
-    let kind = |c: char| if is_rtl(c) { Kind::Word } else if c.is_whitespace() { Kind::Space } else { Kind::Other };
+    let kind = |c: char| {
+        if is_rtl(c) {
+            Kind::Word
+        } else if c.is_whitespace() {
+            Kind::Space
+        } else {
+            Kind::Other
+        }
+    };
     let mut out = Vec::new();
     let mut start = 0;
     let mut prev: Option<Kind> = None;

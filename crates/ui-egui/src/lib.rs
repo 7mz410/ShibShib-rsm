@@ -13,6 +13,7 @@ macro_rules! tl {
     };
 }
 
+pub mod agents;
 pub mod background;
 mod brand;
 pub mod canvas;
@@ -238,6 +239,8 @@ pub struct Services {
     pub print: Option<Box<dyn print::PrintService>>,
     /// The macOS menu bar, when the desktop app installed one: the in-window menus are hidden then.
     pub native_menu: Option<native_menu::NativeMenu>,
+    /// ShibShib: Help › AI Agents (desktop): the control channel for agents and their settings.
+    pub agents: Option<Box<dyn agents::AgentsService>>,
     /// Show file dialogs off the UI thread (desktop Linux, where a dialog in line holds the window
     /// and the compositor finds it not answering): what asked runs again with the answer
     /// ([`picks`]). Without it they are shown in line.
@@ -458,6 +461,11 @@ impl VectorcraftApp {
     pub fn with_control(mut self, rx: Receiver<ControlRequest>) -> Self {
         self.control_rx = Some(rx);
         self
+    }
+
+    /// ShibShib: take requests from a control channel started while the app runs (Help › AI Agents).
+    pub fn set_control(&mut self, rx: Receiver<ControlRequest>) {
+        self.control_rx = Some(rx);
     }
 
     /// Keep `views` aligned with the session's documents (a new one starts at its saved view).
@@ -1041,6 +1049,7 @@ impl VectorcraftApp {
         floating::show(self, &ctx);
         panels::library_panel::show_window(self, &ctx);
         dialogs::show(self, &ctx);
+        agents::show(self, &ctx);
         palette::show(self, &ctx);
         if self.custom_titlebar {
             titlebar::resize_zones(ui);

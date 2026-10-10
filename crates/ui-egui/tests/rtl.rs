@@ -13,7 +13,7 @@ fn frame(add: impl Fn(&mut egui::Ui, &mut Vec<Rect>)) -> Vec<Rect> {
         rects.clear();
         let raw = egui::RawInput { screen_rect: Some(Rect::from_min_size(pos2(0.0, 0.0), vec2(800.0, 600.0))), ..Default::default() };
         let mut out = ctx.run_ui(raw, |ui| {
-            egui::CentralPanel::default().show_inside(ui, |ui| add(ui, &mut rects));
+            egui::CentralPanel::default().show(ui, |ui| add(ui, &mut rects));
         });
         out.textures_delta.clear();
     }

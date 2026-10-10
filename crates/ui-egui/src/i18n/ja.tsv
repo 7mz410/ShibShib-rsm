@@ -3724,3 +3724,17 @@ theme	Appearance	外観
 @msg	no user workspace `{from}`	ユーザーワークスペース `{from}` が見つかりません
 @msg	unknown workspace (one of {_1})	不明なワークスペースです ({_1} のいずれかを指定してください)
 @msg	workspace name can't be empty	ワークスペース名を入力してください
+	AI Agents…	AI エージェント…
+	AI Agents	AI エージェント
+	Add this to the agent's MCP settings:	エージェントの MCP 設定に次を追加してください:
+	Agents can connect now.	エージェントが接続できます。
+	Agents need the desktop app.	エージェントにはデスクトップ版が必要です。
+	Allow AI agents to control this app	AI エージェントにこのアプリの操作を許可
+	Connect	接続
+	Connect an agent app	エージェントアプリを接続
+	Connected	接続済み
+	Other agents	その他のエージェント
+	AI agents such as Claude and Gemini can work in this app while you watch.	Claude や Gemini などの AI エージェントが、見ている前でこのアプリを操作できます。
+	They connect on this computer only.	接続はこのコンピュータ内に限られます。
+	Adds this app to the agent's settings.	このアプリをエージェントの設定に追加します。
+	Restart the agent app afterwards.	追加後にエージェントアプリを再起動してください。

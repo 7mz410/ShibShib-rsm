@@ -299,6 +299,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "{} opens the Save PDF dialog; with params = document.exportPdf options written to path (asked when missing; viewAfterSaving opens the file) → {path, bytes, warnings}",
     ),
     ("help.about", "About ShibShib rsm", "", "{}"),
+    ("help.agents", "AI Agents…", "", "{} opens the AI Agents window: allow agents to control the app, connect agent apps"),
     ("help.commandPalette", "Search Commands…", "Cmd+Shift+/", "{}"),
     ("app.quit", "Quit ShibShib rsm", "Cmd+Q", "{}"),
     (
@@ -1167,6 +1168,10 @@ pub fn run_ui_command(app: &mut VectorcraftApp, id: &str, p: &Value) -> Option<R
         "file.export.pdf" => io::export_pdf(app, p.clone()),
         "help.about" => {
             app.ui.about = true;
+            Ok(Value::Null)
+        }
+        "help.agents" => {
+            crate::agents::open();
             Ok(Value::Null)
         }
         "help.commandPalette" => {
@@ -2536,6 +2541,7 @@ pub fn menu_tree() -> Vec<(&'static str, Vec<Item>)> {
                 c("ShibShib Website", "help.appPage"),
                 c("ShibShib rsm on GitHub", "help.github"),
                 Sep,
+                c("AI Agents…", "help.agents"),
                 c("Search Commands…", "help.commandPalette"),
                 todos("ShibShib rsm Help…", "F1"),
                 Sep,

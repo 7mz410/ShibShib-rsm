@@ -3189,3 +3189,17 @@ axis	Both	兩者
 	Draft	草稿
 	Good	良好
 	Best	最佳
+	AI Agents…	AI 代理…
+	AI Agents	AI 代理
+	Add this to the agent's MCP settings:	將以下內容加入代理的 MCP 設定：
+	Agents can connect now.	代理現在可以連線。
+	Agents need the desktop app.	代理需要桌面版應用程式。
+	Allow AI agents to control this app	允許 AI 代理控制本應用程式
+	Connect	連線
+	Connect an agent app	連接代理應用程式
+	Connected	已連線
+	Other agents	其他代理
+	AI agents such as Claude and Gemini can work in this app while you watch.	Claude、Gemini 等 AI 代理可以在你眼前操作本應用程式。
+	They connect on this computer only.	它們只在這台電腦上連線。
+	Adds this app to the agent's settings.	將本應用程式加入代理的設定。
+	Restart the agent app afterwards.	之後請重新啟動代理應用程式。

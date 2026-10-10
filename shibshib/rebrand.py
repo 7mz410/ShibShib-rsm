@@ -71,12 +71,33 @@ SPECIFIC = {
     # Right to left (shibshib/RTL.md): the Arabic interface flips through egui's switch, and the
     # tool bar and the dock change sides.
     'crates/ui-egui/src/lib.rs': [
+        ('pub mod background;\n',
+         'pub mod agents;\npub mod background;\n'),
+        ('    /// The macOS menu bar, when the desktop app installed one: the in-window menus are hidden then.\n    pub native_menu: Option<native_menu::NativeMenu>,\n',
+         '    /// The macOS menu bar, when the desktop app installed one: the in-window menus are hidden then.\n    pub native_menu: Option<native_menu::NativeMenu>,\n    /// ShibShib: Help › AI Agents (desktop): the control channel for agents and their settings.\n    pub agents: Option<Box<dyn agents::AgentsService>>,\n'),
+        ('    pub fn with_control(mut self, rx: Receiver<ControlRequest>) -> Self {\n        self.control_rx = Some(rx);\n        self\n    }\n',
+         '    pub fn with_control(mut self, rx: Receiver<ControlRequest>) -> Self {\n        self.control_rx = Some(rx);\n        self\n    }\n\n    /// ShibShib: take requests from a control channel started while the app runs (Help › AI Agents).\n    pub fn set_control(&mut self, rx: Receiver<ControlRequest>) {\n        self.control_rx = Some(rx);\n    }\n'),
+        ('        dialogs::show(self, &ctx);\n',
+         '        dialogs::show(self, &ctx);\n        agents::show(self, &ctx);\n'),
         ('        i18n::set_current(lang);\n',
          '        i18n::set_current(lang);\n'
          '        // ShibShib: Arabic lays the interface out right to left (vendor/egui). The switch is\n'
          '        // process-wide, so unit tests, which run in parallel, leave it off (tests/rtl.rs covers it).\n'
          '        #[cfg(not(test))]\n'
          '        egui::set_rtl(crate::i18n::bidi::RTL_CODES.contains(&lang.code()));\n'),
+    ],
+    'crates/ui-egui/src/widgets.rs': [
+        ('    let bx = Rect::from_min_size(pos2(rect.left(), rect.center().y - 6.5), Vec2::splat(13.0));\n    ui.painter().galley(pos2(bx.right() + 5.0, rect.center().y - galley.size().y / 2.0), galley, t.text);',
+         '    // ShibShib: right to left, the box sits on the right and its label to its left.\n    let (bx, text_x) = if egui::is_rtl() {\n        let bx = Rect::from_min_size(pos2(rect.right() - 13.0, rect.center().y - 6.5), Vec2::splat(13.0));\n        (bx, bx.left() - 5.0 - galley.size().x)\n    } else {\n        let bx = Rect::from_min_size(pos2(rect.left(), rect.center().y - 6.5), Vec2::splat(13.0));\n        (bx, bx.right() + 5.0)\n    };\n    ui.painter().galley(pos2(text_x, rect.center().y - galley.size().y / 2.0), galley, t.text);'),
+    ],
+    # Help › AI Agents (crates/ui-egui/src/agents.rs).
+    'crates/ui-egui/src/menus.rs': [
+        ('    ("help.about", "About VectorCraft", "", "{}"),\n',
+         '    ("help.about", "About VectorCraft", "", "{}"),\n    ("help.agents", "AI Agents…", "", "{} opens the AI Agents window: allow agents to control the app, connect agent apps"),\n'),
+        ('        "help.about" => {\n            app.ui.about = true;\n            Ok(Value::Null)\n        }\n',
+         '        "help.about" => {\n            app.ui.about = true;\n            Ok(Value::Null)\n        }\n        "help.agents" => {\n            crate::agents::open();\n            Ok(Value::Null)\n        }\n'),
+        ('                Sep,\n                c("Search Commands…", "help.commandPalette"),',
+         '                Sep,\n                c("AI Agents…", "help.agents"),\n                c("Search Commands…", "help.commandPalette"),'),
     ],
     'crates/ui-egui/src/toolbar.rs': [
         ('egui::Panel::left("toolbar")', '(if egui::is_rtl() { egui::Panel::right("toolbar") } else { egui::Panel::left("toolbar") })'),
@@ -120,6 +141,12 @@ EXT_FILES = {
     'Cargo.toml': [
         ('[workspace.dependencies]\n',
          '[patch.crates-io]\n# ShibShib: egui with a right-to-left switch for the Arabic interface (shibshib/RTL.md).\negui = { path = "vendor/egui" }\n\n[workspace.dependencies]\n'),
+    ],
+    'apps/vectorcraft/src/main.rs': [
+        ('mod printing;\n',
+         'mod printing;\nmod shibshib_agents;\n'),
+        ('                if let Some(port) = control_port {\n                    let rx = control_server::start(port, cc.egui_ctx.clone());\n                    app = app.with_control(rx);\n                }\n',
+         '                if let Some(port) = control_port {\n                    let rx = control_server::start(port, cc.egui_ctx.clone());\n                    app = app.with_control(rx);\n                }\n                // ShibShib: Help › AI Agents; allowed agents connect from the start.\n                let mut agents = shibshib_agents::Agents::new(prefs_path().and_then(|p| Some(p.parent()?.to_path_buf())), cc.egui_ctx.clone());\n                if control_port.is_some() {\n                    // `--control` already serves agents on its own port.\n                    agents.mark_started();\n                } else if let Some(rx) = agents.start_if_enabled() {\n                    app = app.with_control(rx);\n                }\n                app.services.agents = Some(Box::new(agents));\n'),
     ],
     'crates/engine/src/cmd/fileio/tests.rs': [
         ('        exts,\n        [\n            "vectorcraft",', '        exts,\n        [\n            "rsm",'),
@@ -223,6 +250,15 @@ def main():
     for p in sorted((ROOT / 'crates/ui-egui/src/i18n').glob('*.tsv')):
         if rebrand_catalog(p, sources):
             changed.append(p)
+    # Rows for ShibShib's own UI strings (shibshib/i18n/<lang>.tsv; Arabic comes from ar-work).
+    for extra in sorted((ROOT / 'shibshib/i18n').glob('*.tsv')):
+        cat = ROOT / 'crates/ui-egui/src/i18n' / extra.name
+        src = cat.read_text(encoding='utf-8')
+        keys = {tuple(l.split('\t')[:2]) for l in src.split('\n') if not l.startswith('#')}
+        rows = [l for l in extra.read_text(encoding='utf-8').split('\n') if l and tuple(l.split('\t')[:2]) not in keys]
+        if rows:
+            cat.write_text(src.rstrip('\n') + '\n' + '\n'.join(rows) + '\n', encoding='utf-8')
+            changed.append(cat)
     web = ROOT / 'apps/vectorcraft-web/index.html'
     html = web.read_text(encoding='utf-8')
     branded = html.replace('<title>VectorCraft</title>', f'<title>{NAME}</title>').replace('Loading VectorCraft&hellip;', f'Loading {NAME}&hellip;')

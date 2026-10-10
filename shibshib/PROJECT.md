@@ -108,7 +108,7 @@
 
 1. ~~إصلاح الاختبار ورفع الويب~~ ✅، ~~دمج upstream~~ ✅ (كرّره دورياً بـ `shibshib-sync`)، ~~إزالة بقايا ArtCraft~~ ✅، ~~امتداد `.rsm` وأيقونة الملف~~ ✅
 2. ~~**RTL**~~ ✅ (2026-10-10): مفتاح واحد في egui المعدّل (`vendor/egui`، `egui::set_rtl`) يقلب الواجهة كلها (اللوحات، الصفوف، Grid، الأعمدة، القوائم، النوافذ). باقي تفاصيل مرسومة بإحداثيات ثابتة: صفوف الطبقات، تبويبات المستندات، أزرار أسفل اللوحات. التفاصيل في `shibshib/RTL.md`.
-3. **الـ agents كميزة:** Preferences › Agents (تشغيل قناة التحكم تلقائياً)، زر "اربط مع Claude/Gemini"، إشارة اتصال بشريط الحالة. بعدها نحذف أيقونة الديسكتوب "شبشب رسم + Agents".
+3. ~~**الـ agents كميزة**~~ ✅ (2026-10-10): Help › AI Agents… (وكلاء الذكاء الاصطناعي): تفعيل قناة التحكم (تبدأ مع البرنامج بعدها)، وأزرار ربط Claude Desktop وClaude Code وGemini CLI، ونص إعداد للباقي. باقي: إشارة اتصال بشريط الحالة. أيقونة الديسكتوب "شبشب رسم + Agents" ما عاد لها لزوم.
 4. **برامج عيلة ArtCraft** (عبر `shibshib-fork-app`، كل واحد ياخذ الهوية والعربي والـ RTL والـ MCP): ttshat (LightCraft) ← tlween (PhotoCraft) ← tsweer (FilmCraft) ← effectat (EffectCraft) ← trteeb (DesignCraft، عندما يجهز).
 5. **برامج من عيلة ثانية** (C++/Qt، GPL): mzika (LMMS) ← aswat (Audacity/Tenacity) ← sharek (Penpot، يحتاج سيرفر).
 6. **7rrek:** يُبنى فوق rsm (timeline، keyframes، onion skin، tweens، تصدير فيديو/GIF/Lottie).
