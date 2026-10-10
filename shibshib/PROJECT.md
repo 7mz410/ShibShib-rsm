@@ -107,7 +107,7 @@
 قرار 2026-10-10: نبني السويت كلها أولاً، ثم نضيف على كل برنامج ميزات عربية خاصة. الـ RTL أولاً لأنه ينتقل لكل برامج عيلة ArtCraft (نفس egui).
 
 1. ~~إصلاح الاختبار ورفع الويب~~ ✅، ~~دمج upstream~~ ✅ (كرّره دورياً بـ `shibshib-sync`)، ~~إزالة بقايا ArtCraft~~ ✅، ~~امتداد `.rsm` وأيقونة الملف~~ ✅
-2. **RTL** (فرع `rtl`، جاري): مفتاح واحد في egui المعدّل (`vendor/egui`، `egui::set_rtl`) يقلب الواجهة. باقي: Grid، الأزرار، الحالات الخاصة. التفاصيل في `shibshib/RTL.md`.
+2. ~~**RTL**~~ ✅ (2026-10-10): مفتاح واحد في egui المعدّل (`vendor/egui`، `egui::set_rtl`) يقلب الواجهة كلها (اللوحات، الصفوف، Grid، الأعمدة، القوائم، النوافذ). باقي تفاصيل مرسومة بإحداثيات ثابتة: صفوف الطبقات، تبويبات المستندات، أزرار أسفل اللوحات. التفاصيل في `shibshib/RTL.md`.
 3. **الـ agents كميزة:** Preferences › Agents (تشغيل قناة التحكم تلقائياً)، زر "اربط مع Claude/Gemini"، إشارة اتصال بشريط الحالة. بعدها نحذف أيقونة الديسكتوب "شبشب رسم + Agents".
 4. **برامج عيلة ArtCraft** (عبر `shibshib-fork-app`، كل واحد ياخذ الهوية والعربي والـ RTL والـ MCP): ttshat (LightCraft) ← tlween (PhotoCraft) ← tsweer (FilmCraft) ← effectat (EffectCraft) ← trteeb (DesignCraft، عندما يجهز).
 5. **برامج من عيلة ثانية** (C++/Qt، GPL): mzika (LMMS) ← aswat (Audacity/Tenacity) ← sharek (Penpot، يحتاج سيرفر).

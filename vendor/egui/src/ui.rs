@@ -2404,7 +2404,7 @@ impl Ui {
     #[inline]
     pub fn vertical<R>(&mut self, add_contents: impl FnOnce(&mut Ui) -> R) -> InnerResponse<R> {
         self.scope_builder(
-            UiBuilder::new().layout(Layout::top_down(Align::Min)),
+            UiBuilder::new().layout(Layout::top_down(crate::layout::start_align())),
             add_contents,
         )
     }
@@ -2541,10 +2541,13 @@ impl Ui {
         let total_spacing = spacing * (num_columns as f32 - 1.0);
         let column_width = (self.available_width() - total_spacing) / (num_columns as f32);
         let top_left = self.cursor().min;
+        // ShibShib: the first column is the rightmost one when right to left.
+        let rtl = crate::layout::is_rtl();
 
         let mut columns: Vec<Self> = (0..num_columns)
             .map(|col_idx| {
-                let pos = top_left + vec2((col_idx as f32) * (column_width + spacing), 0.0);
+                let slot = if rtl { num_columns - 1 - col_idx } else { col_idx };
+                let pos = top_left + vec2((slot as f32) * (column_width + spacing), 0.0);
                 let child_rect = Rect::from_min_max(
                     pos,
                     pos2(pos.x + column_width, self.max_rect().right_bottom().y),
@@ -2599,9 +2602,12 @@ impl Ui {
         let total_spacing = spacing * (NUM_COL as f32 - 1.0);
         let column_width = (self.available_width() - total_spacing) / (NUM_COL as f32);
         let top_left = self.cursor().min;
+        // ShibShib: the first column is the rightmost one when right to left.
+        let rtl = crate::layout::is_rtl();
 
         let mut columns = core::array::from_fn(|col_idx| {
-            let pos = top_left + vec2((col_idx as f32) * (column_width + spacing), 0.0);
+            let slot = if rtl { NUM_COL - 1 - col_idx } else { col_idx };
+            let pos = top_left + vec2((slot as f32) * (column_width + spacing), 0.0);
             let child_rect = Rect::from_min_max(
                 pos,
                 pos2(pos.x + column_width, self.max_rect().right_bottom().y),

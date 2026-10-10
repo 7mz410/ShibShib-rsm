@@ -40,3 +40,5 @@ python3 shibshib/rebrand.py      # re-apply the branding
 - Documents save as `.rsm` (the same contents as `.vectorcraft`; `.vectorcraft` and `.drawcraft`
   still open), and Finder shows them with the ShibShib rsm document icon
   (`assets/app-icon/rsm-document.icns`). Applied by `rebrand.py` (`EXT_FILES`, `EXT_TESTS`).
+- Right-to-left interface for Arabic through a patched egui in `vendor/egui` (`shibshib/RTL.md`),
+  with `crates/ui-egui/tests/rtl.rs`. Arabic `{placeholders}` stay whole in visual order.

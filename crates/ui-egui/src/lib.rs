@@ -788,7 +788,10 @@ impl VectorcraftApp {
     fn logic_frame(&mut self, ctx: &egui::Context) {
         let lang = self.ui_language();
         i18n::set_current(lang);
-        egui::set_rtl(lang.code() == "ar");
+        // ShibShib: Arabic lays the interface out right to left (vendor/egui). The switch is
+        // process-wide, so unit tests, which run in parallel, leave it off (tests/rtl.rs covers it).
+        #[cfg(not(test))]
+        egui::set_rtl(crate::i18n::bidi::RTL_CODES.contains(&lang.code()));
         // The engine gives new type the Japanese defaults while the UI is in Japanese.
         if self.session.ui_language.as_deref() != Some(lang.code()) {
             self.session.ui_language = Some(lang.code().to_string());

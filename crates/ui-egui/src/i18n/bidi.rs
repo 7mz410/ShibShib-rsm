@@ -71,12 +71,35 @@ fn visual_core(line: &str) -> String {
 
 fn keep_sizes_together(line: &str) -> String {
     let chars: Vec<char> = line.chars().collect();
+    // Placeholders such as `{n}` are filled in after the catalog is read, so each stays one
+    // left-to-right run: its braces count as Latin letters of the same byte length.
+    let mut in_placeholder = vec![false; chars.len()];
+    let mut i = 0;
+    while i < chars.len() {
+        if chars[i] == '{' {
+            if let Some(len) = chars[i + 1..].iter().position(|&c| c == '}') {
+                let name = &chars[i + 1..i + 1 + len];
+                if !name.is_empty() && name.iter().all(|c| c.is_ascii_alphanumeric() || *c == '_') {
+                    in_placeholder[i..=i + 1 + len].fill(true);
+                    i += len + 2;
+                    continue;
+                }
+            }
+        }
+        i += 1;
+    }
     chars
         .iter()
         .enumerate()
         .map(|(i, &c)| {
             let between_digits = i > 0 && i + 1 < chars.len() && chars[i - 1].is_ascii_digit() && chars[i + 1].is_ascii_digit();
-            if c == '×' && between_digits { 'é' } else { c }
+            if c == '×' && between_digits {
+                'é'
+            } else if in_placeholder[i] && (c == '{' || c == '}') {
+                'a'
+            } else {
+                c
+            }
         })
         .collect()
 }
@@ -118,6 +141,9 @@ mod tests {
         assert_eq!(visual("ملف جديد"), "جديد ملف");
         assert_eq!(visual("أهلاً بك في ShibShib rsm"), "ShibShib rsm في بك أهلاً");
         assert_eq!(visual("Open"), "Open");
+        // A placeholder stays whole so it can still be filled in.
+        assert_eq!(visual("{n} طبقة"), "طبقة {n}");
+        assert_eq!(visual("حذف المكتبة “{name}”؟"), "؟”{name}“ المكتبة حذف");
         assert_eq!(visual("قابل للبرمجة."), ".للبرمجة قابل");
         assert_eq!(visual(" للتحريك  |  "), " |  للتحريك  ");
         assert_eq!(visual("ويب 1920×1080"), "1920×1080 ويب");

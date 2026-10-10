@@ -68,6 +68,23 @@ SPECIFIC = {
                 "{SITE}",
                 "{REPO}"'''),
     ],
+    # Right to left (shibshib/RTL.md): the Arabic interface flips through egui's switch, and the
+    # tool bar and the dock change sides.
+    'crates/ui-egui/src/lib.rs': [
+        ('        i18n::set_current(lang);\n',
+         '        i18n::set_current(lang);\n'
+         '        // ShibShib: Arabic lays the interface out right to left (vendor/egui). The switch is\n'
+         '        // process-wide, so unit tests, which run in parallel, leave it off (tests/rtl.rs covers it).\n'
+         '        #[cfg(not(test))]\n'
+         '        egui::set_rtl(crate::i18n::bidi::RTL_CODES.contains(&lang.code()));\n'),
+    ],
+    'crates/ui-egui/src/toolbar.rs': [
+        ('egui::Panel::left("toolbar")', '(if egui::is_rtl() { egui::Panel::right("toolbar") } else { egui::Panel::left("toolbar") })'),
+    ],
+    'crates/ui-egui/src/dock.rs': [
+        ('egui::Panel::right("dock")', '(if egui::is_rtl() { egui::Panel::left("dock") } else { egui::Panel::right("dock") })'),
+        ('egui::Panel::right("icon_column")', '(if egui::is_rtl() { egui::Panel::left("icon_column") } else { egui::Panel::right("icon_column") })'),
+    ],
     'crates/ui-egui/src/dialogs/about.rs': [
         ('"Part of ArtCraft. MIT OR Apache-2.0.',
          '"Based on VectorCraft by the ArtCraft team. MIT OR Apache-2.0.'),
@@ -99,6 +116,10 @@ EXT_FILES = {
          '    std::fs::copy(root.join("assets/app-icon/rsm-document.icns"), app.join("Resources/rsm-document.icns")).map_err(|e| format!("copy document icon: {e}"))?;\n'),
         ('"<array><string>vectorcraft</string><string>drawcraft</string></array>"',
          '"<array><string>rsm</string><string>vectorcraft</string><string>drawcraft</string></array>"'),
+    ],
+    'Cargo.toml': [
+        ('[workspace.dependencies]\n',
+         '[patch.crates-io]\n# ShibShib: egui with a right-to-left switch for the Arabic interface (shibshib/RTL.md).\negui = { path = "vendor/egui" }\n\n[workspace.dependencies]\n'),
     ],
     'crates/engine/src/cmd/fileio/tests.rs': [
         ('        exts,\n        [\n            "vectorcraft",', '        exts,\n        [\n            "rsm",'),

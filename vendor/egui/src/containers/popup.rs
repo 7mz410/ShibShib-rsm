@@ -1,6 +1,6 @@
 use core::iter::once;
 
-use emath::{Align, Pos2, Rect, RectAlign, Vec2, vec2};
+use emath::{Pos2, Rect, RectAlign, Vec2, vec2};
 
 use crate::{
     Area, AreaState, Context, Frame, Id, InnerResponse, Key, LayerId, Layout, Order, Response,
@@ -237,7 +237,7 @@ impl<'a> Popup<'a> {
     pub fn menu(button_response: &Response) -> Self {
         Self::from_toggle_button_response(button_response)
             .kind(PopupKind::Menu)
-            .layout(Layout::top_down_justified(Align::Min))
+            .layout(Layout::top_down_justified(crate::layout::start_align()))
             .style(menu_style)
             .gap(0.0)
     }

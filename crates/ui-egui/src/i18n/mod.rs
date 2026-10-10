@@ -24,7 +24,7 @@
 //!   rows hold whole messages or templates such as `Couldn't open {name}: {e}`, and the values in
 //!   the placeholders are translated in turn (the reason after `: {e}` is often a message too).
 
-mod bidi;
+pub(crate) mod bidi;
 mod catalog;
 
 use std::sync::OnceLock;
