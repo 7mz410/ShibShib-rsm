@@ -444,7 +444,7 @@ pub const FORMATS: &[Format] = &[
     Format {
         id: "vectorcraft",
         label: "ShibShib rsm",
-        extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
+        extensions: &[vectorcraft_format::SHIBSHIB_EXTENSION, vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],
         mime: "application/json",
         read: true,
         write: true,
@@ -566,6 +566,7 @@ pub const FORMATS: &[Format] = &[
 
 /// Every extension `document.open` reads (the "All readable files" filter of open dialogs).
 pub const OPEN_EXTS: &[&str] = &[
+    "rsm",
     "vectorcraft",
     "drawcraft",
     "svg",
@@ -608,6 +609,7 @@ pub const TEXT_EXTS: &[&str] = &["txt"];
 
 /// Every extension File → Place reads: [`OPEN_EXTS`] and [`TEXT_EXTS`].
 pub const PLACE_EXTS: &[&str] = &[
+    "rsm",
     "vectorcraft",
     "drawcraft",
     "svg",

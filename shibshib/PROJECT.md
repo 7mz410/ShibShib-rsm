@@ -53,7 +53,7 @@
    - نحافظ على `LICENSE-MIT` و`LICENSE-APACHE` و`NOTICE`، وعلى حقوق "ArtCraft Team and the VectorCraft contributors".
    - شكر VectorCraft موجود في الـ README وشاشة About.
    - ممنوع استخدام شعارات ArtCraft أو اسمهم كهوية لنا.
-2. **تغيير الاسم الآن للنصوص الظاهرة فقط.** أسماء الـ crates وصيغة `.vectorcraft` تبقى كما هي، حتى يبقى الـ merge من upstream سهلاً. حمزة قرر أن نغيّر كل شيء **لاحقاً**، لا الآن.
+2. **تغيير الاسم الآن للنصوص الظاهرة فقط** (استثناء: امتداد الملف صار `.rsm` لكل برنامج امتداده باسمه، وأيقونة ملف بلون البرنامج من `~/Documents/ShibShib/file icons/`). أسماء الـ crates وصيغة `.vectorcraft` تبقى كما هي، حتى يبقى الـ merge من upstream سهلاً. حمزة قرر أن نغيّر كل شيء **لاحقاً**، لا الآن.
 3. **الـ commits:**
    - باسم `Hamza Abu Ayyash <hamza.abu3ayash@gmail.com>` فقط.
    - **ممنوع إضافة Co-Authored-By Claude**، لأن بعض الخدمات ترفضه.

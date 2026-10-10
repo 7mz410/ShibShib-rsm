@@ -53,7 +53,7 @@
   <key>CFBundleDocumentTypes</key>
   <array>
     <dict>
-      <key>CFBundleTypeName</key><string>VectorCraft Document</string>
+      <key>CFBundleTypeName</key><string>ShibShib rsm Document</string>
       <key>LSItemContentTypes</key><array><string>ai.storyteller.vectorcraft.document</string></array>
       <key>CFBundleTypeRole</key><string>Editor</string>
       <key>LSHandlerRank</key><string>Owner</string>
@@ -125,18 +125,18 @@
       <key>UTTypeIdentifier</key>
       <string>ai.storyteller.vectorcraft.document</string>
       <key>UTTypeDescription</key>
-      <string>VectorCraft Document</string>
+      <string>ShibShib rsm Document</string>
       <key>UTTypeConformsTo</key>
       <array>
         <string>public.data</string>
         <string>public.image</string>
       </array>
       <key>UTTypeIconFile</key>
-      <string>VectorCraft</string>
+      <string>rsm-document</string>
       <key>UTTypeTagSpecification</key>
       <dict>
         <key>public.filename-extension</key>
-        <array><string>vectorcraft</string><string>drawcraft</string></array>
+        <array><string>rsm</string><string>vectorcraft</string><string>drawcraft</string></array>
         <key>public.mime-type</key>
         <array><string>application/x-vectorcraft</string></array>
       </dict>

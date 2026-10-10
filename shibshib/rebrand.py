@@ -33,6 +33,18 @@ SPECIFIC = {
     'crates/engine/src/cmd/fileio/mod.rs': [
         ('label: "VectorCraft",', f'label: "{NAME}",'),
         ('label: "VectorCraft Template",', f'label: "{NAME} Template",'),
+        ('extensions: &[vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],',
+         'extensions: &[vectorcraft_format::SHIBSHIB_EXTENSION, vectorcraft_format::EXTENSION, vectorcraft_format::LEGACY_EXTENSION],'),
+        ('pub const OPEN_EXTS: &[&str] = &[\n    "vectorcraft",', 'pub const OPEN_EXTS: &[&str] = &[\n    "rsm",\n    "vectorcraft",'),
+        ('pub const PLACE_EXTS: &[&str] = &[\n    "vectorcraft",', 'pub const PLACE_EXTS: &[&str] = &[\n    "rsm",\n    "vectorcraft",'),
+    ],
+    'crates/ui-egui/src/place.rs': [
+        ('let native = ["vectorcraft", vectorcraft_format::LEGACY_EXTENSION, "vctemplate"];',
+         'let native = ["rsm", "vectorcraft", vectorcraft_format::LEGACY_EXTENSION, "vctemplate"];'),
+    ],
+    'crates/ui-egui/src/io.rs': [
+        ('const TEMPLATE_EXTS: &[&str] = &["vctemplate", "ait", "vectorcraft", "drawcraft"];',
+         'const TEMPLATE_EXTS: &[&str] = &["vctemplate", "ait", "rsm", "vectorcraft", "drawcraft"];'),
     ],
     # No ShibShib Discord yet: drop the upstream community button and the ArtCraft website link.
     'crates/ui-egui/src/chrome.rs': [
@@ -61,6 +73,50 @@ SPECIFIC = {
          '"Based on VectorCraft by the ArtCraft team. MIT OR Apache-2.0.'),
     ],
 }
+# ShibShib saves documents as `.rsm` (the same contents as `.vectorcraft`, which still opens), with
+# its own document icon in Finder. Applied as is, without the general rename.
+EXT_FILES = {
+    'crates/format/src/lib.rs': [
+        ('pub const LEGACY_EXTENSION: &str = "drawcraft";\n',
+         'pub const LEGACY_EXTENSION: &str = "drawcraft";\n'
+         '/// ShibShib rsm saves documents as `.rsm` (the same contents as `.vectorcraft`).\n'
+         'pub const SHIBSHIB_EXTENSION: &str = "rsm";\n'),
+        ('    ext.eq_ignore_ascii_case(EXTENSION) || ext.eq_ignore_ascii_case(LEGACY_EXTENSION)',
+         '    ext.eq_ignore_ascii_case(SHIBSHIB_EXTENSION) || ext.eq_ignore_ascii_case(EXTENSION) || ext.eq_ignore_ascii_case(LEGACY_EXTENSION)'),
+    ],
+    'crates/engine/src/cmd/package.rs': [
+        ('format!("{stem}.{}", vectorcraft_format::EXTENSION)', 'format!("{stem}.{}", vectorcraft_format::SHIBSHIB_EXTENSION)'),
+    ],
+    'packaging/macos/Info.plist.in': [
+        ('<string>VectorCraft Document</string>', '<string>ShibShib rsm Document</string>'),
+        ('<key>UTTypeIconFile</key>\n      <string>VectorCraft</string>', '<key>UTTypeIconFile</key>\n      <string>rsm-document</string>'),
+        ('<array><string>vectorcraft</string><string>drawcraft</string></array>',
+         '<array><string>rsm</string><string>vectorcraft</string><string>drawcraft</string></array>'),
+    ],
+    'xtask/src/bundle.rs': [
+        ('.map_err(|e| format!("copy icon: {e}"))?;\n',
+         '.map_err(|e| format!("copy icon: {e}"))?;\n'
+         '    std::fs::copy(root.join("assets/app-icon/rsm-document.icns"), app.join("Resources/rsm-document.icns")).map_err(|e| format!("copy document icon: {e}"))?;\n'),
+        ('"<array><string>vectorcraft</string><string>drawcraft</string></array>"',
+         '"<array><string>rsm</string><string>vectorcraft</string><string>drawcraft</string></array>"'),
+    ],
+    'crates/engine/src/cmd/fileio/tests.rs': [
+        ('        exts,\n        [\n            "vectorcraft",', '        exts,\n        [\n            "rsm",'),
+    ],
+}
+# Tests that expect the names native saves suggest: their `.vectorcraft` file names become `.rsm`.
+EXT_TESTS = {
+    'crates/engine/src/cmd/fileio/tests_affinity.rs',
+    'crates/engine/src/tests_package.rs',
+    'crates/engine/src/tests_save.rs',
+    'crates/engine/src/tests_saveoptions.rs',
+    'crates/ui-egui/src/dialogs/save_options.rs',
+    'crates/ui-egui/src/dialogs/tests_package.rs',
+    'crates/ui-egui/src/tests_nativeoptions.rs',
+    'crates/ui-egui/src/tests_saveext.rs',
+}
+for _t in EXT_TESTS:
+    EXT_FILES.setdefault(_t, [])
 # Exact replacements inside string literals and catalogs, before the general rename.
 LITERALS = [
     ('VectorCraft on getartcraft.com', 'ShibShib Website'),
@@ -88,7 +144,8 @@ def rebrand_rust(path: Path) -> bool:
     src = path.read_text(encoding='utf-8')
     out = src
     for a, b in SPECIFIC.get(path.relative_to(ROOT).as_posix(), []):
-        out = out.replace(a, b)
+        if b not in out:  # some replacements contain what they replace
+            out = out.replace(a, b)
     out = STRING.sub(lambda m: rename(m.group(0)), out)
     if out != src:
         path.write_text(out, encoding='utf-8')
@@ -153,6 +210,18 @@ def main():
         changed.append(web)
     if rebrand_plist(ROOT / 'packaging/macos/Info.plist.in'):
         changed.append(ROOT / 'packaging/macos/Info.plist.in')
+    for rel, pairs in EXT_FILES.items():
+        path = ROOT / rel
+        src = path.read_text(encoding='utf-8')
+        out = src
+        for a, b in pairs:
+            if b not in out:
+                out = out.replace(a, b)
+        if rel in EXT_TESTS:
+            out = re.sub(r'\.vectorcraft\b(?!_)', '.rsm', out)
+        if out != src:
+            path.write_text(out, encoding='utf-8')
+            changed.append(path)
     for p in changed:
         print('rebranded', p.relative_to(ROOT))
 

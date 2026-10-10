@@ -37,3 +37,6 @@ python3 shibshib/rebrand.py      # re-apply the branding
   the leading and trailing spaces of joined fragments stay in place.
 - The Help/Community "Website" link reads "ShibShib Website" and opens https://shibshib.art; the
   GitHub link still opens this repository (`rebrand.py`, `SITE`).
+- Documents save as `.rsm` (the same contents as `.vectorcraft`; `.vectorcraft` and `.drawcraft`
+  still open), and Finder shows them with the ShibShib rsm document icon
+  (`assets/app-icon/rsm-document.icns`). Applied by `rebrand.py` (`EXT_FILES`, `EXT_TESTS`).

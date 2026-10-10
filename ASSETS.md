@@ -32,6 +32,8 @@ Generated-in-code art is original and has no file to list. This covers the defau
 | `docs/shibshib/suite/ttshat.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | ShibShib logo | ShibShib suite logo |
 | `assets/app-icon/LICENSE.txt` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
 | `assets/app-icon/README.md` | (licence/readme text) | VectorCraft | MIT OR Apache-2.0 |  |
+| `assets/app-icon/rsm-document.svg` | Hamza Abu Ayyash (ShibShib) | Original artwork | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Finder icon for `.rsm` documents |
+| `assets/app-icon/rsm-document.icns` | Hamza Abu Ayyash (ShibShib) | Rendered from `assets/app-icon/rsm-document.svg` with resvg and iconutil | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | Finder icon for `.rsm` documents |
 | `assets/app-icon/hicolor/128x128/apps/ai.storyteller.vectorcraft.png` | Hamza Abu Ayyash (ShibShib) | Original ShibShib rsm mark (`docs/shibshib/mark-rsm-white.svg`) on a black tile, rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (ShibShib rsm mark) |
 | `assets/app-icon/hicolor/16x16/apps/ai.storyteller.vectorcraft.png` | Hamza Abu Ayyash (ShibShib) | Original ShibShib rsm mark (`docs/shibshib/mark-rsm-white.svg`) on a black tile, rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (ShibShib rsm mark) |
 | `assets/app-icon/hicolor/24x24/apps/ai.storyteller.vectorcraft.png` | Hamza Abu Ayyash (ShibShib) | Original ShibShib rsm mark (`docs/shibshib/mark-rsm-white.svg`) on a black tile, rendered by `packaging/icons.sh` | MIT OR Apache-2.0 (`assets/app-icon/LICENSE.txt`) | App icon (ShibShib rsm mark) |
