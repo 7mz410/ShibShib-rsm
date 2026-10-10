@@ -110,6 +110,8 @@
 2. ~~**RTL**~~ ✅ (2026-10-10): مفتاح واحد في egui المعدّل (`vendor/egui`، `egui::set_rtl`) يقلب الواجهة كلها (اللوحات، الصفوف، Grid، الأعمدة، القوائم، النوافذ). باقي تفاصيل مرسومة بإحداثيات ثابتة: صفوف الطبقات، تبويبات المستندات، أزرار أسفل اللوحات. التفاصيل في `shibshib/RTL.md`.
 3. ~~**الـ agents كميزة**~~ ✅ (2026-10-10): Help › AI Agents… (وكلاء الذكاء الاصطناعي): تفعيل قناة التحكم (تبدأ مع البرنامج بعدها)، وأزرار ربط Claude Desktop وClaude Code وGemini CLI، ونص إعداد للباقي. باقي: إشارة اتصال بشريط الحالة. أيقونة الديسكتوب "شبشب رسم + Agents" ما عاد لها لزوم.
 4. **برامج عيلة ArtCraft** (عبر `shibshib-fork-app`، كل واحد ياخذ الهوية والعربي والـ RTL والـ MCP): ttshat (LightCraft) ← tlween (PhotoCraft) ← tsweer (FilmCraft) ← effectat (EffectCraft) ← trteeb (DesignCraft، عندما يجهز).
+   - **ttshat (جاري، 2026-10-10):** fork في https://github.com/7mz410/ShibShib-ttshat، والنسخة المحلية `~/Documents/ShibShib/ttshat`. تم: الهوية (`shibshib/rebrand.py`)، الأيقونة، الكريدتس، حذف `docs/brand`، الـ RTL (`vendor/egui` منسوخ من rsm)، خط IBM Plex Sans Arabic، `bidi.rs`. باقي: الترجمة العربية (1878 جملة + 230 صيغة) في `shibshib/ar-work/`، بعدها نضيف `Ar` لجدول اللغات في `i18n.rs`. نظام الترجمة هون JSON (`crates/ui-egui/locales/<code>.json` و`<code>-formats.json`)، مش TSV متل rsm. 5 اختبارات `tests_model_setup` بتفشل بالأصل نفسه.
+   - **الدومينات:** حمزة عمل subdomain لكل برنامج (CNAME إلى 7mz410.github.io). كل برنامج بنرفع نسخة الويب تبعه على فرع `gh-pages` بريبوه مع ملف CNAME.
 5. **برامج من عيلة ثانية** (C++/Qt، GPL): mzika (LMMS) ← aswat (Audacity/Tenacity) ← sharek (Penpot، يحتاج سيرفر).
 6. **7rrek:** يُبنى فوق rsm (timeline، keyframes، onion skin، tweens، تصدير فيديو/GIF/Lottie).
 7. **MCP موحّد للسويت** (`shibshib mcp`) يعرف كل البرامج المفتوحة.
