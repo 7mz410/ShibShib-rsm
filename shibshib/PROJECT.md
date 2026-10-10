@@ -15,11 +15,11 @@
 | effectat (تأثيرات) | After Effects | EffectCraft | لاحقاً |
 | 7rrek (حرّك) | Animate/Flash | **نبنيه فوق rsm**: timeline، tweens، frame by frame | بعد rsm مباشرة |
 | sharek (شارك) | Figma | Penpot على الأغلب، ويحتاج سيرفر | لاحقاً |
-| ttshat (تحشات) | Lightroom | LightCraft (من نفس عائلة ArtCraft) | سهل، بعد 7rrek |
+| ttshat (تتشات) | Lightroom | LightCraft (من نفس عائلة ArtCraft) | سهل، بعد 7rrek |
 | mzika (مزيكا) | FL Studio | LMMS (GPL) | لاحقاً: مقامات بربع تون، آلات وإيقاعات شرقية |
 | aswat (أصوات) | Audition | Audacity/Tenacity (GPL) أو SoundCraft، يحتاج فحصاً | لاحقاً: تحويل الكلام العربي لنص |
 
-اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/ShibShib/logos` (الشعار الرئيسي: `shibshib_main.svg`). بعد أي تعديل على اللوغوهات: انسخها لـ `suite/`، وأعد توليد `rsm-white.svg`، وأضف أي ملف جديد لـ `ASSETS.md`. أيقونة البرنامج تأتي من `mark-rsm-white.svg` (عبر `packaging/icons.sh`).
+اللوغوهات (SVG) موجودة في `docs/shibshib/suite/`، وأصلها في `~/Documents/ShibShib/logos` (الشعار الرئيسي: `shibshib_main.svg`). النصوص فيها outlines؛ النسخ القابلة للتعديل (نص حي بخط Nobulina) في `~/Documents/ShibShib/logos-editable/` (محلية، مش على GitHub). بعد أي تعديل على اللوغوهات: انسخها لـ `suite/`، وأعد توليد `rsm-white.svg`، وأضف أي ملف جديد لـ `ASSETS.md`. أيقونة البرنامج تأتي من `mark-rsm-white.svg` (عبر `packaging/icons.sh`).
 
 ## 2. الأماكن المهمة
 
