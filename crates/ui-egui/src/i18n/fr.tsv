@@ -162,6 +162,7 @@
 	Appearance panel	Panneau Aspect
 	Applies when the linked file is relinked or updated.	S’applique lorsque le fichier lié est de nouveau lié ou mis à jour.
 	Applies the next time ShibShib rsm starts.	S’applique au prochain démarrage de ShibShib rsm.
+	Apply	Appliquer
 	Apply Brush	Appliquer la forme
 	Apply Character Style	Appliquer le style de caractère
 	Apply Effect	Appliquer l’effet
@@ -220,6 +221,10 @@
 	Auto Size New Area Type	Taille automatique du nouveau texte captif
 	Auto Spell Check	Vérification orthographique automatique
 	Auto-Collapse Iconic Panels	Réduire automatiquement les panneaux en icônes
+	Ellipse Properties:	Propriétés de l’ellipse :
+	Invert Pie	Inverser le secteur
+	Pie End Angle:	Angle de fin du secteur :
+	Pie Start Angle:	Angle de début du secteur :
 	Show Tool Group Labels	Afficher les libellés des groupes d'outils
 	Auto-Rotate (turn the paper to each artboard)	Rotation automatique (orienter le papier selon chaque plan de travail)
 	Automatic flatness	Planéité automatique
@@ -339,6 +344,8 @@
 	Clean Up…	Nettoyer…
 	Clear	Effacer
 	Clear All Tabs	Effacer toutes les tabulations
+	Above Text	Au-dessus du texte
+	Position Panel Above Text	Placer le panneau au-dessus du texte
 	Clear Appearance	Effacer l’aspect
 	Clear Guides	Effacer les repères
 	Clear Overrides	Effacer les remplacements
@@ -490,6 +497,7 @@
 	Copy Fonts Used in the Document	Copier les polices utilisées dans le document
 	Copy Links	Copier les liens
 	Copy Selected Style	Copier le style sélectionné
+	Copy to User Defined	Copier dans Défini par l’utilisateur
 	Copy Width Point	Copier le point de largeur
 	Copyright	Copyright
 	Copyright Info URL:	URL des informations de copyright :
@@ -1985,6 +1993,7 @@
 	Arrange by Row	Disposer en ligne
 	Arrange by Column	Disposer en colonne
 	Move Artwork with Artboard	Déplacer l’illustration avec le plan de travail
+	Scale Artwork with Artboard	Mettre à l’échelle l’illustration avec le plan de travail
 	Artboards: {n}	Plans de travail : {n}
 	Rearrange All Artboards…	Réorganiser tous les plans de travail…
 	Recall Selection	Rappeler la sélection
@@ -2440,6 +2449,8 @@
 	Show Guides	Afficher les repères
 	Show handles when multiple anchors are selected	Afficher les poignées lorsque plusieurs points d’ancrage sont sélectionnés
 	Show Hidden Characters	Afficher les caractères masqués
+	Bold	Gras
+	Italic	Italique
 	Show Images in Outline Mode	Afficher les images en mode Tracés
 	Show in Folder	Afficher dans le dossier
 	Show Indic Options	Afficher les options indiennes
@@ -2630,6 +2641,7 @@
 	Swash	Lettres ornées
 	Swatch Conflict	Conflit de nuances
 	Swatch Conflicts	Conflits de nuances
+	Swatch exchange files keep solid colors only.	Les fichiers d’échange de nuances ne conservent que les couleurs unies.
 	Swatch Libraries	Bibliothèques de nuances
 	Swatch Libraries Menu	Menu Bibliothèques de nuances
 	Swatch Library	Bibliothèque de nuances
@@ -2639,6 +2651,25 @@
 	Swatch Tiles	Carreaux de nuances
 	Swatches	Nuancier
 	Switch workspace	Changer d’espace de travail
+	Add Content	Ajouter du contenu
+	Click to apply to the selected type	Cliquez pour l’appliquer au texte sélectionné
+	Create New Library	Créer une bibliothèque
+	Create New Library…	Créer une bibliothèque…
+	Rename Library…	Renommer la bibliothèque…
+	Delete the library “{name}”?	Supprimer la bibliothèque « {name} » ?
+	Drag art or swatches here, or use + to add the selection's colors and text styles.	Faites glisser ici des illustrations ou des nuances, ou utilisez + pour ajouter les couleurs et les styles de texte de la sélection.
+	Its graphics, colors and text styles are deleted from this machine.	Ses graphismes, couleurs et styles de texte sont supprimés de cet ordinateur.
+	Keep graphics, colors and text styles here to use them in any document. Libraries are stored on this machine — no account required.	Conservez ici des graphismes, des couleurs et des styles de texte pour les utiliser dans n’importe quel document. Les bibliothèques sont stockées sur cet ordinateur, sans compte.
+	This library is empty	Cette bibliothèque est vide
+	Add to Library	Ajouter à la bibliothèque
+	Delete Library	Supprimer la bibliothèque
+	Delete Library Item	Supprimer l’élément de la bibliothèque
+	Library	Bibliothèque
+	Rename Library	Renommer la bibliothèque
+	Show Library	Afficher la bibliothèque
+	Use Library Item	Utiliser l’élément de la bibliothèque
+	Graphic	Graphisme
+	Show all open documents	Afficher tous les documents ouverts
 	Symbol Instance	Occurrence de symbole
 	Symbol Libraries	Bibliothèques de symboles
 	Symbol Libraries (on the roadmap)	Bibliothèques de symboles (prévu dans la feuille de route)
@@ -2961,6 +2992,7 @@
 	Scrub Numeric Fields by Dragging	Modifier les champs numériques en faisant glisser
 	{count} file(s) in {folder}{note}. Show the package folder?	{count} fichier(s) dans {folder}{note}. Afficher le dossier de l’assemblage ?
 	{count} linked file(s) not found	{count} fichier(s) lié(s) introuvable(s)
+	fonts not copied: {fonts}	polices non copiées : {fonts}
 	{count} linked image(s) changed since this document was saved. Show the new versions?	{count} image(s) liée(s) modifiée(s) depuis l’enregistrement de ce document. Afficher les nouvelles versions ?
 	{count} more rules: Export writes every one.	{count} règles de plus : Exporter les écrit toutes.
 	{count} unnamed objects left out: name them, or turn on Unnamed Objects in the panel menu.	{count} objets sans nom omis : nommez-les ou activez Objets sans nom dans le menu du panneau.
@@ -3120,6 +3152,9 @@ axis	Both	Les deux
 # stays English for agents and tests. `{_1}`, `{_2}` … stand for the `{}` of the format string, in order
 # (`complete_languages_translate_every_message` lists any that are missing). Command ids, parameter
 # names and values in backticks or code (`colorModel rgb`, `document.export`) stay as they are.
+@msg	no library `{id}`	aucune bibliothèque `{id}`
+@msg	select some type first	sélectionnez d’abord du texte
+@msg	{_1} has no {_2} style	{_1} n’a pas de style {_2}
 @msg	a layer couldn't be read	un calque n’a pas pu être lu
 @msg	it has more than one artboard	il a plus d'un plan de travail
 @msg	it has no page	il n’a pas de page
@@ -3420,6 +3455,7 @@ axis	Both	Les deux
 @msg	no symbol instances selected	aucune occurrence de symbole sélectionnée
 @msg	no target object has an opacity mask: select one or give `id`	aucun objet ciblé n’a de masque d’opacité : sélectionnez-en un ou indiquez `id`
 @msg	no threaded text selected	aucun texte lié sélectionné
+@msg	no user library folder here	aucun dossier de bibliothèques utilisateur ici
 @msg	no user workspace `{from}`	aucun espace de travail utilisateur `{from}`
 @msg	node {_1} is not text	le nœud {_1} n’est pas du texte
 @msg	not a DXF drawing	ce n’est pas un dessin DXF
@@ -3656,6 +3692,23 @@ axis	Both	Les deux
 @msg	x and y must both be numbers	x et y doivent tous deux être des nombres
 @msg	"{0}" is not a colour: write it as #rrggbb	« {0} » n’est pas une couleur : écrivez-la sous la forme #rrggbb
 @msg	this isn't a flat-colour logo ({_1}% of its solid areas match a few flat colours), so Flat Logo mode would turn its gradients into patches: use Color mode instead	ce n’est pas un logo en aplats ({_1} % de ses zones pleines correspondent à quelques couleurs unies), donc le mode Logo en aplats transformerait ses dégradés en taches : utilisez le mode Couleur
+@msg	`{what}` closes nothing	`{what}` ne ferme rien
+@msg	`{what}` closes something it didn't open	`{what}` ferme quelque chose qu’il n’a pas ouvert
+@msg	a path has too many points	un tracé a trop de points
+@msg	it ends inside a layer	elles se terminent à l’intérieur d’un calque
+@msg	it has art outside its layers	elles contiennent des illustrations hors de leurs calques
+@msg	it has more than {MAX_NODES} objects	elles contiennent plus de {MAX_NODES} objets
+@msg	it has no layers	elles n’ont aucun calque
+@msg	it has too many values in a row	elles contiennent trop de valeurs à la suite
+@msg	it has {_1}, which VectorCraft doesn't read from it yet	elles contiennent {_1}, que VectorCraft n’y lit pas encore
+@msg	its objects are nested too deeply	leurs objets sont imbriqués trop profondément
+@msg	its section ending with `%{end}` doesn't end	leur section qui se termine par `%{end}` ne se termine pas
+@msg	objects with several fills or strokes, effects or brushes came in as their drawn look ({_1}): their appearance isn't editable yet	les objets à plusieurs fonds ou contours, effets ou formes ont été importés tels qu’ils sont dessinés ({_1}) : leur aspect n’est pas encore modifiable
+@msg	gradient “{name}” isn't defined in the file: a plain colour stands in for it	le dégradé « {name} » n’est pas défini dans le fichier : une couleur unie le remplace
+@msg	an image VectorCraft can't read was left out	une image que VectorCraft ne peut pas lire a été ignorée
+@msg	an image whose data is cut short was left out	une image aux données tronquées a été ignorée
+@msg	its editing data doesn't say where its art is	ses données d’édition ne disent pas où se trouve son illustration
+@msg	this file was saved without PDF compatibility, and its editing data can't be read ({why})	ce fichier a été enregistré sans compatibilité PDF et ses données d’édition sont illisibles ({why})
 
 # The macOS menu bar (native_menu): the app and Window menus' system items, Settings pages.
 	Services	Services

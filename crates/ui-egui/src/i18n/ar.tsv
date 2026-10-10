@@ -3657,3 +3657,56 @@ axis	Both	كلاهما
 	Constrain	تقييد
 	Free Transform	تحويل حر
 	Perspective Distort	تشويه المنظور
+	Apply	تطبيق
+	Ellipse Properties:	خصائص الشكل البيضاوي:
+	Invert Pie	عكس القطاع
+	Pie End Angle:	زاوية نهاية القطاع:
+	Pie Start Angle:	زاوية بداية القطاع:
+	Above Text	فوق النص
+	Position Panel Above Text	وضع اللوحة فوق النص
+	Copy to User Defined	نسخ إلى العينات المخصصة
+	Scale Artwork with Artboard	تحجيم العمل الفني مع لوحة الرسم
+	Bold	عريض
+	Italic	مائل
+	Swatch exchange files keep solid colors only.	ملفات تبادل العينات تحتفظ بالألوان المصمتة فقط.
+	Add Content	إضافة محتوى
+	Click to apply to the selected type	انقر للتطبيق على النص المحدد
+	Create New Library	إنشاء مكتبة جديدة
+	Create New Library…	إنشاء مكتبة جديدة…
+	Rename Library…	إعادة تسمية المكتبة…
+	Delete the library “{name}”?	حذف المكتبة “{name}”؟
+	Drag art or swatches here, or use + to add the selection's colors and text styles.	اسحب عملاً فنياً أو عينات إلى هنا، أو استخدم + لإضافة ألوان التحديد وأنماط نصوصه.
+	Its graphics, colors and text styles are deleted from this machine.	تُحذف رسوماتها وألوانها وأنماط نصوصها من هذا الجهاز.
+	Keep graphics, colors and text styles here to use them in any document. Libraries are stored on this machine — no account required.	احتفظ هنا بالرسومات والألوان وأنماط النص لتستخدمها في أي مستند. تُحفظ المكتبات على هذا الجهاز، بدون حاجة إلى حساب.
+	This library is empty	هذه المكتبة فارغة
+	Add to Library	إضافة إلى المكتبة
+	Delete Library	حذف المكتبة
+	Delete Library Item	حذف عنصر المكتبة
+	Library	المكتبة
+	Rename Library	إعادة تسمية المكتبة
+	Show Library	إظهار المكتبة
+	Use Library Item	استخدام عنصر المكتبة
+	Graphic	رسم
+	Show all open documents	إظهار كل المستندات المفتوحة
+	fonts not copied: {fonts}	خطوط لم تُنسخ: {fonts}
+@msg	no library `{id}`	لا توجد مكتبة `{id}`
+@msg	select some type first	حدّد نصاً أولاً
+@msg	{_1} has no {_2} style	‏{_1} ليس له نمط {_2}
+@msg	no user library folder here	لا يوجد مجلد مكتبة للمستخدم هنا
+@msg	`{what}` closes nothing	`{what}` لا يُغلق شيئاً
+@msg	`{what}` closes something it didn't open	`{what}` يُغلق شيئاً لم يفتحه
+@msg	a path has too many points	مسار فيه نقاط كثيرة جداً
+@msg	it ends inside a layer	ينتهي داخل طبقة
+@msg	it has art outside its layers	فيه عمل فني خارج طبقاته
+@msg	it has more than {MAX_NODES} objects	فيه أكثر من {MAX_NODES} عنصر
+@msg	it has no layers	ليس فيه طبقات
+@msg	it has too many values in a row	فيه قيم كثيرة جداً في صف واحد
+@msg	it has {_1}, which VectorCraft doesn't read from it yet	فيه {_1}، ولا يقرأه VectorCraft منه بعد
+@msg	its objects are nested too deeply	عناصره متداخلة بعمق زائد
+@msg	its section ending with `%{end}` doesn't end	القسم الذي ينتهي بـ `%{end}` لا ينتهي
+@msg	objects with several fills or strokes, effects or brushes came in as their drawn look ({_1}): their appearance isn't editable yet	العناصر ذات التعبئات أو الحدود المتعددة أو التأثيرات أو الفُرش دخلت بشكلها المرسوم ({_1}): مظهرها غير قابل للتعديل بعد
+@msg	gradient “{name}” isn't defined in the file: a plain colour stands in for it	التدرّج “{name}” غير معرّف في الملف: حلّ محله لون عادي
+@msg	an image VectorCraft can't read was left out	أُهملت صورة لا يستطيع VectorCraft قراءتها
+@msg	an image whose data is cut short was left out	أُهملت صورة بياناتها مقطوعة
+@msg	its editing data doesn't say where its art is	بيانات التعديل فيه لا تحدد مكان العمل الفني
+@msg	this file was saved without PDF compatibility, and its editing data can't be read ({why})	حُفظ هذا الملف بدون توافق مع PDF، ولا يمكن قراءة بيانات التعديل فيه ({why})

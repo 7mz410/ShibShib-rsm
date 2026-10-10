@@ -407,6 +407,17 @@ and `flattener` options over it (as `object.flattenTransparency` takes them); im
 transparency and rasterized areas are clipped to their regions. A file that would still have transparency fails the
 export. PDF/X-1a and PDF/X-3 files are PDF 1.3 files too.
 
+An Illustrator EPS (version 9 on) or `.ai` file opens from the editing data it carries (after the EPS page; in the
+`.ai` file's PDF private data): layers and sublayers (name, order, visibility, lock, printing, preview, dimming,
+colour), groups as they were nested, compound paths, clipping groups, object names, hidden and locked objects, fills and
+strokes (spot colours as spot swatches), linear and radial gradients, opacity, blend modes, isolation and knockout,
+embedded images with their alpha channel, guides, and every artboard where it is. An object with several fills or
+strokes, effects or a brush comes in as its drawn look (a group named after it). Type that shows is the page's, in its
+text object's place; hidden point type is made from the file's text document. A file whose editing data has symbols,
+pattern fills, placed files or anything else the reader doesn't read on a layer that shows, or whose layers look
+different from its page, opens as before: an EPS as its printed page, a `.ai` file from its PDF content (where plain
+groups open ungrouped), with a warning saying why.
+
 Opening a PDF (or `.ai`) imports every page as an artboard and layer; `document.open` takes `pages` ("2-3, 5", 1-based),
 `cropTo` (`bounding` (the art's bounds), `art`, `crop` (default), `trim`, `bleed`, `media`: the box each artboard gets)
 and `password` for an encrypted file. `document.pdfInfo` reads a file without opening it: the page count, each page's
@@ -425,7 +436,9 @@ CMYK too.
 ```
 
 PostScript files (`.eps`, and `.ai` files saved in older formats or without PDF compatibility) open through the EPS
-reader (see EPS and PostScript import); an `.ai` whose PDF part is only a placeholder page says it can't be opened.
+reader (see EPS and PostScript import). An `.ai` saved without PDF compatibility (its PDF part is only a placeholder
+page) opens from its editing data alone: its type is made from the file's text document where it can be (point type), and
+what can't be is left out with a warning; without editing data it says it can't be opened.
 
 What a PDF holds comes in as editable art: soft masks become opacity masks (an alpha mask as a white copy of its art;
 the backdrop colour gives Clip, an inverting transfer function Invert), transparency groups keep isolation and knockout,
@@ -599,6 +612,23 @@ the one highlighted layer or group row, else the one selected group, else the cu
 so art added later is clipped too); called again it releases the mask. It returns `{clip}`, and the Layers panel
 underlines clipping-path names.
 
+## Object selection
+
+`select.set {ids}` replaces the selection, `select.add {ids}` adds to it, and
+`select.toggle {id}` or `select.toggle {ids}` toggles each target.
+Every id must be a non-negative integer naming an existing object.
+A malformed or unknown id is an error naming that value; the entire selection is left unchanged.
+All three commands return `{count, ids}` for the resulting selection, in selection order.
+An empty array clears the selection for `select.set` and leaves it alone for Add and Toggle.
+
+`edit.clear {ids?}` deletes the exact selected objects, including individual compound-path members;
+their unselected siblings remain in the compound. Supplying `ids` works without a selection and
+overrides selected anchors or guides. Every explicit id is validated before any deletion; a malformed
+or unknown id leaves the document unchanged. An empty `ids` array does nothing. Layers themselves
+are kept, and selecting an ancestor together with its descendants deletes that subtree once.
+Without `ids`, direct-selected anchors or selected ruler guides retain their usual Clear behavior.
+Cut still removes the objects it copied, including a whole compound when a member is selected.
+
 ## Saved selections
 
 Select → Save Selection… keeps the selected objects under a name, in the document: `select.save {name?}` (default
@@ -616,7 +646,7 @@ repeated names, and ids the document doesn't have are dropped.
 Ruler guides are numbered in the order they were made. `guide.add {vertical, pos, artboard?}` makes one (the x of a
 vertical guide, the y of a horizontal one, in points) → `{index}`. With `artboard` (an artboard's index) it is an
 artboard guide: it runs across that artboard only, moves with it (`artboard.move`, a pure move in
-`artboard.setProps`, `artboard.rearrange`), is copied with it (`artboard.duplicate`, `artboard.move {copy}`) and is
+`artboard.setProps`, `artboard.rearrange`), scales with it (`artboard.setProps {scaleArt}`), is copied with it (`artboard.duplicate`, `artboard.move {copy}`) and is
 deleted with it (`artboard.delete`); without, a canvas guide runs across the whole canvas. `guide.list` →
 `[{index, vertical, pos, selected, artboard?}…]` (`artboard` only for artboard guides).
 `guide.select {indexes: [index…], toggle?}` selects guides on their own (the art is deselected; `toggle` adds or
@@ -765,13 +795,22 @@ swatch in the library panel does). `swatch.resetDefaults {replace?}` brings back
 {"name":"run_command","arguments":{"command":"swatch.library.get","params":{"library":"earth-tones"}}}
 {"name":"run_command","arguments":{"command":"swatch.library.add","params":{"library":"earth-tones","names":["Clay"]}}}
 ```
-`swatch.library.save {path?, format?: "vcswatches"|"gpl"|"css", names?, name?, user?}` writes the document's swatches
-as a library (`.vcswatches` keeps colour models, global, spot, gradients and colour groups; `.gpl` is 8-bit RGB;
-CSS writes custom properties); without `path` it returns `{data}`, and `user: true` saves into the user library
+`swatch.library.save {path?, format?: "vcswatches"|"gpl"|"ase"|"css", names?, name?, user?}` writes the document's
+swatches as a library (`.vcswatches` keeps colour models, global, spot, gradients and colour
+groups; `.gpl` is 8-bit RGB; a swatch exchange `.ase` file keeps solid colors in their own model
+(RGB, CMYK, Lab or Gray) as global, spot or process colors, and color groups, writes a tint swatch
+as the color it shows and leaves gradients out; CSS writes custom properties); without `path`
+it returns `{data}`, or `{dataBase64}` for `.ase`, and `user: true` saves into the user library
 folder of the desktop app (listed as category `user`, User Defined). `swatch.library.load {path? | data? |
 dataBase64?, name?}` loads a `.vcswatches`, `.gpl` or swatch exchange (`.ase`) file, or another document's swatches,
 as a library to add from. From an `.ase` file it reads RGB, CMYK, Lab and Gray colors as global, spot or process
-swatches and keeps their color groups.
+swatches and keeps their color groups. A file in the user library folder, or a file with the
+same extension and bytes as one there, loads as that User Defined library (category `user`).
+`swatch.library.copyToUser {library}` copies a loaded library into the user library folder of the desktop
+app (a library file as it is; a document's swatches or a library loaded from `data` or `dataBase64`
+as `.vcswatches`) under a name no file there has, and lists it as User Defined from then on; until the app
+quits, commands given its loaded id use the copy → `{library, name, count, path, copied}` (`copied: false`
+when the folder already held the same file). Without a user library folder the command is disabled.
 
 ## Graphic style libraries
 
@@ -794,7 +833,33 @@ its bounds.
 the styles unlinked from swatches, with their opacity, blend mode, isolate and knockout, and the patterns they paint
 with); without `path` it returns `{data}`, and `user: true` saves into the user library folder of the desktop app
 (category `user`, User Defined). `graphicStyle.loadLibrary {path? | data? | dataBase64?, name?}` loads a `.vcstyles`
-file, or another document's graphic styles, as a library to add from.
+file, or another document's graphic styles, as a library to add from; a file in the user library folder, or a file
+with the same extension and bytes as one there, loads as that User Defined library.
+
+## Libraries
+
+The Libraries panel's libraries hold graphics, colours and character and paragraph styles that any document can use.
+They are kept on this machine: each is a `.vclibrary` file (JSON) in the `Libraries` folder next to the preferences
+(none in the web app and headless sessions, where they last for the session). `library.list` lists them (`id`, `name`,
+the count of each kind, `current`, `folder`); `library.get {library?}` returns one's items (graphics with `id`, `name`,
+size and a PNG `thumbnail` in base64; colours with `name`, `hex` and `color`; styles with `name` and `attrs`).
+`library.create {name?}`, `library.rename {library?, name}`, `library.delete {library?}` and
+`library.setCurrent {library}` manage them; `library` is an id or a name, and without it the current library (the one
+the panel shows) is meant.
+
+`library.add {library?, kind, ids?, name?, color?}` adds from the selection: `graphic` (a copy of the objects with the
+images, symbols, patterns, swatches, styles and brushes they use, as Copy takes them), `fillColor` / `strokeColor` (the
+first selected object's solid colour, else the default one, or `color`), `charStyle` / `paraStyle` (the selected
+text's attributes). An item the library already has is reported as `existing`. `library.use {library?, kind, item,
+center?, to?}` uses one: a graphic is placed centred on `center` (pasted with its resources; a swatch name the document
+gives another colour merges into the document's), a colour paints the selection's fill or stroke, and a style is added
+to the document (numbered when its name is taken by other attributes) and applied to the selected text, each as one
+undo step. `library.removeItem {library?, kind, item}` removes one.
+
+```json
+{"name":"run_command","arguments":{"command":"library.add","params":{"kind":"graphic","name":"Logo"}}}
+{"name":"run_command","arguments":{"command":"library.use","params":{"kind":"graphic","item":"Logo","center":[300,200]}}}
+```
 
 ## Strokes on type
 
@@ -1112,7 +1177,8 @@ or pulls handles out in line with the neighbouring anchors (a smooth anchor keep
 (Cut Path at Selected Anchor Points) cuts there and answers `{ids}`: a closed path opens at the cut, its two ends
 on top of each other, and an open path becomes one path per piece. Each cut leaves one of its two anchors selected,
 so `path.moveAnchors {dx, dy}` (or a Direct Selection drag) pulls the path apart there; `path.join {}` (Connect
-Selected End Points) joins the ends again. `path.convertAnchor {id, subpath?, anchor, to, x?, y?}` and
+Selected End Points) joins the ends again; `path.join {ids: [a, b], ends: ["last", "first"]}` joins the ends asked for
+(the Pen's join, #776: drawing on from one open path, a click on another's end makes them one path). `path.convertAnchor {id, subpath?, anchor, to, x?, y?}` and
 `path.split {id, subpath?, anchor}` do the same to one anchor (the Anchor Point and Scissors tools); the Pen with Alt
 held over a selected path's handle, anchor or segment works as the Anchor Point tool. `path.reshapeSegment {id,
 subpath?, segment, t, dx, dy}` (a segment dragged with Direct Selection or the Anchor Point tool) moves the segment's
@@ -1171,9 +1237,9 @@ for its colour mode). `profiles` (`all`, `destination`, or `taggedSource` for a 
 `edit.assignProfile`) writes colours in ICC-based spaces with their profiles embedded: CMYK with the destination's or
 the document's CMYK profile, RGB as sRGB, grey with the sRGB tone curve. `outputIntent` embeds a profile as the file's
 `/GTS_PDFX` output intent with `outputCondition`, `outputConditionId` and `registry`, and `trapped` sets `/Trapped`
-(PDF/A files keep their own output intent). `advanced: {outlineText: false}` writes type as selectable, searchable
-text in embedded subset fonts with a ToUnicode map; fonts whose licence forbids embedding stay outlines, with a
-warning.
+(PDF/A files keep their own output intent). Type is written as selectable, searchable text in embedded subset fonts
+with a ToUnicode map (fonts whose licence forbids embedding stay outlines, with a warning); `advanced: {outlineText:
+true}` writes every glyph as an outline instead.
 
 ```json
 {"name":"run_command","arguments":{"command":"document.exportPdf","params":{"path":"/tmp/press.pdf","output":{"conversion":"preserveNumbers","destination":"VectorCraft Generic CMYK (SWOP-like)","profiles":"destination","outputIntent":"VectorCraft Generic CMYK (SWOP-like)","trapped":true},"advanced":{"outlineText":false}}}}
@@ -1255,7 +1321,8 @@ The Selection & Anchor Display and General preferences apply to `pointer_gesture
   point a selection is dragged by, a drawn point and a transform tool's reference point land on an anchor or a ruler
   guide that near.
 - `moveLockedWithArtboard`: `artboard.move {moveArt: true}`, the Artboard tool and `artboard.rearrange` move locked and
-  hidden art with the artboard too; off (the default) it stays where it is.
+  hidden art with the artboard too, and `artboard.setProps {scaleArt: true}` scales it too; off (the default) it stays
+  where it is.
 - `penRubberBand`, `curvatureRubberBand` (on by default): off, the Pen and Curvature tools draw no preview segment to
   the pointer.
 - `showHandlesMultipleAnchors` (on by default): off, Direct Selection (and the Anchor Point tool, and the Pen with Alt)
@@ -1537,6 +1604,17 @@ pastes only the art), in this document or another; the result's `artboard` is th
 `artboard.duplicate {index?, art?}` (Window › Artboards › Duplicate Artboards, or a row dragged onto New Artboard)
 does the same in one step → `{index, ids}`, and `artboard.move {copy: true, moveArt: true}` is the Artboard tool's
 Alt-drag.
+
+Scale Artwork with Artboard (#602): `artboard.setProps {index, x?, y?, width?, height?, scaleArt: true}` resizes an
+artboard and scales the art fully inside it, and its artboard guides, from the old rectangle onto the new one, each side
+by its own ratio (keep the proportions for an even scale), in one undo step → `{scaled: [id…]}`. Locked and hidden art
+scales only with `lockedAndHidden: true` (default: prefs `moveLockedWithArtboard`); strokes, effects and corners scale
+as with `object.scale` (`strokes?`, `corners?`, default: Scale Strokes & Effects and Scale Corners), pattern tiles with
+`patterns?` (default: Transform Pattern Tiles). A move that keeps the size scales nothing (art moves with
+`artboard.move {moveArt}`). The Artboard tool's `scaleArt` option (`tool.setOption {tool: "artboard", key: "scaleArt",
+value: true}`; the Control bar's and Properties' Scale Artwork with Artboard check box, beside Move Artwork with
+Artboard) makes its handle drags proportional and passes `scaleArt`, as do Properties' and the Transform panel's
+artboard size fields while the tool is in use.
 
 ```json
 {"name":"run_command","arguments":{"command":"artboard.copy","params":{"index":0}}}
@@ -2128,9 +2206,7 @@ runs their data; `flushfile` skips it), axial and radial shadings and shading pa
 masks (data in the file through ASCII85, hex, run-length, Flate, LZW or DCT filters, or from procedures), and type as
 point type in the font the file names (embedded font programs are skipped). In a file in Illustrator's own format
 (Illustrator 3–8 `.ai` and their EPS, written with the prolog that defines its operators) the groups it writes (`u` …
-`U`) come in as groups, nested as they were; clips and groups nest at most 128 deep. A PDF-compatible `.ai` doesn't
-mark its plain groups (only layers, clipping groups and groups with opacity, blending or a mask), so they open
-ungrouped. The artboard is the `%%HiResBoundingBox`
+`U`) come in as groups, nested as they were; clips and groups nest at most 128 deep. The artboard is the `%%HiResBoundingBox`
 (else `%%BoundingBox`; a letter page without one). A program the interpreter can't run (an operator it doesn't know,
 an error, a runaway loop) or that draws nothing comes in as its TIFF preview (palette previews with an alpha channel
 too) with a warning; without a preview, the art drawn up to the error is kept with a warning, and a file with none is
@@ -2468,9 +2544,12 @@ Type can use the bundled fonts, fonts added to the session and the fonts install
 the system's and the user's font folders (Windows: `Fonts` and `%LOCALAPPDATA%\Microsoft\Windows\Fonts`, plus fonts
 registered outside them, such as fonts installed as shortcuts, and in the desktop app and `vectorcraft-cli` (MCP
 included) the fonts in DirectWrite's system font collection, such as those Adobe Fonts activates while Creative Cloud runs; macOS: `/System/Library/Fonts`, `/Library/Fonts`,
-`/Network/Library/Fonts`, `~/Library/Fonts` and downloaded system fonts; Linux and BSD: `/usr/share/fonts`,
+`/Network/Library/Fonts`, `~/Library/Fonts` and downloaded system fonts, plus in the desktop app and `vectorcraft-cli`
+the fonts CoreText's font manager lists outside them, such as those apps and font managers register from their own
+folders; Linux and BSD: `/usr/share/fonts`,
 `/usr/local/share/fonts`, `~/.fonts` and the XDG data folders' `fonts`, `~/.local/share/fonts` among them, and in a
-Flatpak sandbox the host's fonts). The installed fonts are cataloged once per session (in the background when the app starts, else on the first lookup
+Flatpak sandbox the host's fonts). Faces without outlines VectorCraft draws (no `glyf`, `CFF`, `CFF2` or `VARC` table, such
+as bitmap-only fonts) are left out. The installed fonts are cataloged once per session (in the background when the app starts, else on the first lookup
 by family name), so opening, placing, pasting and importing files find them whatever ran before. `text.fontList`
 lists every family available, the installed ones included, as the font menus do: without the system's hidden
 families, whose names start with "." (macOS's ".SF NS", ".LastResort"), which still resolve when a document names

@@ -479,6 +479,7 @@
 	Copy Color Value (Hex)	Copiar Valor da Cor (Hex)
 	Copy Selected Style	Copiar Estilo Selecionado
 	Copy Width Point	Copiar Ponto de Largura
+	Copy to User Defined	Copiar para Definido pelo Usuário
 	Copyright	Direitos Autorais
 	Copyright Info URL:	URL de Informações de Direitos Autorais:
 	Copyright Notice:	Aviso de Direitos Autorais:
@@ -1759,6 +1760,7 @@
 	Arrange by Row	Organizar em Linha
 	Arrange by Column	Organizar em Coluna
 	Move Artwork with Artboard	Mover Arte com a Mesa de Trabalho
+	Scale Artwork with Artboard	Dimensionar Arte com a Mesa de Trabalho
 	Artboards: {n}	Mesas de Trabalho: {n}
 	Rearrange All Artboards…	Reorganizar Todas as Mesas de Trabalho…
 	Recall Selection	Relembrar Seleção
@@ -2133,6 +2135,8 @@
 	Show Grid (⌘')	Mostrar Grade (⌘')
 	Show Guides	Mostrar Guias
 	Show Hidden Characters	Mostrar Caracteres Ocultos
+	Bold	Negrito
+	Italic	Itálico
 	Show Images in Outline Mode	Mostrar Imagens no Modo de Contorno
 	Show Indic Options	Mostrar Opções do Índico
 	Show Link Info	Mostrar Informações do Link
@@ -2293,6 +2297,7 @@
 	Swatch Options	Opções de Amostra
 	Swatch Options…	Opções de Amostra…
 	Swatch Tiles	Blocos de Amostra
+	Swatch exchange files keep solid colors only.	Arquivos de intercâmbio de amostras mantêm apenas cores sólidas.
 	Swatches	Amostras
 	Switch workspace	Trocar espaço de trabalho
 	Symbol Instance	Instância de Símbolo
@@ -2586,6 +2591,7 @@
 	to	para
 	{count} file(s) in {folder}{note}. Show the package folder?	{count} arquivo(s) em {folder}{note}. Mostrar a pasta do pacote?
 	{count} linked file(s) not found	{count} arquivo(s) vinculado(s) não encontrado(s)
+	fonts not copied: {fonts}	fontes não copiadas: {fonts}
 	{count} linked image(s) changed since this document was saved. Show the new versions?	{count} imagem(ns) vinculada(s) alterada(s) desde que este documento foi salvo. Mostrar as novas versões?
 	{count} more rules: Export writes every one.	{count} regras a mais: a Exportação escreve cada uma.
 	{count} unnamed objects left out: name them, or turn on Unnamed Objects in the panel menu.	{count} objetos sem nome deixados de fora: nomeie-os, ou ative Objetos Sem Nome no menu do painel.

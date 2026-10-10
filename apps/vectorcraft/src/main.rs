@@ -23,6 +23,8 @@ mod control_server;
 mod gpu;
 mod logging;
 #[cfg(target_os = "macos")]
+mod mac_fonts;
+#[cfg(target_os = "macos")]
 mod mac_menu;
 #[cfg(target_os = "macos")]
 mod open_documents;
@@ -393,6 +395,8 @@ fn main() -> std::process::ExitCode {
     // Before the first font scan (the app's start): the fonts font services load (#579).
     #[cfg(all(windows, not(target_vendor = "win7")))]
     system_fonts::install();
+    #[cfg(target_os = "macos")]
+    mac_fonts::install();
     let mut control_port: Option<u16> = std::env::var("VECTORCRAFT_CONTROL_PORT").ok().and_then(|p| p.parse().ok());
     let mut files = Vec::new();
     let mut in_window_menus = std::env::var_os("VECTORCRAFT_IN_WINDOW_MENUS").is_some_and(|v| !v.is_empty() && v != "0");
@@ -427,7 +431,21 @@ fn main() -> std::process::ExitCode {
     #[cfg(feature = "wgpu")]
     let gpu_pref = saved.as_ref().and_then(|ui| ui.engine_prefs.get("gpuPreference")).and_then(serde_json::Value::as_str);
     #[cfg(feature = "wgpu")]
-    let power = gpu::power_preference(gpu_pref, eframe::wgpu::PowerPreference::from_env());
+    let power_env = eframe::wgpu::PowerPreference::from_env();
+    #[cfg(feature = "wgpu")]
+    let power = gpu::power_preference(gpu_pref, power_env);
+    // Automatic draws on the GPU that drives the (primary) display: a GPU without a monitor reset
+    // its driver and took every monitor down (pdfcraft#378). Logged first: the first question in
+    // every black-window report.
+    #[cfg(feature = "wgpu")]
+    let displays = gpu::preferred_displays(gpu_pref, power_env);
+    #[cfg(feature = "wgpu")]
+    if gpu::automatic(gpu_pref, power_env) {
+        let listed: Vec<String> = displays.iter().map(ToString::to_string).collect();
+        log::info!("display GPUs (PCI vendor:device): {}", if listed.is_empty() { "unknown".to_string() } else { listed.join(", ") });
+    } else {
+        log::info!("graphics processor chosen by the user ({power:?}): which GPU drives the display isn't considered");
+    }
     #[cfg(feature = "wgpu")]
     let startup = std::sync::Arc::new(gpu::Startup::default());
     let options = eframe::NativeOptions {
@@ -454,7 +472,7 @@ fn main() -> std::process::ExitCode {
         options.wgpu_options.surface = eframe::egui_wgpu::SurfaceConfig::LOW_LATENCY;
         // Only adapters that can show the window, in the order `gpu` gives (#306, #502).
         if let eframe::egui_wgpu::WgpuSetup::CreateNew(create) = &mut options.wgpu_options.wgpu_setup {
-            create.native_adapter_selector = Some(gpu::selector(power, startup.clone()));
+            create.native_adapter_selector = Some(gpu::selector(power, displays, startup.clone()));
             // Nothing draws or dispatches indirectly, so wgpu's check of indirect arguments only
             // costs a compute shader at start-up, one some drivers can't compile (OCLP-patched
             // Metal on an Iris Pro, #651). `WGPU_VALIDATION_INDIRECT_CALL=1` turns it back on.
@@ -489,6 +507,12 @@ fn main() -> std::process::ExitCode {
                 app.session.swatch_libraries.set_user_dir(swatches);
                 let styles = prefs_path().and_then(|p| Some(p.parent()?.join("Graphic Styles").to_string_lossy().to_string()));
                 app.session.style_libraries.set_user_dir(styles);
+                // So do the Libraries panel's libraries; runs without preferences (agents' test
+                // runs) keep theirs for the session only, never touching the user's.
+                if prefs_enabled() {
+                    let libraries = prefs_path().and_then(|p| Some(p.parent()?.join("Libraries").to_string_lossy().to_string()));
+                    app.session.libraries.set_dir(libraries);
+                }
                 // Data Recovery copies live next to the preferences too (none for runs without
                 // preferences, such as agents' test runs, unless the recoveryFolder preference is set).
                 if std::env::var_os("VECTORCRAFT_NO_PREFS").is_none() {

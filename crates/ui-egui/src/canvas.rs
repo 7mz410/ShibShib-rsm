@@ -483,7 +483,9 @@ fn cursor_icon(c: Cursor) -> egui::CursorIcon {
         Cursor::ResizeNwSe => C::ResizeNwSe,
         Cursor::ResizeNeSw => C::ResizeNeSw,
         Cursor::Rotate => C::Alias,
-        Cursor::Pen | Cursor::PenAdd | Cursor::PenDelete | Cursor::PenClose | Cursor::PenContinue | Cursor::PenConvert => C::Crosshair,
+        Cursor::Pen | Cursor::PenAdd | Cursor::PenDelete | Cursor::PenClose | Cursor::PenContinue | Cursor::PenJoin | Cursor::PenConvert => {
+            C::Crosshair
+        }
         Cursor::Text => C::Text,
         Cursor::Hand => C::Grab,
         Cursor::HandGrab => C::Grabbing,
@@ -1295,6 +1297,14 @@ fn panel_drop(app: &mut VectorcraftApp, ui: &Ui, resp: &egui::Response, xf: &Xf)
         return;
     }
     let Some(d) = resp.dnd_release_payload::<widgets::PanelDrag>() else { return };
+    // A Libraries panel graphic: a copy centred where it is dropped.
+    if let widgets::PanelDrag::LibraryGraphic { library, item } = &*d {
+        let at = xf.to_doc(pos);
+        if let Err(e) = app.run("library.use", json!({"library": library, "kind": "graphic", "item": item, "center": [at.x, at.y]})) {
+            app.status(e);
+        }
+        return;
+    }
     // A symbol from the Symbols panel: an instance centred where it is dropped, on art or not.
     if let widgets::PanelDrag::Symbol(name) = &*d {
         let at = xf.to_doc(pos);
@@ -1333,7 +1343,7 @@ fn panel_drop(app: &mut VectorcraftApp, ui: &Ui, resp: &egui::Response, xf: &Xf)
         }
         // Art dragged back onto the canvas: its move was already dropped. (A symbol was placed
         // above.)
-        widgets::PanelDrag::Art(_) | widgets::PanelDrag::Symbol(_) => return,
+        widgets::PanelDrag::Art(_) | widgets::PanelDrag::Symbol(_) | widgets::PanelDrag::LibraryGraphic { .. } => return,
     };
     if let Err(e) = app.run(cmd, params) {
         app.status(e);
@@ -1541,8 +1551,10 @@ fn print_tiling_overlay(app: &mut VectorcraftApp, p: &egui::Painter, xf: &Xf) {
 const PRINT_TILING: Color32 = Color32::from_gray(96);
 
 fn selection_overlay(app: &mut VectorcraftApp, p: &egui::Painter, xf: &Xf) {
-    // The Selection tool's bounding box (rotated with the objects after a rotation).
+    // The Selection tool's bounding box (rotated with the objects after a rotation). It hides while
+    // a drag moves or resizes the selection, so only the art is seen going with the pointer (#712).
     let show_box = app.session.tool_id() == "selection"
+        && !app.session.tool_transforming()
         && app.ui.view.bounding_box
         && app.session.active().is_some_and(|st| !st.selection.is_empty() && st.selection.anchors.is_empty());
     let bbox = if show_box { app.selection_box() } else { None };

@@ -54,6 +54,7 @@ pub(crate) use load::native_file;
 pub(crate) use load::source;
 pub use load::{Loaded, RasterImage, detect, file_name, load, load_with, open_bytes, open_bytes_with, open_template, raster_image};
 pub use load::{losses_summary, overwrite_losses};
+pub(crate) use native::preview_png;
 pub use native::with_compression_pref;
 pub use pdfimport::{LoadOptions, page_document};
 pub(crate) use save::job_for;
@@ -724,6 +725,22 @@ pub(crate) fn create_dir(path: &str) -> Result<()> {
     std::fs::create_dir_all(path).map_err(|e| EngineError::Other(format!("{path}: {e}")))
 }
 
+/// Write `bytes` to a new file at `path`. A file already at `path` is an error and is never
+/// replaced. When the write fails part way, the file it started is removed.
+#[cfg(not(target_arch = "wasm32"))]
+pub(crate) fn write_new_file(path: &str, bytes: &[u8]) -> Result<()> {
+    use std::io::Write as _;
+    let err = |e: std::io::Error| EngineError::Other(format!("{path}: {e}"));
+    let mut f = std::fs::OpenOptions::new().write(true).create_new(true).open(path).map_err(err)?;
+    let written = f.write_all(bytes).and_then(|()| f.sync_all());
+    drop(f);
+    written.map_err(|e| {
+        // Best effort: the partly written file is all there is to clean up.
+        let _ = std::fs::remove_file(path);
+        err(e)
+    })
+}
+
 /// A file's size (bytes) and modification time (ms since the Unix epoch, when the file system
 /// keeps one); `None` when there is no file at `path`.
 #[cfg(not(target_arch = "wasm32"))]
@@ -782,6 +799,11 @@ pub(crate) fn write_file(path: &str, _: &[u8]) -> Result<()> {
 
 #[cfg(target_arch = "wasm32")]
 pub(crate) fn create_dir(path: &str) -> Result<()> {
+    Err(no_fs(path))
+}
+
+#[cfg(target_arch = "wasm32")]
+pub(crate) fn write_new_file(path: &str, _: &[u8]) -> Result<()> {
     Err(no_fs(path))
 }
 
@@ -937,6 +959,9 @@ mod tests_psd;
 
 #[cfg(test)]
 mod tests_epsimport;
+
+#[cfg(test)]
+mod tests_aiimport;
 
 #[cfg(test)]
 mod tests_pdflayers;

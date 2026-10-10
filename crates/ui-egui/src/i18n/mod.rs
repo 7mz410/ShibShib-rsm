@@ -81,8 +81,9 @@ fn plural_french(n: u64) -> usize {
     usize::from(n > 1)
 }
 
-/// Russian: 1 (but not 11) is `one`, 2–4 (but not 12–14) `few`, everything else `many`.
-fn plural_russian(n: u64) -> usize {
+/// Russian and Ukrainian integer counts: 1 (but not 11) is `one`, 2–4 (but not 12–14)
+/// `few`, everything else `many`.
+fn plural_east_slavic(n: u64) -> usize {
     match n % 100 {
         11..=14 => 2,
         _ => match n % 10 {
@@ -94,12 +95,12 @@ fn plural_russian(n: u64) -> usize {
 }
 
 /// The registry. English first: it is the fallback and the source language.
-pub static LANGUAGES: [LangInfo; 11] = [
+pub static LANGUAGES: [LangInfo; 12] = [
     LangInfo { code: "en", name: "English", source: "", plural: plural_one_other, complete_menus: false, catalog: OnceLock::new() },
-    // Japanese: the whole interface (every menu string and `tl!` literal), keeping the product,
-    // workspace and perspective preset names in English (`MENU_KEEP_AS_IS`).
     // Arabic (ShibShib): the whole interface; drawn with IBM Plex Sans Arabic.
     LangInfo { code: "ar", name: "العربية", source: include_str!("ar.tsv"), plural: plural_arabic, complete_menus: true, catalog: OnceLock::new() },
+    // Japanese: the whole interface (every menu string and `tl!` literal) and the status and error
+    // messages, keeping the product, workspace and perspective preset names in English (`MENU_KEEP_AS_IS`).
     LangInfo { code: "ja", name: "日本語", source: include_str!("ja.tsv"), plural: plural_none, complete_menus: true, catalog: OnceLock::new() },
     // Czech: every menu label (`menu_catalogs_translate_every_menu_label`); panels and dialogs not yet.
     LangInfo { code: "cs", name: "Čeština", source: include_str!("cs.tsv"), plural: plural_czech, complete_menus: false, catalog: OnceLock::new() },
@@ -129,7 +130,22 @@ pub static LANGUAGES: [LangInfo; 11] = [
     // Russian: the whole interface and the status and error messages, keeping the same names in
     // English as Spanish; every `ru-*` locale (`ru-RU`, `ru-BY`, `ru-KZ` …) resolves here.
     LangInfo {
-        code: "ru", name: "Русский", source: include_str!("ru.tsv"), plural: plural_russian, complete_menus: true, catalog: OnceLock::new()
+        code: "ru",
+        name: "Русский",
+        source: include_str!("ru.tsv"),
+        plural: plural_east_slavic,
+        complete_menus: true,
+        catalog: OnceLock::new(),
+    },
+    // Ukrainian: the whole interface and the status and error messages, with one/few/many
+    // plural forms; every `uk-*` locale (including `uk-UA`) resolves here.
+    LangInfo {
+        code: "uk",
+        name: "Українська",
+        source: include_str!("uk.tsv"),
+        plural: plural_east_slavic,
+        complete_menus: true,
+        catalog: OnceLock::new(),
     },
     // Brazilian Portuguese: every menu label (`menu_catalogs_translate_every_menu_label`), every
     // `tl!` literal and the plural messages; left English on purpose are the `MENU_KEEP_AS_IS`

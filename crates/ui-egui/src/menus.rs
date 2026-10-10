@@ -11,6 +11,7 @@ use vectorcraft_engine::cmd::fileio::SaveMode;
 
 use crate::VectorcraftApp;
 use crate::io;
+use crate::panels::character::Face;
 use crate::state::{DockTab, next_zoom};
 use crate::theme::{self, Brightness, Tokens};
 use crate::widgets;
@@ -175,6 +176,18 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
     ("view.textThreads", "Hide Text Threads", "Cmd+Shift+Y", "{} toggle the thread lines between threaded text frames"),
     ("view.gradientAnnotator", "Hide Gradient Annotator", "Cmd+Alt+G", "{} toggle the Gradient tool's annotator"),
     ("type.hiddenCharacters", "Show Hidden Characters", "Cmd+Alt+I", "{} toggle markers for spaces, paragraph ends and story ends"),
+    (
+        "type.bold",
+        "Bold",
+        "",
+        "{} the selected type (or the Type tool's selection) in its family's Bold face, or back to the regular face when it is bold; keeps italics. A family without that face is left as it is, with a message. While the Type tool edits text, Cmd+Shift+B",
+    ),
+    (
+        "type.italic",
+        "Italic",
+        "",
+        "{} the selected type (or the Type tool's selection) in its family's Italic (or Oblique) face, or back upright when it is italic; keeps the weight. A family without that face is left as it is, with a message. While the Type tool edits text, Cmd+Shift+I",
+    ),
     ("effect.last", "Last Effect…", "Cmd+Alt+Shift+E", "{} open the dialog of the last effect applied"),
     ("view.zoomIn", "Zoom In", "Cmd+=", "{}"),
     ("view.zoomOut", "Zoom Out", "Cmd+-", "{}"),
@@ -272,6 +285,12 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "",
         "{colors?: n (an n-colour job: n rows, Scale Tints) | [colour] (new colours to assign, in order; with no art selected and no group they are the rows, and OK saves them as a new colour group, field `groupName`: the Color Guide's Edit or Apply Colors), library?: id or name, or \"document\" (Limit to Library; \"\" the first library), group?: colour group (Edit or Apply Color Group: OK rewrites the group with the new colours and recolours the selected art, if any)} open Recolor Artwork (dialog `recolor`; engine: recolor.reduce / recolor.apply)",
     ),
+    (
+        "ui.cropImage",
+        "Crop Image",
+        "",
+        "{} show a crop box on the selected image (tool `cropImage`): it starts on the part over the image's artboard; drag its handles or inside it, then Enter or the Control bar's Apply crops the image to it (object.cropImage {rect}), Escape or Cancel leaves it as it is, both back to the Selection tool. tool.setOption {key: \"rect\", value: [x, y, width, height]} sets the box",
+    ),
     ("effect.applyLast", "Apply Last Effect", "Cmd+Shift+E", "{}"),
     (
         "file.export.pdf",
@@ -352,7 +371,7 @@ pub const UI_COMMANDS: &[(&str, &str, &str, &str)] = &[
         "ui.saveSwatchLibrary",
         "Save Swatch Library…",
         "",
-        "{names?: [the swatches selected in the Swatches panel]} open Save Swatch Library (dialog `saveSwatchLibrary`: name, format: vcswatches|gpl|css, user: save to the user library folder, selectedOnly); OK runs swatch.library.save",
+        "{names?: [the swatches selected in the Swatches panel]} open Save Swatch Library (dialog `saveSwatchLibrary`: name, format: vcswatches|gpl|ase|css, user: save to the user library folder, selectedOnly); OK runs swatch.library.save",
     ),
     ("window.userSwatchLibrary1", "User Swatch Library 1", "", "{} open the 1. User Defined swatch library (swatch.library.list, category user)"),
     ("window.userSwatchLibrary2", "User Swatch Library 2", "", "{} open the 2. User Defined swatch library"),
@@ -930,6 +949,8 @@ pub fn run_ui_command(app: &mut VectorcraftApp, id: &str, p: &Value) -> Option<R
         "view.snapToPixel" => flag(&mut app.ui.view.snap_to_pixel),
         "view.textThreads" => flag(&mut app.ui.view.text_threads),
         "type.hiddenCharacters" => flag(&mut app.ui.view.hidden_chars),
+        "type.bold" => crate::panels::character::toggle_face(app, Face::Bold),
+        "type.italic" => crate::panels::character::toggle_face(app, Face::Italic),
         "view.gradientAnnotator" => flag(&mut app.ui.view.gradient_annotator),
         "effect.last" => match app.last_effect.clone() {
             Some((e, params)) => {
@@ -1125,6 +1146,11 @@ pub fn run_ui_command(app: &mut VectorcraftApp, id: &str, p: &Value) -> Option<R
         "tool.setOption" => app.session.set_tool_option_cmd(p),
         "effect.dialog" => crate::dialogs::open_effect_dialog(app, p),
         "ui.recolorDialog" => crate::dialogs::recolor::open(app, p),
+        "ui.cropImage" if !selected_image(app, |_| true) => Err("select an image".into()),
+        "ui.cropImage" => {
+            app.select_tool(vectorcraft_tools::cropimage::ID);
+            Ok(json!({"tool": app.session.tool_id()}))
+        }
         "ui.paramDialog" => {
             let cmd = s("command").unwrap_or_default();
             let mut fields = p.get("params").and_then(Value::as_object).cloned().unwrap_or_default();
@@ -1801,6 +1827,7 @@ pub fn enabled(app: &VectorcraftApp, id: &str) -> bool {
     match id {
         // Save is off for a clean document that already has its own file.
         "file.save" => app.session.active().is_some_and(|d| d.path.is_none() || d.converted || d.is_dirty()),
+        "type.bold" | "type.italic" => crate::panels::character::text_style(app).is_some(),
         "file.reveal" => app.services.reveal.is_some() && app.session.active().is_some_and(|d| d.path.is_some()),
         "file.place"
         | "file.export.svg"
@@ -1823,6 +1850,7 @@ pub fn enabled(app: &VectorcraftApp, id: &str) -> bool {
             id["view.goto".len()..].parse::<usize>().is_ok_and(|n| n >= 1 && app.session.active().is_some_and(|d| n <= d.doc.views.len()))
         }
         "effect.dialog" | "ui.recolorDialog" => app.session.active().is_some_and(|d| !d.selection.is_empty()),
+        "ui.cropImage" => selected_image(app, |_| true),
         "effect.applyLast" | "effect.last" => app.last_effect.is_some() && app.session.active().is_some_and(|d| !d.selection.is_empty()),
         "file.export.pdf" | "ui.savePdfDialog" | "ui.fileInfoDialog" | "ui.rasterEffectsSettingsDialog" => app.session.active().is_some(),
         "ui.swatchOptions" | "ui.newSwatch" | "ui.newColorGroup" => app.session.active().is_some(),
@@ -2041,7 +2069,7 @@ pub fn menu_tree() -> Vec<(&'static str, Vec<Item>)> {
                 Sep,
                 c("Expand…", "ui.expandDialog"),
                 c("Expand Appearance", "effect.expandAppearance"),
-                c("Crop Image", "object.cropImage"),
+                c("Crop Image", "ui.cropImage"),
                 c("Rasterize…", "object.rasterize"),
                 cp("Create Gradient Mesh…", "object.mesh.create", json!({"rows": 4, "cols": 4, "appearance": "flat", "highlight": 100})),
                 cp(
@@ -2220,6 +2248,8 @@ pub fn menu_tree() -> Vec<(&'static str, Vec<Item>)> {
                 sub("Font", font_items()),
                 sub("Recent Fonts", RECENT_FONT_IDS.iter().map(|id| c("Recent Font", id)).collect()),
                 sub("Size", TYPE_SIZES.iter().map(|(l, n)| cp(l, "text.setStyle", json!({ "size": n }))).collect()),
+                c("Bold", "type.bold"),
+                c("Italic", "type.italic"),
                 Sep,
                 panel("Glyphs", "glyphs"),
                 sub("Insert Special Character", insert_items(INSERT_SPECIAL)),

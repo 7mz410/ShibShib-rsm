@@ -154,9 +154,11 @@ Clicking a swatch there runs `swatch.library.add {library, names: [name], apply}
 one with Alt), so one undo step adds and applies it; Shift/Cmd-clicks select swatches and colour groups for
 Add to Swatches.
 `window.swatchLibrary.other {path?}` loads a library file (or another document's swatches) and opens it there;
-opening a `.vcswatches`, `.gpl` or `.ase` file with `app.open` does the same. `ui.saveSwatchLibrary {names?}` opens the
-`saveSwatchLibrary` dialog (fields `name`, `format`: `vcswatches`/`gpl`/`css`, `user`: save to the user library
-folder, `selectedOnly` with `names`); `ui.dialog.confirm` runs `swatch.library.save` (to a file it asks for a path).
+opening a `.vcswatches`, `.gpl` or `.ase` file with `app.open` does the same. A file with the same extension and
+bytes as a User Defined library opens as that library. `ui.saveSwatchLibrary {names?}` opens the
+`saveSwatchLibrary` dialog (fields `name`, `format`: `vcswatches`/`gpl`/`ase`/`css`, `user`: save to the user library
+folder, `selectedOnly` with `names`); `ui.dialog.confirm` runs `swatch.library.save` (to a file it asks for a path
+and suggests `name` with the format's extension as the file name; the web downloads the file under that name).
 
 Graphic style libraries open in the same panel: `window.graphicStyleLibrary {library}` (`library_panel: {kind:
 "graphicStyles", id}`; `library: null` closes it). Clicking a style there runs `graphicStyle.addFromLibrary {library,
@@ -166,7 +168,7 @@ document's graphic styles) and opens it there; opening a `.vcstyles` file with `
 Defined libraries are `window.userGraphicStyleLibrary1`…`10` in Window → Graphic Style Libraries.
 `ui.saveGraphicStyleLibrary {names?}` opens the `saveGraphicStyleLibrary` dialog (fields `name`, `user`: save to the
 user library folder, `selectedOnly` with `names`); `ui.dialog.confirm` runs `graphicStyle.saveLibrary` (to a file it
-asks for a path).
+asks for a path and suggests `name` with `.vcstyles` as the file name; the web downloads the file under that name).
 
 Tile Edge Color: Object → Pattern → Tile Edge Color… (`ui.tileEdgeColor`) opens the `tileEdgeColor` dialog (field
 `color`: `#rrggbb` or a preset name such as "Light Blue"); `ui.dialog.confirm` sets the preference

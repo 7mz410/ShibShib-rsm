@@ -144,6 +144,7 @@
 	Appearance Panel	外观面板
 	Appearance panel	外观面板
 	Applies when the linked file is relinked or updated.	在重新链接或更新链接文件时应用。
+	Apply	应用
 	Apply Brush	应用画笔
 	Apply Character Style	应用字符样式
 	Apply Effect	应用效果
@@ -202,6 +203,10 @@
 	Auto Size New Area Type	自动调整新区域文字大小
 	Auto Spell Check	自动拼写检查
 	Auto-Collapse Iconic Panels	自动折叠图标面板
+	Ellipse Properties:	椭圆属性：
+	Invert Pie	反转扇形
+	Pie End Angle:	扇形终止角度：
+	Pie Start Angle:	扇形起始角度：
 	Show Tool Group Labels	显示工具组标签
 	Auto-Rotate (turn the paper to each artboard)	自动旋转 (为每个画板转动纸张)
 	Automatic flatness	自动平滑度
@@ -324,6 +329,8 @@
 	Clean Up…	清理…
 	Clear	清除
 	Clear All Tabs	清除全部制表位
+	Above Text	文本上方
+	Position Panel Above Text	将面板置于文本上方
 	Clear Appearance	清除外观
 	Clear Guides	清除参考线
 	Clear Overrides	清除覆盖
@@ -473,6 +480,7 @@
 	Copy Fonts Used in the Document	复制文档中使用的字体
 	Copy Links	复制链接
 	Copy Selected Style	复制所选样式
+	Copy to User Defined	复制到用户定义
 	Copy Width Point	复制宽度点
 	Copyright	版权
 	Copyright Info URL:	版权信息 URL：
@@ -1942,6 +1950,7 @@
 	Arrange by Row	排成一行
 	Arrange by Column	排成一列
 	Move Artwork with Artboard	随画板移动图稿
+	Scale Artwork with Artboard	随画板缩放图稿
 	Artboards: {n}	画板：{n}
 	Rearrange All Artboards…	重新排列所有画板…
 	Recall Selection	召回选区
@@ -2361,6 +2370,8 @@
 	Show Guides	显示参考线
 	Show handles when multiple anchors are selected	选择多个锚点时显示手柄
 	Show Hidden Characters	显示隐藏字符
+	Bold	粗体
+	Italic	斜体
 	Show Images in Outline Mode	以轮廓模式显示图像
 	Show in Folder	在文件夹中显示
 	Show Indic Options	显示印度文字选项
@@ -2550,6 +2561,7 @@
 	Swash	花饰字
 	Swatch Conflict	色板冲突
 	Swatch Conflicts	色板冲突
+	Swatch exchange files keep solid colors only.	色板交换文件仅保留纯色。
 	Swatch Libraries	色板库
 	Swatch Libraries Menu	色板库菜单
 	Swatch Library	色板库
@@ -2559,6 +2571,25 @@
 	Swatch Tiles	色板拼贴
 	Swatches	色板
 	Switch workspace	切换工作区
+	Add Content	添加内容
+	Click to apply to the selected type	单击以应用到所选文字
+	Create New Library	创建新库
+	Create New Library…	创建新库…
+	Rename Library…	重命名库…
+	Delete the library “{name}”?	要删除库“{name}”吗？
+	Drag art or swatches here, or use + to add the selection's colors and text styles.	将图稿或色板拖到此处，或使用 + 添加所选对象的颜色和文字样式。
+	Its graphics, colors and text styles are deleted from this machine.	其图形、颜色和文字样式将从此计算机中删除。
+	Keep graphics, colors and text styles here to use them in any document. Libraries are stored on this machine — no account required.	在此保存图形、颜色和文字样式，即可在任何文档中使用。库存储在此计算机上，无需帐户。
+	This library is empty	此库为空
+	Add to Library	添加到库
+	Delete Library	删除库
+	Delete Library Item	删除库项目
+	Library	库
+	Rename Library	重命名库
+	Show Library	显示库
+	Use Library Item	使用库项目
+	Graphic	图形
+	Show all open documents	显示所有打开的文档
 	Symbol Instance	符号实例
 	Symbol Libraries	符号库
 	Symbol Libraries (on the roadmap)	符号库 (已列入路线图)
@@ -2884,6 +2915,7 @@
 	Scrub Numeric Fields by Dragging	拖动以调整数值字段
 	{count} file(s) in {folder}{note}. Show the package folder?	{folder} 中有 {count} 个文件{note}。要显示打包文件夹吗？
 	{count} linked file(s) not found	找不到 {count} 个链接文件
+	fonts not copied: {fonts}	未复制的字体：{fonts}
 	{count} linked image(s) changed since this document was saved. Show the new versions?	自存储此文档后，有 {count} 个链接图像已更改。要显示新版本吗？
 	{count} more rules: Export writes every one.	另有 {count} 条规则：导出时会全部写出。
 	{count} unnamed objects left out: name them, or turn on Unnamed Objects in the panel menu.	已略过 {count} 个未命名对象：请为它们命名，或在面板菜单中开启“未命名对象”。

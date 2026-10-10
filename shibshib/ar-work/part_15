@@ -1,0 +1,53 @@
+	Apply
+	Ellipse Properties:
+	Invert Pie
+	Pie End Angle:
+	Pie Start Angle:
+	Above Text
+	Position Panel Above Text
+	Copy to User Defined
+	Scale Artwork with Artboard
+	Bold
+	Italic
+	Swatch exchange files keep solid colors only.
+	Add Content
+	Click to apply to the selected type
+	Create New Library
+	Create New Library…
+	Rename Library…
+	Delete the library “{name}”?
+	Drag art or swatches here, or use + to add the selection's colors and text styles.
+	Its graphics, colors and text styles are deleted from this machine.
+	Keep graphics, colors and text styles here to use them in any document. Libraries are stored on this machine — no account required.
+	This library is empty
+	Add to Library
+	Delete Library
+	Delete Library Item
+	Library
+	Rename Library
+	Show Library
+	Use Library Item
+	Graphic
+	Show all open documents
+	fonts not copied: {fonts}
+@msg	no library `{id}`
+@msg	select some type first
+@msg	{_1} has no {_2} style
+@msg	no user library folder here
+@msg	`{what}` closes nothing
+@msg	`{what}` closes something it didn't open
+@msg	a path has too many points
+@msg	it ends inside a layer
+@msg	it has art outside its layers
+@msg	it has more than {MAX_NODES} objects
+@msg	it has no layers
+@msg	it has too many values in a row
+@msg	it has {_1}, which VectorCraft doesn't read from it yet
+@msg	its objects are nested too deeply
+@msg	its section ending with `%{end}` doesn't end
+@msg	objects with several fills or strokes, effects or brushes came in as their drawn look ({_1}): their appearance isn't editable yet
+@msg	gradient “{name}” isn't defined in the file: a plain colour stands in for it
+@msg	an image VectorCraft can't read was left out
+@msg	an image whose data is cut short was left out
+@msg	its editing data doesn't say where its art is
+@msg	this file was saved without PDF compatibility, and its editing data can't be read ({why})

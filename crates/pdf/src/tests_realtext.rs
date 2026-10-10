@@ -274,3 +274,42 @@ fn an_embedded_fonts_own_cmap_names_its_glyphs() {
     }
     assert!(crate::import::font_chars(b"not a font").is_none());
 }
+
+/// Type whose text matrix shears its glyphs (slanted as a whole, as Illustrator writes type
+/// turned and skewed) reopens as type that still leans: drawn, it covers what its outlines do.
+#[test]
+fn slanted_type_reopens_as_type_that_still_leans() {
+    for (turn, lean) in [(0.0, 0.25), (-0.2, 0.25), (0.3, -0.15)] {
+        let mut t = TextObject::point(Point::new(80.0, 150.0), "LEAN", style(60.0));
+        t.xf *= Affine::rotate(turn) * Affine::skew(lean, 0.0);
+        let d = doc(vec![t]);
+        let reopened = import_as(&pdf(&d, false).bytes, TextAs::Text);
+        assert_eq!(texts(&reopened), ["LEAN"], "{turn} {lean}: reopened as type");
+        let (a, b) = (ink(&import_as(&pdf(&reopened, true).bytes, TextAs::Outlines)), ink(&import_as(&pdf(&d, true).bytes, TextAs::Outlines)));
+        let off = [a.x0 - b.x0, a.y0 - b.y0, a.x1 - b.x1, a.y1 - b.y1].iter().fold(0.0f64, |m, v| m.max(v.abs()));
+        assert!(off < 0.5, "{turn} {lean}: {a:?} vs {b:?}");
+    }
+}
+
+/// Type set in an installed font's older version (a library keeps both, one name) reopens as type
+/// in that version: the file's glyphs are matched to it rather than kept as outlines, and the type
+/// names the version, which the family and style alone don't pick.
+#[test]
+fn type_in_another_installed_version_reopens_in_that_version() {
+    use vectorcraft_text::test_fonts::{TWIN_FAMILY, TWIN_VERSIONS, twin_font};
+    // The newer version first: the one the family and style resolve to.
+    FontDb::global().add_font(twin_font(true).unwrap());
+    FontDb::global().add_font(twin_font(false).unwrap());
+    for version in [None, Some(TWIN_VERSIONS[0])] {
+        let st = CharStyle { font_family: TWIN_FAMILY.into(), font_version: version.map(Into::into), ..style(40.0) };
+        let d = doc(vec![TextObject::point(Point::new(20.0, 80.0), "Hamburgefonstiv", st)]);
+        let back = import_as(&pdf(&d, false).bytes, TextAs::Text);
+        let mut found = vec![];
+        back.walk(|n| {
+            if let NodeKind::Text(t) = &n.kind {
+                found.push((t.plain_text(), t.first_style().font_version.clone()));
+            }
+        });
+        assert_eq!(found, [("Hamburgefonstiv".to_string(), version.map(String::from))], "{version:?}");
+    }
+}

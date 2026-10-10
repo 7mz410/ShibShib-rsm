@@ -85,7 +85,8 @@ pub struct RenderOptions {
     pub overprint_preview: bool,
     /// Trim View: clip the artwork to the artboards (nothing on the pasteboard is drawn).
     pub trim: bool,
-    /// Leave template layers out (exports and thumbnails: templates are guides, not artwork).
+    /// Leave template layers and guides out (exports and thumbnails: they're aids to drawing, not
+    /// artwork).
     pub skip_templates: bool,
     /// Pattern editing mode's tile edge and swatch bounds colour (Object → Pattern → Tile Edge
     /// Color), RGB.
@@ -725,9 +726,9 @@ impl Renderer {
         Some(p)
     }
 
-    /// Whether `a` is left out of this frame: hidden, a skipped template, or culled.
+    /// Whether `a` is left out of this frame: hidden, a skipped template or guide, or culled.
     fn skipped(&mut self, f: &Frame, a: &Arc<Node>) -> bool {
-        let skipped_template = f.opts.skip_templates && matches!(a.kind, NodeKind::Layer { template: true, .. });
+        let skipped_template = f.opts.skip_templates && matches!(a.kind, NodeKind::Layer { template: true, .. } | NodeKind::Path { guide: true, .. });
         if !a.visible || skipped_template || f.opts.hidden.contains(&a.id) {
             return true;
         }
@@ -1652,7 +1653,11 @@ fn text_geom_snapped(t: &TextObject, snap: Option<Affine>) -> TextGeom {
         .runs
         .iter()
         .map(|r| match db.resolve(&r.style.font_family, &r.style.font_style) {
-            Some((f, m)) => (m == vectorcraft_text::FontMatch::Missing, Some(f.id())),
+            // The version the type names, when it's installed (see `FontDb::face_version`).
+            Some((f, m)) => {
+                let face = db.face_version(&r.style.font_family, &r.style.font_style, r.style.font_version.as_deref()).unwrap_or(f);
+                (m == vectorcraft_text::FontMatch::Missing, Some(face.id()))
+            }
             None => (true, None),
         })
         .collect();
@@ -1674,6 +1679,13 @@ fn text_geom_snapped(t: &TextObject, snap: Option<Affine>) -> TextGeom {
         let mut cell = Rect::new(g.origin.x, g.origin.y - line.ascent, g.origin.x + g.advance, g.origin.y + line.descent).to_path(0.1);
         cell.apply_affine(Affine::rotate_about(g.angle, g.origin));
         target.extend(cell.iter());
+    }
+    // Underline and strikethrough bars, painted as their run's type is (#847).
+    for (run, bar) in vectorcraft_text::decorations(&layout, db, t) {
+        if let Some(r) = runs.get_mut(run) {
+            r.extend(bar.iter());
+        }
+        all.extend(bar.iter());
     }
     TextGeom { runs, all, bounds: layout.bounds, substituted_fonts, substituted_glyphs, inlines: layout.inlines }
 }
