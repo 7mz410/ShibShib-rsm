@@ -200,3 +200,5 @@ python3 shibshib/ar-work/assemble.py                    # بناء ar.tsv
 - تعديلاتنا على كود upstream تكون صغيرة ومعزولة، ويُفضّل أن تكون في ملفات جديدة. هذا يقلل تعارضات الدمج.
 - كل تعديل يُسجَّل في `CHANGES.md`.
 - screenshot قبل أي تسليم واجهة.
+
+- 2026-10-10 end of day: sf7aat web build/deploy started (gh-pages, sf7aat.shibshib.art). Next session: verify the site, switch the sf7aat card from "قريباً" to "جرّبه الآن", delete sf7aat/target.
