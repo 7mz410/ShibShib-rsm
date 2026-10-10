@@ -35,3 +35,5 @@ python3 shibshib/rebrand.py      # re-apply the branding
 - `crates/ui-egui/src/i18n/bidi.rs` stores right-to-left translations in visual order, because egui
   shapes words but lays them out left to right. Sizes such as 1920×1080 stay left to right, and
   the leading and trailing spaces of joined fragments stay in place.
+- The Help/Community "Website" link reads "ShibShib Website" and opens https://shibshib.art; the
+  GitHub link still opens this repository (`rebrand.py`, `SITE`).

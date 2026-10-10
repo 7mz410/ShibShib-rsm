@@ -2533,7 +2533,7 @@ pub fn menu_tree() -> Vec<(&'static str, Vec<Item>)> {
             vec![
                 c("Upstream Community on Discord", "help.discord"),
                 c("ShibShib Project", "help.website"),
-                c("ShibShib rsm Website", "help.appPage"),
+                c("ShibShib Website", "help.appPage"),
                 c("ShibShib rsm on GitHub", "help.github"),
                 Sep,
                 c("Search Commands…", "help.commandPalette"),

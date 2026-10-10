@@ -13,21 +13,22 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 NAME = 'ShibShib rsm'
 REPO = 'https://github.com/7mz410/ShibShib-rsm'
+SITE = 'https://shibshib.art'
 # Persisted names that saved preferences and files refer to; renaming them would break those.
 KEEP = ('VectorCraft Default',)
 
 # Exact replacements, applied before the general rename.
 SPECIFIC = {
     'crates/engine/src/cmd/help.rs': [
-        ('pub const WEBSITE_URL: &str = "https://getartcraft.com";', f'pub const WEBSITE_URL: &str = "{REPO}";'),
+        ('pub const WEBSITE_URL: &str = "https://getartcraft.com";', f'pub const WEBSITE_URL: &str = "{SITE}";'),
         ('format!("{WEBSITE_URL}/apps/{APP_ID}")', 'WEBSITE_URL.to_string()'),
-        ('format!("https://github.com/storytold/{APP_ID}")', 'WEBSITE_URL.to_string()'),
+        ('format!("https://github.com/storytold/{APP_ID}")', f'"{REPO}".to_string()'),
         ('"Join Our Discord"', '"Upstream Community on Discord"'),
         ('the ArtCraft community Discord', 'the upstream ArtCraft community Discord'),
         ('"ArtCraft Website"', '"ShibShib Project"'),
-        ('["url"], "https://getartcraft.com/apps/vectorcraft");', f'["url"], "{REPO}");'),
+        ('["url"], "https://getartcraft.com/apps/vectorcraft");', f'["url"], "{SITE}");'),
         ('["url"], "https://github.com/storytold/vectorcraft");', f'["url"], "{REPO}");'),
-        ('["website"], "https://getartcraft.com");', f'["website"], "{REPO}");'),
+        ('["website"], "https://getartcraft.com");', f'["website"], "{SITE}");'),
     ],
     'crates/engine/src/cmd/fileio/mod.rs': [
         ('label: "VectorCraft",', f'label: "{NAME}",'),
@@ -51,8 +52,8 @@ SPECIFIC = {
         ('''                "https://getartcraft.com",
                 "https://getartcraft.com/apps/vectorcraft",
                 "https://github.com/storytold/vectorcraft"''',
-         f'''                "{REPO}",
-                "{REPO}",
+         f'''                "{SITE}",
+                "{SITE}",
                 "{REPO}"'''),
     ],
     'crates/ui-egui/src/dialogs/about.rs': [
@@ -62,7 +63,8 @@ SPECIFIC = {
 }
 # Exact replacements inside string literals and catalogs, before the general rename.
 LITERALS = [
-    ('VectorCraft on getartcraft.com', f'{NAME} Website'),
+    ('VectorCraft on getartcraft.com', 'ShibShib Website'),
+    (f'{NAME} Website', 'ShibShib Website'),
     ('ArtCraft Website', 'ShibShib Project'),
     ('Join Our Discord', 'Upstream Community on Discord'),
 ]
