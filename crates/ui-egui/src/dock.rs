@@ -77,7 +77,7 @@ pub fn show(app: &mut VectorcraftApp, ui: &mut Ui) {
     let shown = floating::shown_tab(&app.ui);
     // Main tabbed group, unless it is collapsed to icons or all its panels float.
     let group = shown.filter(|_| !app.ui.dock_collapsed).map(|active| {
-        egui::Panel::right("dock")
+        (if egui::is_rtl() { egui::Panel::left("dock") } else { egui::Panel::right("dock") })
             .resizable(true)
             .default_size(DOCK_WIDTH)
             .size_range(230.0..=520.0)
@@ -105,7 +105,7 @@ pub fn show(app: &mut VectorcraftApp, ui: &mut Ui) {
     // collapsed group's panels head it, under the « that expands them again. Floating panels leave
     // it.
     let collapsed = app.ui.dock_collapsed && shown.is_some();
-    let column = egui::Panel::right("icon_column")
+    let column = (if egui::is_rtl() { egui::Panel::left("icon_column") } else { egui::Panel::right("icon_column") })
         .resizable(false)
         .exact_size(ICON_COL)
         .frame(egui::Frame::NONE.fill(t.panel).stroke(Stroke::new(1.5, t.border)))

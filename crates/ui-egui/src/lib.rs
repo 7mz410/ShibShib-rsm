@@ -788,6 +788,7 @@ impl VectorcraftApp {
     fn logic_frame(&mut self, ctx: &egui::Context) {
         let lang = self.ui_language();
         i18n::set_current(lang);
+        egui::set_rtl(lang.code() == "ar");
         // The engine gives new type the Japanese defaults while the UI is in Japanese.
         if self.session.ui_language.as_deref() != Some(lang.code()) {
             self.session.ui_language = Some(lang.code().to_string());

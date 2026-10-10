@@ -104,15 +104,17 @@
 
 ## 5. شو بدنا نعمل (بالترتيب)
 
-1. ~~إصلاح الاختبار ورفع الويب~~ ✅
-2. ~~دمج upstream~~ ✅ (كرّره دورياً بـ `shibshib-sync`)
-3. **قلب الواجهة لليمين (RTL):** اللوحات والقوائم وشريط الأدوات والمحاذاة. هذا أصعب جزء، لأن egui لا يقلب الواجهة تلقائياً.
-4. ~~إزالة بقايا ArtCraft من الواجهة~~ ✅
-5. **الخطّاط:** لوحة الخط العربي (انظر §4.5).
-6. اقتراح الترجمة العربية على upstream كـ Pull Request.
-7. **7rrek:** timeline وkeyframes وonion skin وmotion/shape tweens وsymbols بـ timeline خاص، والتصدير إلى فيديو وGIF وLottie.
-8. بعدها: ttshat، ثم mzika، ثم tlween وtsweer وeffectat، ثم aswat، ثم trteeb (عندما يجهز upstream)، ثم sharek. كلها عبر سكيل `shibshib-fork-app`.
-9. لاحقاً: تغيير الأسماء الداخلية بالكامل، وربط الموقع the-247.com.
+قرار 2026-10-10: نبني السويت كلها أولاً، ثم نضيف على كل برنامج ميزات عربية خاصة. الـ RTL أولاً لأنه ينتقل لكل برامج عيلة ArtCraft (نفس egui).
+
+1. ~~إصلاح الاختبار ورفع الويب~~ ✅، ~~دمج upstream~~ ✅ (كرّره دورياً بـ `shibshib-sync`)، ~~إزالة بقايا ArtCraft~~ ✅، ~~امتداد `.rsm` وأيقونة الملف~~ ✅
+2. **RTL** (فرع `rtl`، جاري): مفتاح واحد في egui المعدّل (`vendor/egui`، `egui::set_rtl`) يقلب الواجهة. باقي: Grid، الأزرار، الحالات الخاصة. التفاصيل في `shibshib/RTL.md`.
+3. **الـ agents كميزة:** Preferences › Agents (تشغيل قناة التحكم تلقائياً)، زر "اربط مع Claude/Gemini"، إشارة اتصال بشريط الحالة. بعدها نحذف أيقونة الديسكتوب "شبشب رسم + Agents".
+4. **برامج عيلة ArtCraft** (عبر `shibshib-fork-app`، كل واحد ياخذ الهوية والعربي والـ RTL والـ MCP): ttshat (LightCraft) ← tlween (PhotoCraft) ← tsweer (FilmCraft) ← effectat (EffectCraft) ← trteeb (DesignCraft، عندما يجهز).
+5. **برامج من عيلة ثانية** (C++/Qt، GPL): mzika (LMMS) ← aswat (Audacity/Tenacity) ← sharek (Penpot، يحتاج سيرفر).
+6. **7rrek:** يُبنى فوق rsm (timeline، keyframes، onion skin، tweens، تصدير فيديو/GIF/Lottie).
+7. **MCP موحّد للسويت** (`shibshib mcp`) يعرف كل البرامج المفتوحة.
+8. **مرحلة الإضافات العربية:** الخطّاط في rsm (§4.5)، مقامات بربع تون في mzika، تحويل الكلام العربي لنص في aswat…
+9. لاحقاً: PR للترجمة العربية على upstream، تغيير الأسماء الداخلية (hard fork)، ربط the-247.com.
 
 ## 6. أوامر متكررة
 
